@@ -19,9 +19,9 @@ Documentation
 
 Documentation for Logramm is online, updated daily:
 
-    http://docs.logramm.org/
+    http://83.212.101.132//
 
-You may also access its unix version by:
+You may access its unix version by:
 
     man lgm
 
