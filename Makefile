@@ -19,7 +19,7 @@ APP 	= lgm
 
 # Environment
 
-OS 		= $(shell uname)
+OS  	= $(shell uname)
 CC    	= gcc
 DMD   	= dmd
 LEX   	= lex
