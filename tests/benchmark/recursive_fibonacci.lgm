@@ -1,0 +1,12 @@
+#!/usr/local/bin/lgm -l
+
+import core.number;
+
+fibo(x) =>
+{
+	x<=1 :==> 1;
+	==> fibo(x-1)+fibo(x-2);
+}
+
+out fibo(__Args[0].fromBase(10));
+

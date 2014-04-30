@@ -1,0 +1,12 @@
+#!/usr/local/bin/lgm -l
+
+import core.number;
+
+facto(x) =>
+{
+	x<=2 :==> 1;
+	==> x*facto(x-1);
+}
+
+out facto(__Args[0].fromBase(10));
+

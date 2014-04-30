@@ -82,15 +82,20 @@ CC_HEADER	= logramm.tab.h
 CC_SOURCES	= $(addsuffix .c,${CC_FILES})
 CC_OBJECTS	= $(addsuffix .o,${CC_FILES})
 
-D_FILES 	= $(basename $(wildcard ${SRC}/*.d))
+D_FILES 	= $(basename $(wildcard ${SRC}/*.d) \
+						 $(wildcard ${SRC}/backend/*.d) \
+						 $(wildcard ${SRC}/components/*.d) \
+						 $(wildcard ${SRC}/helpers/*.d) \
+						 $(wildcard ${SRC}/system/*.d) \
+			   )
 D_SOURCES 	= $(addsuffix .d, ${D_FILES})
 D_OBJECTS	= $(addsuffix .o, ${D_FILES})
 
 TRACE_LOGS 	= *.log *.def
 
 UPDATEBUILD	= ${SCRIPTS}/update-build.awk
-BUILDNO 	= ${SRC}/build.txt
-BUILDNO_NEW	= ${SRC}/build.new
+BUILDNO 	= ${SRC}/resources/build.txt
+BUILDNO_NEW	= ${SRC}/resources/build.new
 
 ##================================================
 ## Rules

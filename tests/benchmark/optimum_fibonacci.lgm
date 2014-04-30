@@ -1,0 +1,24 @@
+#!/usr/local/bin/lgm -l
+
+import core.number;
+
+fibo(x) =>
+{
+	x<=1 :==>x;
+	f = 1;
+	fp = 1;
+
+	i = 1;
+
+	@ i<x :
+	{
+		temp = f;
+		f += fp;
+		fp = temp;
+		i += 1;
+	}
+	==> f;
+}
+
+out fibo(__Args[0].fromBase(10));
+

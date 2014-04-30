@@ -1,0 +1,9 @@
+#!/usr/local/bin/lgm
+import core.number;
+
+i = 0;
+count = __Args[0].fromBase(10);
+@ i<count: i+=1;
+
+out count;
+

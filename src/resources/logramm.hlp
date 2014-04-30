@@ -1,0 +1,19 @@
+USAGE:
+	lgm <file> [options]*
+	lgm <action> 
+
+
+OPTIONS:
+  	-i [ --include ] paths		Additional import paths
+  	-l [ --no-preload ]		Don't pre-load system libraries
+
+ACTIONS:
+  	-e [ --eval ] str		Evaluate Logramm string on-the-fly
+  	-r [ --interactive ]		Interactive console mode
+
+  	--package-info pkg 		Package Manager - get info
+  	--package-install pkg 		Package Manager - install package
+  	--package-uninstall pkg		Package manager - uninstall package
+
+  	-h [ --help ]         		Show help
+  	-v [ --version ]		Show version
