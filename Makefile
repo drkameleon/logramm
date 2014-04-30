@@ -19,7 +19,7 @@ APP 	= lgm
 
 # Environment
 
-OS		= $(shell uname)
+OS 		= $(shell uname)
 CC    	= gcc
 DMD   	= dmd
 LEX   	= lex
@@ -67,7 +67,7 @@ ifeq (${OS}, Darwin)
 CGI_DEST 	= /Applications/XAMPP/cgi-bin
 endif
 ifeq (${OS}, Linux)
-CGI_DEST    = /usr/lib/cgi-bin
+CGI_DEST 	= /usr/lib/cgi-bin
 endif
 
 # Files
@@ -83,14 +83,14 @@ CC_SOURCES	= $(addsuffix .c,${CC_FILES})
 CC_OBJECTS	= $(addsuffix .o,${CC_FILES})
 
 D_FILES 	= $(basename $(wildcard ${SRC}/*.d))
-D_SOURCES   = $(addsuffix .d, ${D_FILES})
+D_SOURCES 	= $(addsuffix .d, ${D_FILES})
 D_OBJECTS	= $(addsuffix .o, ${D_FILES})
 
-TRACE_LOGS  = *.log *.def
+TRACE_LOGS 	= *.log *.def
 
-UPDATEBUILD = ${SCRIPTS}/update-build.awk
-BUILDNO		= ${SRC}/build.txt
-BUILDNO_NEW = ${SRC}/build.new
+UPDATEBUILD	= ${SCRIPTS}/update-build.awk
+BUILDNO 	= ${SRC}/build.txt
+BUILDNO_NEW	= ${SRC}/build.new
 
 ##================================================
 ## Rules
