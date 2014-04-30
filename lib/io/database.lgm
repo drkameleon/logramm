@@ -1,0 +1,212 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/io/database.lgm
+ **********************************************************/
+
+//================================================
+// Imported modules
+//================================================
+
+import core;
+
+//================================================
+// Module definition
+//================================================
+
+Database :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external open(database) # [
+		.params		: "string", 
+		.returns    : "boolean", 
+		.help		: "Opens/Creates database by name and returns 'true' if successful"
+	] => "sqlitedb.open";
+
+	external close(database) # [
+		.params		: "string", 
+		.returns    : "boolean", 
+		.help		: "Closes database by name returns 'true' if successful"
+	] => "sqlitedb.close";
+
+	external query(database,sql) # [
+		.params		: "string,string", 
+		.returns    : "boolean", 
+		.help		: "Executes SQL query to database and returns 'true' if successful"
+	] => "sqlitedb.query";
+
+	external nextRow(database) # [
+		.params		: "string", 
+		.returns    : "any", 
+		.help		: "Returns dictionary of next row in result set, or 'false' if unsuccessful"
+	] => "sqlitedb.nextRow";
+
+	external allRows(database) # [
+		.params		: "string", 
+		.returns    : "array", 
+		.help		: "Returns an array of rows with result set"
+	] => "sqlitedb.allRows";
+
+	external lastInsertId(database) # [
+		.params		: "string", 
+		.returns    : "number", 
+		.help		: "Returns the id of the last inserted row"
+	] => "sqlitedb.lastInsertId";
+
+	//================================================
+	// Functions
+	//================================================
+
+	create(database,table,keys,types) # [
+		.params		: "string,string,array,array",
+		.returns 	: "no",
+		.help		: "Create table using 'keys' with 'types'"
+	] =>
+	{
+		kvPairs = [];
+
+		i = 0;
+		@ i<count(keys) :
+		{
+			kvPairs += keys[i] + " " + types[i];
+			i+=1;
+		}
+
+		kvPairsStr = join(kvPairs,", ");
+
+		sql = "CREATE TABLE IF NOT EXISTS {:table} ({:kvPairsStr});";
+
+		query(database,sql);
+	}
+
+	create(database,table,keytypes) # [
+		.params		: "string,string,dictionary",
+		.returns 	: "no",
+		.help		: "Create table using 'keys' with 'types', with dictionary"
+	] =>
+	{
+		keys = keys(keytypes);
+		types = values(keytypes);
+		
+		create(database,table,keys,types);
+	}
+
+	insert(database,table,keys,values) # [
+		.params		: "string,string,array,array",
+		.returns 	: "number",
+		.help		: "Inserts key/value pairs in table and returns id"
+	] =>
+	{
+		newValues = [];
+
+		@ val->values : newValues += "'" + val + "'";
+
+		keysStr = join(keys,", ");
+		valuesStr = join(newValues,", ");
+
+		sql = "INSERT INTO {:table} ({:keysStr}) VALUES ({:valuesStr});";
+
+		query(database,sql);
+
+		==> lastInsertId(database);
+	}
+
+	insert(database,table,keyvalues) # [
+		.params		: "string,string,dictionary",
+		.returns 	: "number",
+		.help		: "Inserts key/value pairs in table and returns id"
+	] =>
+	{
+		keys = keys(keyvalues);
+		values = values(keyvalues);
+
+		==> insert(database,table,keys,values);
+	}
+
+	select(database,table,what,where) # [
+		.params		: "string,string,array,array",
+		.returns 	: "array",
+		.help		: "Selects rows from table, based on conditions 'where', and returns result"
+	] =>
+	{
+		 count(what)>1 : whatStr = join(what,", ");
+				  else : whatStr = what[0];
+
+		count(where)>0 : whereStr = " WHERE " + join(where," AND ");
+				  else : whereStr = "";
+
+		sql = "SELECT {:whatStr} FROM {:table} {:whereStr};";
+
+		query(database,sql);
+
+		==> allRows(database);
+	}
+
+	selectAll(database,table,where) # [
+		.params		: "string,string,array",
+		.returns 	: "array",
+		.help		: "Selects all rows from table, based on conditions 'where', and returns result"
+	] => select(database,table,["*"],where);
+
+	delete(database,table,where) # [
+		.params		: "string,string,array",
+		.returns 	: "no",
+		.help		: "Delete rows from table, based on conditions 'where'"
+	] =>
+	{
+		count(where)>0 : whereStr = " WHERE " + join(where," AND ");
+				  else : whereStr = "";
+
+		sql = "DELETE FROM {:table} {:whereStr};";
+
+		query(database,sql);
+	}
+
+	update(database,table,keys,values,where) # [
+		.params		: "string,string,array,array,string",
+		.returns 	: "no",
+		.help		: "Updates rows in table, based on conditions 'where'"
+	] =>
+	{
+		kvPairs = [];
+
+		i = 0;
+		@ i<count(keys) :
+		{
+			kvPairs += keys[i] + " = " + values[i];
+			i+=1;
+		}
+
+		kvPairsStr = join(kvPairs,", ");
+
+		count(where)>0 : whereStr = " WHERE " + join(where," AND ");
+				  else : whereStr = "";
+
+		sql = "UPDATE {:table} SET {:kvPairsStr} {:whereStr};";
+
+		query(database,sql);
+	}
+
+	update(database,table,keyvalues,where) # [
+		.params		: "string,string,dictionary,string",
+		.returns 	: "no",
+		.help		: "Updates rows in table, based on conditions 'where'"
+	] =>
+	{
+		keys = keys(keyvalues);
+		values = values(keyvalues);
+
+		update(database,table,keyvalues,where);
+	}
+	
+}
+

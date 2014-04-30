@@ -1,0 +1,137 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core/string.lgm
+ **********************************************************/
+
+//================================================
+// Imported modules
+//================================================
+
+import core;
+
+//================================================
+// Module definition
+//================================================
+
+
+String :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external ucase(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns a string with all of its characters converted to uppercase"
+	] => "string.uppercase";
+
+	external lcase(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns a string with all of its characters converted to lowercase"
+	] => "string.lowercase";
+
+	external trim(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns a string, having stripped both leading and trailing whitespace"
+	] => "string.trim";
+
+	external ltrim(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns a string, having stripped leading whitespace"
+	] => "string.trimLeft";
+
+	external rtrim(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns a string, having stripped trailing whitespace"
+	] => "string.trimRight";
+
+	external find(str,what) # [
+		.params		: "string,string",
+		.returns    : "number",
+		.help		: "Returns index of first occurence of 'what' in string"
+	] => "string.find";
+
+	external chop(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns a string, having removed the last character"
+	] => "string.chop";
+
+	external contains(str,what) # [
+		.params		: "string,string",
+		.returns    : "boolean",
+		.help		: "Checks if string contains 'what'"
+	] => "string.contains";
+
+	external isNumeric(str) # [
+		.params		: "string",
+		.returns    : "boolean",
+		.help		: "Checks if string can be be formatted a number"
+	] => "string.isNumeric";
+
+	external soundex(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Converts a word into 4 characters based on how the word sounds phonetically, using the Soundex algorithm"
+	] => "string.soundex";
+
+	external startsWith(str,what) # [
+		.params		: "string,string",
+		.returns    : "boolean",
+		.help		: "Checks if string begins with 'what'"
+	] =>  "string.startsWith";
+
+	external endsWith(str,what) # [
+		.params		: "string,string",
+		.returns    : "boolean",
+		.help		: "Checks if string ends with 'what'"
+	] => "string.endsWith";
+
+	external chomp(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns string after removing trailing newline characters"
+	] => "string.chomp";
+
+	//================================================
+	// Functions
+	//================================================
+
+	isEmpty(str) # [
+		.params		: "string",
+		.returns    : "boolean",
+		.help		: "Checks if string is empty"
+	] =>
+	{
+		c = length(str);
+
+		c==0 :==> true;
+		c!=0 :==> false;
+	}
+
+	ucaseFirst(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns string with its first character in uppercase"
+	] =>  ucase(str[0]) + str[1..];
+
+	lcaseFirst(str) # [
+		.params		: "string",
+		.returns    : "string",
+		.help		: "Returns string with its first character in lowercase"
+	] => lcase(str[0]) + str[1..];
+
+}
+

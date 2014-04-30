@@ -1,0 +1,59 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/io/path.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Path :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external isFile(path) # [
+		.params		: "string", 
+		.returns    : "boolean", 
+		.help		: "Checks if file at 'path' is a file"
+	] => "path.isFile";
+
+	external isDirectory(path) # [
+		.params		: "string", 
+		.returns    : "boolean", 
+		.help		: "Checks if file at 'path' is a directory"
+	] => "path.isDirectory";
+
+	external isSymlink(path) # [
+		.params		: "string", 
+		.returns    : "boolean", 
+		.help		: "Checks if file at 'path' is a symlink"
+	] => "path.isSymlink";
+
+	external createDirectory(path) # [
+		.params		: "string", 
+		.returns    : "no", 
+		.help		: "Creates directory at 'path'"
+	] => "path.createDirectory";
+
+	external currentDirectory()	# [
+		.params		: "", 
+		.returns    : "string", 
+		.help		: "Returns current working directory"
+	] => "path.currentDirectory";
+
+	external directoryContents(dir)	# [
+		.params		: "string", 
+		.returns    : "array", 
+		.help		: "Returns array with contents of given directory"
+	] => "path.directoryContents";
+
+}

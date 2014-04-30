@@ -1,0 +1,76 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core/types.lgm
+ **********************************************************/
+
+//================================================
+// Imported modules
+//================================================
+
+import core;
+
+//================================================
+// Module definition
+//================================================
+
+Types :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external type(arg) # [
+		.params		: "any",
+		.returns 	: "string",
+		.help		: "Returns type of argument (number,string,boolean,array,dictionary)"
+	] => "types.getType";
+
+	//================================================
+	// Functions
+	//================================================
+
+	isNumber(arg) # [
+		.params 	: "any",
+		.returns    : "boolean",
+		.help		: "Checks if argument is a number"
+	] => type(arg)=="number";
+
+	isString(arg) # [
+		.params 	: "any",
+		.returns    : "boolean",
+		.help		: "Checks if argument is a string"
+	] => type(arg)=="string";
+
+	isBoolean(arg) # [
+		.params 	: "any",
+		.returns    : "boolean",
+		.help		: "Checks if argument is a boolean"
+	] => type(arg)=="boolean";
+
+	isArray(arg) # [
+		.params 	: "any",
+		.returns    : "boolean",
+		.help		: "Checks if argument is an array"
+	] => type(arg)=="array";
+
+	isDictionary(arg) # [
+		.params 	: "any",
+		.returns    : "boolean",
+		.help		: "Checks if argument is a dictionary"
+	] => type(arg)=="dictionary";
+
+	string(arg) # [
+		.params		: "any",
+		.returns    : "string",
+		.help		: "Converts argument to string"
+	] => "{:arg}";
+
+}
+

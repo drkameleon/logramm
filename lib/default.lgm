@@ -1,0 +1,36 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/default.lgm
+ **********************************************************/
+
+// Core
+
+import core;
+
+import core.array;
+import core.dictionary;
+import core.number;
+import core.reflection;
+import core.string;
+import core.string.regex;
+import core.types;
+
+// FORMAT
+
+import format.csv;
+import format.html;
+import format.json;
+import format.xml;
+
+// IO
+
+import io.database;
+import io.file;
+import io.net;
+import io.path;

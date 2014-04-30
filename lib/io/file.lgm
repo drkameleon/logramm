@@ -1,0 +1,60 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/io/file.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+File :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external read(filename) # [
+		.params		: "string", 
+		.returns    : "string", 
+		.help		: "Returns contents of file as a string"
+	] => "file.read";
+
+	external write(filename,data) # [
+		.params		: "string,string", 
+		.returns    : "no", 
+		.help		: "Writes data to file 'filename'"
+	] => "file.write";
+
+	external append(filename,data) # [
+		.params		: "string,string", 
+		.returns    : "no", 
+		.help		: "Appends data to file 'filename'"
+	] => "file.append";
+
+	external rename(fileFrom,fileTo) # [
+		.params		: "string,string", 
+		.returns    : "no", 
+		.help		: "Renames file to 'fileTo'"
+	] => "file.rename";
+
+	external delete(filename) # [
+		.params		: "string", 
+		.returns    : "no", 
+		.help		: "Deletes file 'filename'"
+	] => "file.deleteFile";
+
+	external exists(filename) # [
+		.params		: "string", 
+		.returns    : "boolean", 
+		.help		: "Check if file 'filename' exists"
+	] => "file.exists";
+
+}
+

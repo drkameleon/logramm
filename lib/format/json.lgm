@@ -1,0 +1,36 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/format/json.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Json :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external parse(json) # [
+		.params		: "string", 
+		.returns    : "any", 
+		.help		: "Processes json string and returns corresponding object"
+	] => "json.parse";
+
+	external generate(object) # [
+		.params		: "any",
+		.returns	: "string",
+		.help		: "Processes input and returns corresponding Json as string"
+	] => "json.generate";
+
+}
+

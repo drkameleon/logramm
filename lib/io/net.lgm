@@ -1,0 +1,41 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/io/net.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Net :: 
+{
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external get(url) # [
+		.params		: "string", 
+		.returns    : "string", 
+		.help		: "Returns string contents of page at 'url'"
+	] => "net.get";
+
+	external post(url,data) # [
+		.params		: "string,string", 
+		.returns    : "string", 
+		.help		: "Returns string contents of page at 'url', after an HTTP Post request with 'data'"
+	] => "net.post";
+
+	external download(url,filepath) # [
+		.params		: "string,string", 
+		.returns    : "no", 
+		.help		: "Downloads file at 'url' to local 'filepath'"
+	] => "net.download";
+
+}
+

@@ -1,0 +1,221 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core/number.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Number :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external fromBase(str,n) # [
+		.params		: "string,number",
+		.returns 	: "number",
+		.help 		: "Returns number, given its base-n representation in string"
+	] => "math.fromBase";
+
+	external sin(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns sine of 'x'"
+	] =>  "math.sin";
+
+	external cos(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns cosine of 'x'"
+	] =>  "math.cos";
+
+	external tan(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns tangent of 'x'"
+	] =>  "math.tan";
+
+	external sinh(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns hyperbolic sine of 'x'"
+	] =>  "math.sinh";
+
+	external cosh(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns hyperbolic cosine of 'x'"
+	] =>  "math.cosh";
+
+	external tanh(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns hyperbolic tangent of 'x'"
+	] =>  "math.tanh";
+
+	external arcsin(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns arc sine of 'x'"
+	] =>  "math.arcsin";
+
+	external arccos(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns arc cosine of 'x'"
+	] =>  "math.arccos";
+
+	external arctan(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns arc tangent of 'x'"
+	] =>  "math.arctan";
+
+	external arcsinh(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns inverse hyperbolic sine of 'x'"
+	] =>  "math.arcsinh";
+
+	external arccosh(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns inverse hyperbolic cosine of 'x'"
+	] =>  "math.arccosh";
+
+	external arctanh(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns inverse hyperbolic tangent of 'x'"
+	] =>  "math.arctanh";
+
+	external floor(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns 'x', rounded downwards"
+	] =>  "math.floor";
+
+	external ceil(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns 'x', rounded upwards"
+	] =>  "math.ceil";
+
+	external round(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns 'x', rounded to the nearest integer"
+	] =>  "math.round";
+
+	external ln(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns the natural logarithm of 'x'"
+	] =>  "math.ln";
+
+	external log(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns the base-10 logarithm of 'x'"
+	] =>  "math.log";
+
+	external pow(x,y) # [
+		.params		: "number,number",
+		.returns 	: "number",
+		.help 		: "Returns 'x' raised to the power of 'y'"
+	] =>  "math.pow";
+
+	external exp(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns exponential of 'x'"
+	] =>  "math.exp";
+
+	external sqrt(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns square root of 'x'"
+	] =>  "math.sqrt";
+
+	external trunc(x) # [
+		.params		: "number",
+		.returns 	: "number",
+		.help 		: "Returns integer portion of 'x'"
+	] =>  "math.trunc";
+
+	external E() # [
+		.params		: "no",
+		.returns    : "number",
+		.help		: "Returns E constant"
+	] => "math.e";
+
+	external Pi() # [
+		.params		: "no",
+		.returns 	: "number",
+		.help 		: "Returns Pi constant"
+	] => "math.pi";
+
+	//================================================
+	// Functions
+	//================================================
+
+	fromBin(str) # [
+		.params		: "string",
+		.returns 	: "number",
+		.help 		: "Returns number, given its binary representation in string"
+	] => fromBase(str,2);
+
+	fromHex(str) # [
+		.params		: "string",
+		.returns 	: "number",
+		.help 		: "Returns number, given its hexadecimal representation in string"
+	] => fromBase(str,16);
+
+	fromOct(str) # [
+		.params		: "string",
+		.returns 	: "number",
+		.help 		: "Returns number, given its octal representation in string"
+	] => fromBase(str,8);
+
+	fact(x) # [
+		.params		: "number",
+		.returns    : "number",
+		.help		: "Returns the factorial of 'x'"
+	] =>
+	{
+		x==1    :==> 1;
+		else    :==> x * fact(x-1);
+	}
+
+	fibo(x) # [
+		.params		: "number",
+		.returns    : "number",
+		.help		: "Returns nth fibonacci number"
+	] => 
+	{
+		x==0 :==> 1;
+		else : 
+			x==1 :==> 1;
+			else :==> fibo(x-1) + fibo(x-2);
+	}
+
+	abs(x) # [
+		.params		: "number",
+		.returns    : "number",
+		.help		: "Returns the absolute value of 'n'"
+	] =>
+	{
+		x>=0    :==> x;
+		else	:==> -x;
+	}
+
+}

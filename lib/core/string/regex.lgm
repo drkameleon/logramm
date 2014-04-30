@@ -1,0 +1,65 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core/string/regex.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Regex :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external matches(str,pattern) # [
+		.params		: "string,string",
+		.returns 	: "boolean",
+		.help		: "Checks if string matches regex 'pattern'"
+	] => "string.matches";
+
+	external getMatches(str,pattern) # [
+		.params		: "string,string",
+		.returns    : "array",
+		.help		: "Returns matches of regex 'pattern' in string"
+	] => "string.getMatches";
+
+	external preMatch(str,pattern) # [
+		.params		: "string,string",
+		.returns    : "string",
+		.help		: "Matches regex 'pattern' and returns the slice of input prior to the match"
+	] => "string.preMatch";
+
+	external postMatch(str,pattern) # [
+		.params		: "string,string",
+		.returns    : "string",
+		.help		: "Matches regex 'pattern' and returns the slice after the match"
+	] => "string.postMatch";
+
+	external replaceFirst(str,pattern,repl) # [
+		.params		: "string,string,string",
+		.returns    : "string",
+		.help		: "Replaces first match of regex 'pattern' with 'repl' and returns string"
+	] => "string.replaceFirst";
+
+	external xreplace(str,pattern,repl) # [
+		.params		: "string,string,string",
+		.returns    : "string",
+		.help		: "Replaces all matches of regex 'pattern' with 'repl' and returns string"
+	] => "string.replaceAll";
+
+	external xsplit(str,pattern) # [
+		.params		: "string,string",
+		.returns    : "array",
+		.help		: "Split string by regex 'pattern' and return array"
+	] => "string.regexSplit";
+
+}

@@ -1,0 +1,103 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core/dictionary.lgm
+ **********************************************************/
+
+//================================================
+// Imported modules
+//================================================
+
+import core;
+
+//================================================
+// Module definition
+//================================================
+
+Dictionary :: 
+{
+
+	//================================================
+	// Functions
+	//================================================
+
+	itemWithKey(dict,key) # [
+		.params		: "dictionary,any",
+		.returns    : "any",
+		.help		: "Returns item for key 'key'"
+	] => dict[key];
+
+	isEmpty(dict) # [
+		.params		: "dictionary", 
+		.returns    : "boolean", 
+		.help		: "Checks if dictionary is empty"
+	] =>
+	{
+		c = count(keys(dict));
+
+		c==0 :==> true;
+		c!=0 :==> false;
+	}
+
+	setItemWithKey(dict,key,item) # [
+		.params		: "dictionary,any,any",
+		.returns    : "dictionary",
+		.help		: "Returns resulting array after setting item at 'index' to 'item'"
+	] => 
+	{
+		newDict = [:];
+
+		keys = keys(dict);
+		ind = 0;
+
+		@ ind<count(keys) : 
+		{
+			keys[ind]==key : newDict += [ keys[ind] : item ];
+			keys[ind]!=key : newDict += [ keys[ind] : dict[keys[ind]] ];
+
+			ind += 1;
+		}
+
+		==> newDict;
+	}
+
+	deleteItemWithKey(dict,key) # [
+		.params		: "dictionary,any",
+		.returns    : "dictionary",
+		.help		: "Returns resulting dictionary after removing item with key 'key'"
+	] =>
+	{
+		newDict = [:];
+
+		keys = keys(dict);
+		ind = 0;
+
+		@ ind<count(keys) : 
+		{
+			keys[ind]!=key : newDict += [ keys[ind] : dict[keys[ind]] ];
+
+			ind += 1;
+		}
+
+		==> newDict;
+	}
+
+	size(dict) # [
+		.params		: "dictionary", 
+		.returns    : "number", 
+		.help		: "Returns number of items in dictionary"
+	] => count(keys(dict));
+
+	keyExists(dict,key) # [
+		.params		: "dictionary,string",
+		.returns    : "boolean",
+		.help		: "Checks if key exists in dictionary"
+	] => contains(keys(dict),key);
+
+}
+

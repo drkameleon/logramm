@@ -1,0 +1,109 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Core :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	// String ::
+
+	external length(str) # [
+		.params		: "string",
+		.returns 	: "number",
+		.help		: "Returns length of string"
+	] => "string.length";
+
+	external replace(str,what,repl) # [
+		.params		: "string,string,string",
+		.returns    : "string",
+		.help		: "Replace all occurences of 'what' with 'repl' and returns string"
+	] => "string.replace";
+
+	external split(str,delim) # [
+		.params		: "string,string",
+		.returns    : "array",
+		.help		: "Split string by 'delim' and return array"
+	] => "string.split";
+
+	// Array ::
+
+	external count(arr) # [
+		.params		: "array", 
+		.returns    : "number", 
+		.help		: "Returns number of elements in array"
+	] => "array.count";
+
+	// Dictionary ::
+
+	external keys(dict) # [
+		.params		: "dictionary", 
+		.returns    : "array", 
+		.help		: "Returns dictionary keys as an array"
+	] => "dictionary.keys";
+
+	//================================================
+	// Functions
+	//================================================
+
+	// Array ::
+
+	join(arr,delim) # [
+		.params		: "array,string",
+		.returns    : "string",
+		.help		: "Returns string by joining string in 'arr' using 'delim'"
+	] =>
+	{
+		ret = "";
+
+		i = 0;
+
+		@ i<count(arr) : 
+		{
+			ret += arr[i];
+
+			i!=count(arr)-1 : ret += delim;
+
+			i += 1;
+		}
+
+		==> ret;
+	}
+
+	// Dictionary ::
+
+	values(dict) # [
+		.params		: "dictionary",
+		.returns    : "array",
+		.help		: "Returns an array containing dictionary's values"
+	] =>
+	{
+		keys = keys(dict);
+
+		keyIndex = 0;
+		ret = [];
+
+		@ keyIndex<count(keys) : 
+		{
+			ret += dict[keys[keyIndex]];
+			keyIndex += 1;
+		}
+
+		==> ret;
+	}
+}
+

@@ -1,0 +1,305 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core/array.lgm
+ **********************************************************/
+
+//================================================
+// Imported modules
+//================================================
+
+import core;
+
+//================================================
+// Module definition
+//================================================
+
+Array ::
+{
+
+	//================================================
+	// Functions
+	//================================================
+
+	itemAtIndex(arr,index) # [
+		.params		: "array,number",
+		.returns    : "any",
+		.help		: "Returns item of array at index"
+	] => arr[index];
+	
+
+	prependItem(arr,item) # [
+		.params		: "array,any",
+		.returns    : "array",
+		.help		: "Returns resulting array after prepending 'item'"
+	] => [item] + arr;
+
+	appendItem(arr,item) # [
+		.params		: "array,any",
+		.returns    : "array",
+		.help		: "Returns resulting array after appending 'item'"
+	] => arr + item;
+
+	insertItemAtIndex(arr,index,item) # [
+		.params		: "array,number,any",
+		.returns    : "array",
+		.help		: "Returns resulting array after inserting 'item' at 'index'"
+	] => arr[..index] + item + arr[index..];
+
+	setItemAtIndex(arr,index,item) # [
+		.params		: "array,number,any",
+		.returns    : "array",
+		.help		: "Returns resulting array after setting item at 'index' to 'item'"
+	] => 
+	{
+		index+1<=count(arr)-1 :==> arr[..index] + item + arr[index+1..];
+		index+1>count(arr)-1  :==> arr[..index] + item;
+	}
+
+	removeItemAtIndex(arr,index) # [
+		.params		: "array,number",
+		.returns    : "array",
+		.help		: "Returns resulting array after removing item at 'index'"
+	] =>
+	{
+		index+1<=count(arr)-1 :==> arr[..index] + arr[index+1..];
+		index+1>count(arr)-1  :==> arr[..index];
+	}
+
+	removeItem(arr,item) # [
+		.params		: "array,any",
+		.returns    : "array",
+		.help		: "Returns resulting array after removing 'item'"
+	] =>
+	{
+		newArr = [];
+
+		@ i->arr : i!=item : newArr += i;
+
+		==> newArr;
+	}
+
+	first(arr) # [
+		.params		: "array",
+		.returns    : "any",
+		.help		: "Returns first item in array"
+	] => arr[0];
+	
+	last(arr) # [
+		.params		: "array",
+		.returns    : "any",
+		.help		: "Returns last item in array"
+	] => arr[count(arr)-1];
+	
+	slice(arr, begin, end) # [
+		.params		: "array,number,number",
+		.returns    : "array",
+		.help		: "Returns a slice of the array from 'begin' up to 'end'"
+	] => arr[begin..end];
+
+	push(arr,item) # [
+		.params		: "array,any",
+		.returns    : "array",
+		.help		: "Returns resulting array after pushing 'item'"
+	] => arr + item;
+
+	pop(arr) # [
+		.params		: "array",
+		.returns    : "any",
+		.help		: "Pops and returns last item from array"
+	] => 
+	{
+		lastItem = arr[count(arr)-1];
+		arr = arr[..count(arr)-1];
+		==> lastItem;
+	}
+	
+	merge(arr1,arr2) # [
+		.params		: "array,array",
+		.returns    : "array",
+		.help		: "Returns resulting array after merging 'arr1' and 'arr2'"
+	] => arr1 + arr2;
+	
+	reverse(arr) # [
+		.params		: "array",
+		.returns    : "array",
+		.help		: "Returns resulting array after reversing its elements"
+	] => 
+	{
+		newArr = [];
+
+		i = count(arr)-1;
+		@ i>=0 : {
+			newArr += arr[i];
+			i -= 1;
+		}
+
+		==> newArr;
+	}
+	
+	isEmpty(arr) # [
+		.params		: "array", 
+		.returns    : "boolean", 
+		.help		: "Checks if array is empty"
+	] => 
+	{
+		count(arr)==0 :==> true;
+		else 		  :==> false;
+	}
+
+	contains(arr,item) # [
+		.params		: "array,any", 
+		.returns    : "boolean", 
+		.help		: "Checks if array contains 'item'"
+	] =>
+	{
+		@ i->arr : i==item :==> true;
+
+		==> false;
+	}
+
+	removeDuplicates(arr) # [
+		.params		: "array",
+		.returns    : "array",
+		.help		: "Returns resulting array after removing duplicate elements"
+	] =>
+	{
+		newArr = [];
+
+		@ i->arr : contains(newArr,i)==false : newArr += i;
+
+		==> newArr;
+	}
+
+	map(arr,pattern) # [
+		.params		: "array,string",
+		.returns    : "array",
+		.help		: "Returns resulting array after items have been mapped using 'pattern'"
+	] =>
+	{
+		newArr = [];
+		func = "newItem = " + replace(pattern,"$","item") + ";";
+
+		@ item->arr :
+		{
+			exec func;
+			newArr += newItem;
+		}
+
+		==> newArr;
+	}
+
+	filter(arr,pattern) # [
+		.params		: "array,string",
+		.returns    : "array",
+		.help		: "Returns resulting array after items have been filtered using 'pattern'"
+	] =>
+	{
+		newArr = [];
+		func = replace(pattern,"$","item") + " : newArr += item;";
+
+		@ item->arr : exec func;
+
+		==> newArr;
+	}
+
+	sort(arr) # [
+		.params		: "array",
+		.returns 	: "array",
+		.help 		: "Returns array after sorting its elements"
+	] => 
+	{
+		n = count(arr);
+		swapped = true;
+
+		@ (swapped) :
+		{
+			swapped = false;
+
+			@ i -> [1..n] :
+			{
+				arr[i-1] > arr[i] :
+				{
+					temp = arr[i-1]; 
+					arr[i-1] = arr[i];
+					arr[i] = temp;
+
+					swapped = true;
+				}
+			}
+		}
+
+		==> arr;
+	} 
+
+	search(arr,item) # [
+		.params		: "array,any",
+		.returns 	: "number",
+		.help 		: "Searches for item in array and returns its index, or -1 if not found"
+	] =>
+	{
+		@ index,i -> arr :
+			i == item :==> index;
+
+		==> -1;
+	}
+
+	allOf(arr,value) # [
+		.params		: "array,any",
+		.returns 	: "boolean",
+		.help		: "Checks if all of array's items are equal to 'value'"
+	] =>
+	{
+		@ item-> arr :
+			item!=value :==> false;
+
+		==> true;
+	}
+
+	min(arr) # 	[
+		.params		: "array",
+		.returns    : "number",
+		.help		: "Returns minimum element in array"
+	] =>
+	{
+		min = 2000000000;
+
+		@ item->arr :
+			item < min : min = item;
+
+		==> min;
+	}
+
+	max(arr) # [
+		.params		: "array",
+		.returns    : "number",
+		.help		: "Returns maximum element in array"
+	] =>
+	{
+		max = -2000000000;
+
+		@ item->arr :
+			item > max : max = item;
+
+		==> max;
+	}
+	
+	sum(arr) # [
+		.params		: "array",
+		.returns    : "number",
+		.help		: "Returns sum of elements in array"
+	] =>
+	{
+		ret = 0;
+
+		@ x->arr : ret+=x;
+
+		==> ret;
+	}
+
+}

@@ -1,0 +1,104 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/core/reflection.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Reflection :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external symbolExists(symbol) # [
+		.params		: "string",
+		.returns 	: "boolean",
+		.help		: "Checks if the given symbol/variable is defined"
+	] => "reflection.symbolExists";
+
+	external methodInfo(func) # [
+		.params		: "string",
+		.returns	: "dictionary",
+		.help		: "Returns info for the given method or false if not found"
+	] => "reflection.functionInfo";
+
+	external methodExists(func) # [
+		.params		: "string",
+		.returns 	: "boolean",
+		.help		: "Checks if the given method is defined"
+	] => "reflection.functionExists";
+
+	external methodExists(mod,func) # [
+		.params		: "string,string",
+		.returns 	: "boolean",
+		.help		: "Checks if the given method, in module 'mod', is defined"
+	] => "reflection.functionExistsInModule";
+
+	external inspect(symbol) # [
+		.params		: "any",
+		.returns	: "no",
+		.help		: "Prints debugging information related to given symbol"
+	] => "reflection.inspect";
+
+	external symbols() # [
+		.params		: "no",
+		.returns 	: "array",
+		.help		: "Returns an array with defined symbols"
+	] => "reflection.symbols";
+
+	external methods() # [
+		.params		: "no",
+		.returns 	: "array",
+		.help		: "Returns an array with defined methods"
+	] => "reflection.methods";
+
+	//================================================
+	// Functions
+	//================================================
+
+	safeCallMethod(func) # [
+		.params		: "string",
+		.returns 	: "boolean",
+		.help		: "Executes method by name 'func' and returns true if successful"
+	] =>
+	{
+		methodExists(func) == false :==> false;
+
+		exec "{:func}();";
+
+		==> true;
+	}
+
+	safeCallMethod(mod,func) # [
+		.params		: "string,string",
+		.returns 	: "boolean",
+		.help		: "Executes method by name 'func', in module 'mod', and returns true if successful"
+	] =>
+	{
+		methodExists(mod,func) == false :==> false;
+
+		exec "{:mod}::{:func}();";
+
+		==> true;
+	}
+
+	importPackage(pkg) # [
+		.params		: "string",
+		.returns 	: "no",
+		.help		: "Programmatically import package by string name 'pkg'"
+	] =>
+	{
+		exec "import {:pkg};";
+	}
+
+}

@@ -1,0 +1,81 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/format/csv.lgm
+ **********************************************************/
+
+//================================================
+// Imported modules
+//================================================
+
+import core;
+import core.string;
+
+//================================================
+// Module definition
+//================================================
+
+Csv :: 
+{
+	//================================================
+	// Functions
+	//================================================
+
+	parse(csv) # [
+		.params		: "string", 
+		.returns    : "any", 
+		.help		: "Processes csv string and returns corresponding object"
+	] => 
+	{
+		lines = csv.split("\n");
+		lines = lines.map("trim($)").filter("$!=\"\"");
+
+		header = lines[0];
+		headers = header.split(",").map("trim($)");
+
+		ret = [];
+
+		@ line->lines : 
+		{
+			line!=lines.first() : {
+
+				parts = line.split(",").map("trim($)").filter("$!=\"\"");
+
+				(count(parts)==count(headers)) :
+				{
+					row = [:];
+
+					@ i,part->parts : row += [ headers[i] : part ];
+
+					ret += row;
+				}
+			}
+		}
+
+		==> ret;
+	}
+
+	generate(object) # [
+		.params		: "array",
+		.returns	: "string",
+		.help		: "Processes input and returns corresponding Json as string"
+	] => 
+	{
+		ret = "";
+
+		headers = object.first().keys().map("trim($)");
+		
+		ret += headers.join(",") + "\n";
+
+		@ row->object : ret += row.values().join(",") + "\n";
+
+		==> ret;
+	}
+	
+}
+
