@@ -1,0 +1,18 @@
+import core;
+import core.path;
+
+out "scripts".isFile();
+out "scripts".isDirectory();
+out "scripts".isSymlink();
+
+out currentDirectory().contains("Logramm");
+out directorySeparator();
+
+filepath = "/usr/local/../bin/file.txt";
+
+out filepath.filename();
+out filepath.directory();
+out filepath.extension();
+out filepath.withoutExtension();
+out filepath.normalized();
+out "~/Desktop".expandTilde().contains("~");

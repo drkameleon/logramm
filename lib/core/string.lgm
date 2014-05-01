@@ -69,12 +69,6 @@ String ::
 		.help		: "Returns a string, having removed the last character"
 	] => "string.chop";
 
-	external contains(str,what) # [
-		.params		: "string,string",
-		.returns    : "boolean",
-		.help		: "Checks if string contains 'what'"
-	] => "string.contains";
-
 	external isNumeric(str) # [
 		.params		: "string",
 		.returns    : "boolean",
@@ -104,6 +98,24 @@ String ::
 		.returns    : "string",
 		.help		: "Returns string after removing trailing newline characters"
 	] => "string.chomp";
+
+	external justify(str,padding) # [
+		.params		: "string,number",
+		.returns 	: "string",
+		.help 		: "Returns string after left justifying using padding"
+	] => "string.justifyLeft";
+
+	external justifyRight(str,padding) # [
+		.params		: "string,number",
+		.returns 	: "string",
+		.help 		: "Returns string after right justifying using padding"
+	] => "string.justifyRight";
+
+	external justifyCenter(str,padding) # [
+		.params		: "string,number",
+		.returns 	: "string",
+		.help 		: "Returns string after center justifying using padding"
+	] => "string.justifyCenter";
 
 	//================================================
 	// Functions

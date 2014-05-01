@@ -171,6 +171,36 @@ class LGM_String
 		return new Value(ret);
 	}
 
+	static Value justifyLeft(Value[] v)
+	{
+		string str = v[0].content.s;
+		long padding = v[1].content.i;
+
+		string ret = leftJustify(str,to!int(padding));
+
+		return new Value(ret);
+	}
+
+	static Value justifyRight(Value[] v)
+	{
+		string str = v[0].content.s;
+		long padding = v[1].content.i;
+
+		string ret = rightJustify(str,to!int(padding));
+
+		return new Value(ret);
+	}
+
+	static Value justifyCenter(Value[] v)
+	{
+		string str = v[0].content.s;
+		long padding = v[1].content.i;
+
+		string ret = center(str,to!int(padding));
+
+		return new Value(ret);
+	}
+
 	// Regex
 
 	static Value matches(Value[] v)

@@ -48,7 +48,7 @@ enum ValueType
 
 union ValueContent
 {
-	ulong i;
+	long i;
 	real r;
 	ulong l;
 	string s;
@@ -66,12 +66,12 @@ class Value
 	ValueType type;
 	ValueContent content;
 
-	this() {}
-	this(int v)   	{ type = ValueType.numberValue;  content.i = v; }
-	this(ulong v) 	{ type = ValueType.numberValue;  content.i = v; }
-	this(string v)	{ type = ValueType.stringValue;  content.s = v; }
-	this(bool v)	{ type = ValueType.booleanValue; content.b = v; }
-	this(real v)	{ type = ValueType.realValue; 	 content.r = v; }
+	this() { Glob.calls["vals"]++; }
+	this(int v)   	{ type = ValueType.numberValue;  content.i = v; Glob.calls["vals"]++;}
+	this(long v) 	{ type = ValueType.numberValue;  content.i = v; Glob.calls["vals"]++;}
+	this(string v)	{ type = ValueType.stringValue;  content.s = v; Glob.calls["vals"]++;}
+	this(bool v)	{ type = ValueType.booleanValue; content.b = v; Glob.calls["vals"]++;}
+	this(real v)	{ type = ValueType.realValue; 	 content.r = v; Glob.calls["vals"]++;}
 	this(Value[] v)
 	{
 		type = ValueType.arrayValue;
@@ -80,6 +80,7 @@ class Value
 		{
 			content.a ~= i;
 		}
+		Glob.calls["vals"]++;
 	}
 	this(Value[Value] v)
 	{
@@ -89,6 +90,7 @@ class Value
 		{
 			content.d[k] = c;
 		}
+		Glob.calls["vals"]++;
 	}
 	
 	this(ArrayAr v) {
@@ -103,6 +105,7 @@ class Value
 
 			content.a ~= eV;
 		}
+		Glob.calls["vals"]++;
 	}
 	this(Dictionary v)
 	{
@@ -115,6 +118,7 @@ class Value
 
 			content.d[kV] = vV;
 		}
+		Glob.calls["vals"]++;
 
 		//writeln("Just created a dictionary : " ~ str());
 /*
@@ -138,6 +142,7 @@ class Value
 	this(Value v)
 	{
 		type = v.type;
+		Glob.calls["vals"]++;
 
 		switch (type)
 		{
@@ -207,7 +212,7 @@ class Value
 	{
 		if (type==ValueType.numberValue)
 		{
-			ulong lhs = content.i;
+			long lhs = content.i;
 
 			switch (rhs.type) 
 			{
@@ -291,7 +296,7 @@ class Value
 	{
 		if (type==ValueType.numberValue)
 		{
-			ulong lhs = content.i;
+			long lhs = content.i;
 
 			switch (rhs.type) 
 			{
@@ -372,7 +377,7 @@ class Value
 	{
 		if (type==ValueType.numberValue)
 		{
-			ulong lhs = content.i;
+			long lhs = content.i;
 
 			switch (rhs.type) 
 			{
@@ -436,7 +441,7 @@ class Value
 	{
 		if (type==ValueType.numberValue)
 		{
-			ulong lhs = content.i;
+			long lhs = content.i;
 
 			switch (rhs.type) 
 			{
@@ -501,7 +506,7 @@ class Value
 	{
 		if (type==ValueType.numberValue)
 		{
-			ulong lhs = content.i;
+			long lhs = content.i;
 
 			switch (rhs.type) 
 			{
@@ -656,7 +661,7 @@ class Value
 
 		if (type==ValueType.numberValue)
 		{
-			ulong lhs = content.i;
+			long lhs = content.i;
 
 			switch (rhs.type) 
 			{
@@ -719,7 +724,7 @@ class Value
 		if (this==rhs) return 0;
 		if (type==ValueType.numberValue)
 		{
-			ulong lhs = content.i;
+			long lhs = content.i;
 
 			switch (rhs.type) 
 			{
@@ -850,7 +855,11 @@ class Value
 			      		if (k.type == ValueType.stringValue) output ~= "\"";
 			      	   output ~= k.str();
 						if (k.type == ValueType.stringValue) output ~= "\"";
-			      	   output ~= ":" ~ v.str();
+			      	   output ~= ":";
+
+			      	   if (v.type == ValueType.stringValue) output ~= "\"";
+			      	    output ~= v.str();
+			      	    if (v.type == ValueType.stringValue) output ~= "\"";
 
 			      	   if (i!=content.d.length-1) output ~= ", ";
 			      	   i++;

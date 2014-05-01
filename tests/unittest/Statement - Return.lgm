@@ -1,0 +1,21 @@
+try(x) =>
+{
+	out "Before";
+
+	i = 0;
+	@ i<x :
+	{
+		out "BEFORE : i = " + i;
+		i==4 :
+			x==5 : ==> x*2;
+		i==4 :==> x*3;
+		out "AFTER : i = " + i;
+		i += 1;
+	}
+	out "After";
+	out "After";
+	out "After";
+	out "After";
+}
+
+out try(5);

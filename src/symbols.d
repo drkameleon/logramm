@@ -44,7 +44,7 @@ class Symbols
 
 	void set(string n, Value v)
 	{
-		list[n] = new Value(v);
+		list[n] = v;
 		//print();
 	}
 

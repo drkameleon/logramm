@@ -1,0 +1,16 @@
+import core.dictionary;
+
+user = [
+	"name" 	  : "John",
+	"surname" : "Zafeiropoulos"
+];
+
+out user;
+
+out user.itemWithKey("name");
+out user.isEmpty();
+out user.setItemWithKey("name","Hector");
+out user.deleteItemWithKey("name");
+out user.size();
+out user.keyExists("surname");
+out user.keyExists("someOther");

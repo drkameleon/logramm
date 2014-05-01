@@ -92,7 +92,10 @@ void init(string include, bool nopreload)
 		if (!specialCommand)
 		{
 			Program base = compiler.compileFromString(input);
+			//writeln("Executing");
 			base.execute();
+			writeln(Glob.calls);
+			Glob.calls.clear();
 		}
 
 	}

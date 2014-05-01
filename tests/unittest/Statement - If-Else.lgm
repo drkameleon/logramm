@@ -1,0 +1,11 @@
+vadIs(x) => 
+{ 
+	      x==1 : out "is 1";
+	else: x==2 : out "is 2";
+	else: x==3 : out "is 3";
+	else: x==4 : out "is 4";
+	else: 
+		out "is >=5!";
+}
+
+@ i->[1..20]: vadIs(i);

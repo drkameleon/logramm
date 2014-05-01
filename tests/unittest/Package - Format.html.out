@@ -1,0 +1,75 @@
+Parsed ::
+=================
+out '<html>';
+out '	<head>';
+out '		<title>';
+out("PAGE TITLE");
+out '</title>';
+out '	</head>';
+out '	<body>';
+out '		<h1>';
+out("HEADER");
+out '</h1>';
+out '		<div id="articles">';
+out '			';
+
+articles = [
+[.title:"one",.content:"one-content"],
+[.title:"two",.content:"two-content"]
+];
+
+out '			';
+@ article -> articles : {
+out '				<div class="article">';
+out '					<h2>';
+out article.title;
+out '</h2>';
+out '					<p class="content">';
+out '						';
+out article.content;
+out '					</p>';
+out '				</div>';
+out '			';
+}
+out '</div>';
+out '</body>';
+out '</html>';
+
+Final ::
+=================
+<html>
+	<head>
+		<title>
+PAGE TITLE
+</title>
+	</head>
+	<body>
+		<h1>
+HEADER
+</h1>
+		<div id="articles">
+			
+			
+				<div class="article">
+					<h2>
+one
+</h2>
+					<p class="content">
+						
+one-content
+					</p>
+				</div>
+			
+				<div class="article">
+					<h2>
+two
+</h2>
+					<p class="content">
+						
+two-content
+					</p>
+				</div>
+			
+</div>
+</body>
+</html>

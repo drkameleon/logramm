@@ -6,7 +6,7 @@
  ** (c) 2009-2014, Dr.Kameleon
  **
  **********************************************************
- ** lib/io/path.lgm
+ ** lib/core/path.lgm
  **********************************************************/
 
 //================================================
@@ -55,5 +55,47 @@ Path ::
 		.returns    : "array", 
 		.help		: "Returns array with contents of given directory"
 	] => "path.directoryContents";
+
+	external directorySeparator() # [
+		.params		: "",
+		.returns 	: "string",
+		.help 		: "Returns symbol used to separate directory names in a path"
+	] => "path.directorySeparator";
+
+	external filename(path) # [
+		.params		: "string",
+		.returns 	: "string",
+		.help 		: "Returns name of file, in file path, without leading directories"
+	] => "path.filename";
+
+	external directory(path) # [
+		.params 	: "string",
+		.returns 	: "string",
+		.help		: "Returns the directory part of given path"
+	] => "path.directory";
+
+	external extension(path) # [
+		.params		: "string",
+		.returns 	: "string",
+		.help 		: "Returns extension part of given path, including the dot"
+	] => "path.extension";
+
+	external withoutExtension(path) # [
+		.params		: "string",
+		.returns 	: "string",
+		.help 		: "Returns filepath by removing extension"
+	] => "path.withoutExtension";
+
+	external normalized(path) # [
+		.params 	: "string",
+		.returns 	: "string",
+		.help 		: "Returns path, after resolving current/parent directory symbols"
+	] => "path.normalized";
+
+	external expandTilde(path) # [
+		.params 	: "string",
+		.returns 	: "string",
+		.help 		: "Returns path, after expanding tilde"
+	] => "path.expandTilde";
 
 }

@@ -1,0 +1,60 @@
+#!/usr/bin/env lgm -c
+/************************************************************
+ * Class-Example
+ * in Logramm
+ *
+ * (c) 2014, Dr.Kameleon
+ ************************************************************
+ * classes1.lgm
+ ************************************************************/
+
+import core.dictionary;
+
+Member ::
+{
+	new(username,name,surname,dob) =>
+	{
+		newMember = [
+			"username"	:	username,
+			"name"		:	name,
+			"surname"	:	surname,
+			"dob"		:	dob
+		];
+
+		==> newMember;
+	}
+
+	age(this) => 2014 - this.dob;
+
+	greet(this) =>
+	{
+		out "Hello, " + this.name + "!";
+		out "Your age is = " + this.age();
+		out "And another one...";
+		out this.age() + " ==> Age";
+	}
+}
+
+// Create a user
+
+user = Member::new("drkameleon", "John", "Zafeiropoulos", 1986);
+Member::greet(user);
+
+unames = ["ozmax","camiel"];
+names = ["George","Nick"];
+surnames = ["Tsakalos","Zafeiropoulos"];
+dobs = [1990,1957];
+
+users = [];
+
+// Create users
+i = 0;
+
+@ i<count(unames) :
+{
+	out join([unames[i],names[i],surnames[i]],", ");
+	users +=  Member::new( unames[i], names[i], surnames[i], dobs[i] );
+	Member::greet(users[i]);
+	i += 1;
+}
+

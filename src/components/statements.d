@@ -72,13 +72,14 @@ class Statements
 	ExecResult execute()
 	{
 		//writeln("IN : statements");\
-		bool augm;
 		try
 		{
 			//Glob.executionStack.push("statements");
-			augm = false;
 
 			if (Glob.retCounter>-1) Glob.retCounter++;
+			if (Glob.breakCounter>-1) Glob.breakCounter++;
+
+			//writeln("Statements :: Glob.breakCounter = " ~ to!string(Glob.breakCounter));
 			
 			foreach (int i, Statement s; list)
 			{
@@ -118,7 +119,6 @@ class Statements
 						if (Glob.retCounter!=0) 
 						{
 							Glob.retCounter--;
-							Glob.executionStack.pop();
 							//Glob.executionStack.printPath();
 							return ExecResult.Return; //throw new ReturnSignal();
 						}
@@ -129,6 +129,17 @@ class Statements
 					}
 					else if (rez==ExecResult.Break)
 					{
+						//writeln("Got BREAK. breakCounter = " ~ to!string(Glob.breakCounter));
+						if (Glob.breakCounter!=0)
+						{
+							Glob.breakCounter--;
+
+							return ExecResult.Break;
+						}
+						else
+						{
+							Glob.breakCounter = -1;
+						}
 						/*
 						string lastItem = Glob.executionStack.lastItem();
 
@@ -165,7 +176,7 @@ class Statements
 		{
 			//Glob.executionStack.pop();
 			//Glob.executionStack.printPath();
-			if (augm) Glob.retCounter--;
+			//if (augm) Glob.retCounter--;
 		}
 
 		return ExecResult.Ok;

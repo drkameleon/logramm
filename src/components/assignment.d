@@ -31,8 +31,6 @@ import position;
 import symbols;
 import errors;
 
-import tester;
-
 import signals;
 
 //================================================
@@ -86,6 +84,8 @@ class Assignment : Statement
 	override ExecResult execute()
 	{
 		Value exprValue = right.evaluate();
+		//writeln("in assignment execute ::  ");
+		//writeln(Glob.calls);
 		//writeln("Got a new value : " ~ exprValue.str() ~ " and we're about to assign it to : " ~ left.getPath());
 		//writeln("LOCAL symbols before: ");
 		//if (Glob.localSymbols !is null) Glob.localSymbols.print();
@@ -101,6 +101,8 @@ class Assignment : Statement
 		string symbolName = left.getName();
 		/*writeln("sName = " ~ symbolName);*/
 		Value symbolValue = left.getValue(curSymbols);
+		//writeln("in assignment execute :: After getValue: ");
+		//writeln(Glob.calls);
 		if (symbolValue !is null) { /* writeln("sName = " ~ symbolName ~ " sValue = " ~ symbolValue.str() ~ " sPointer = " ~ to!string(&symbolValue)); */ }
  
 		string[string] additive_ops = ["+=":"","-=":"","*=":"","/=":"","%=":""];
@@ -117,6 +119,8 @@ class Assignment : Statement
 		Value newVal;
 
 		Value parentValue = left.getParent(curSymbols);
+		//writeln("in assignment execute :: After getParent: ");
+		//writeln(Glob.calls);
 
 		if (parentValue !is null) { /* writeln("ParentValue ------> " ~ parentValue.str()); */ }
 
@@ -145,21 +149,13 @@ class Assignment : Statement
 		}
 		else
 		{
-			Value parValue = left.getParent(curSymbols);
-			left.setNestedValue(parValue, newVal, left.paths());
-			curSymbols.set(symbolName,parValue);
+			left.setNestedValue(parentValue, newVal, left.paths());
+			curSymbols.set(symbolName,parentValue);
 		}
+
+		//writeln("in assignment execute ::  ");
+		//writeln(Glob.calls);
 
 		return ExecResult.Ok;
 	}
-}
-
-unittest 
-{
-	/*
-	Tester.emulate(
-		"assignments", 
-		import("unittests/assignments.lgm"), 
-		import("unittests/assignments.out") );
-*/
 }

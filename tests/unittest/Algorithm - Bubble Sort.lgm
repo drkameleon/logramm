@@ -1,0 +1,31 @@
+import core;
+
+bubbleSort(a) =>
+{
+	ret = [];
+	@ i->a : ret += i;
+
+	n = count(a);
+	swapped = true;
+
+	@ (swapped) :
+	{
+		swapped = false;
+		@ i -> [1..n] :
+		{
+			ret[i-1] > ret[i] :
+			{
+				temp = ret[i-1]; 
+				ret[i-1] = ret[i];
+				ret[i] = temp;
+
+				swapped = true;
+			}
+		}
+	}
+
+	==> ret;
+}
+
+bs = [11,20,10,19,9,4,18,8,3,17,7,2,16,6,1,15,5,14,12,13].bubbleSort();
+out bs;

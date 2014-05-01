@@ -68,6 +68,8 @@ class Functions
 		bool byModule = false;
 		FunctionDecl[] possibleCalls;
 
+		//writeln("Searching for function: " ~ name);
+
 		if (mod!="") byModule = true;
 
 		foreach (Expression p; params.list)
@@ -103,11 +105,13 @@ class Functions
 			}
 			else
 			{
+				//writeln("Trying : " ~ f.name);
 				//writeln("(2) Checking f.name : " ~ f.parentModule ~ "::" ~ f.name ~ "==" ~ name);
 				if (f.name==name)
 				{
 					if (checkArgs)
 					{
+						//writeln("Checking args...");
 						if ( (Safety.numArgumentsMatch(passedValues, f.params)) &&
 					 		 (Safety.typeArgumentsMatch(passedValues, f.params)) )
 							possibleCalls ~= f;

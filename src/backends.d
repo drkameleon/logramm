@@ -28,12 +28,13 @@ import backend.array;
 import backend.dictionary;
 import backend.file;
 import backend.json;
-import backend.math;
 import backend.net;
+import backend.number;
 import backend.path;
 import backend.reflection;
 import backend.sqlitedb;
 import backend.string;
+import backend.system;
 import backend.types;
 import backend.xml;
 
@@ -43,9 +44,10 @@ import backend.xml;
 
 alias classNames = TypeTuple!(
 						"array","dictionary",
-						"file","json","math",
-						"net","path","reflection",
-						"sqlitedb","string","types","xml");
+						"file","json","net",
+						"number","path","reflection",
+						"sqlitedb","string","system",
+						"types","xml");
 
 //================================================
 // Functions

@@ -1,0 +1,52 @@
+import core.array;
+
+arr = [1..20];
+
+out arr.itemAtIndex(6);
+
+out arr.prependItem("newItem");
+
+out arr.appendItem("newItem");
+
+out arr.insertItemAtIndex(6,"newItem");
+
+out arr.setItemAtIndex(6,"newItem");
+
+out arr.removeItemAtIndex(6);
+
+out arr.removeItem(6);
+
+out arr.first();
+
+out arr.last();
+
+out arr.slice(3,6);
+
+out arr.push("newItem");
+
+out arr.pop();
+
+out arr.merge([1..20]);
+
+out arr.reverse();
+
+out arr.isEmpty();
+
+out arr.contains(666);
+
+out arr.filter("$ % 2 == 0");
+out arr.map("$ * 2");
+
+arr = [5,2,3,6,4,1,9,7,8,0];
+
+out arr.sort();
+
+out arr.search(5);
+out arr.max();
+out arr.min();
+out arr.sum();
+out arr.allOf(6);
+
+barr = [3,4,5,5,5,6,4];
+
+out barr.removeDuplicates();

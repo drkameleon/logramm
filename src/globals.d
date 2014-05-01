@@ -87,6 +87,7 @@ class Globals
 	Consts consts;
 
 	int retCounter;
+	int breakCounter;
 
 	this()
 	{
@@ -118,6 +119,7 @@ class Globals
 		consts = new Consts();
 
 		retCounter = -1;
+		breakCounter = -1;
 	}
 
 	Value getSymbolWithoutReference(string n)

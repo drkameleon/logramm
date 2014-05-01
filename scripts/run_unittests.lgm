@@ -1,0 +1,31 @@
+#!/usr/bin/env lgm -l
+
+import default;
+
+testPath = "tests/unittest";
+unitTests = testPath.directoryContents();
+
+successcount = 0;
+
+oldSection = "";
+
+@ unitTest -> unitTests :
+{
+	unitTest.extension()==".lgm" or unitTest.extension()==".lgmx":
+	{
+		outPath = unitTest.withoutExtension() + ".out";
+
+		outputIs = execute("lgm -l \"" + unitTest + "\"").trim();
+		outputIs = outputIs.replace("\x1B[31m","").replace("\x1B[37m","").replace("\x1B[0m","");
+		shouldBe = outPath.read().trim();
+
+		outputIs == shouldBe : { success = "[    \x1B[32mOK\x1B[0m    ]"; successcount += 1; }
+						else : { success = "[  \x1B[31mFAILED\x1B[0m  ]"; }
+
+		title = unitTest.filename().withoutExtension().split(" -");
+		title[0] != oldSection : { oldSection = title[0]; out "\n\x1B[1m" + title[0] + "\x1B[0m"; }
+		out "\t\t-" + title[1].justify(40) + success;
+	}
+}
+
+out "\nTests: " + successcount + "/" + unitTests.count()/2 + " succeeded.\n";

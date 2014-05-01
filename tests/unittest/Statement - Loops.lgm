@@ -1,0 +1,28 @@
+i = 0;
+@ i<10: {
+	out i;
+	i += 1;
+}
+
+@ x->[1..10] : out x;
+
+@ i,x->[1..10] : out "{:i} --> {:x}";
+
+arr = ["one","two","three"];
+
+@ item->arr: out item;
+
+dict = [
+	[ .name : "user1", .age : 1 ],
+	[ .name : "user2", .age : 2 ]
+];
+
+@ row->dict : out row;
+
+@ key,value->dict : out "{:key} --> {:value}";
+
+dict = [ .name : "user1", .age : 1 ];
+
+@ row->dict : out row;
+
+@ key,value->dict : out "{:key} --> {:value}";

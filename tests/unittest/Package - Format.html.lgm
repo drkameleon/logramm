@@ -1,0 +1,34 @@
+import format.html;
+
+html ="<html>
+	<head>
+		<title><!--: out(\"PAGE TITLE\"); --></title>
+	</head>
+	<body>
+		<h1><!--: out(\"HEADER\"); --></h1>
+		<div id=\"articles\">
+			<!--: 
+				articles = [ 
+					[.title:\"one\",.content:\"one-content\"],
+					[.title:\"two\",.content:\"two-content\"]
+				];
+			-->
+			<!--: @ article -> articles : { -->
+				<div class=\"article\">
+					<h2><!--: out article.title; --></h2>
+					<p class=\"content\">
+						<!--: out article.content; -->
+					</p>
+				</div>
+			<!--: } -->
+		</div>
+	</body>
+</html> ";
+
+out "Parsed ::";
+out "=================";
+out parse(html);
+
+out "Final ::";
+out "=================";
+exec parse(html);

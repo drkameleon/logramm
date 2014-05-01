@@ -18,6 +18,8 @@ module loop;
 import std.stdio;
 import std.conv;
 
+import globals;
+
 import components.statement;
 import components.boolExpression;
 
@@ -64,9 +66,11 @@ class Loop : Statement
 		Value v = boolExpression.evaluate();
 		while (v.content.b)
 		{
+			Glob.breakCounter = 1;
 			ExecResult rez = statement.execute();
 
 			if (rez!=ExecResult.Ok) return rez;
+			Glob.breakCounter = -1;
 			v = boolExpression.evaluate();
 		}
 

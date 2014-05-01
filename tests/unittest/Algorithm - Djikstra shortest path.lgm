@@ -1,0 +1,90 @@
+minDistance(dist,sptSet) =>
+{
+	min = 2000000;
+
+	v=0;
+	V=9;
+
+	@ v<V :
+	{
+		sptSet[v]==false and dist[v] <= min:
+		{
+			min = dist[v];
+			min_index = v;
+		}
+		v += 1;
+	}
+	==> min_index;
+}
+
+printSolution(dist,n) =>
+{
+	out "Vertex -- Distance from Source\n";
+	V=9;
+	i=0;
+	@ i<V :
+	{
+		out "{:i} \t\t " + dist[i] + "\n";
+		i+=1;
+	}
+}
+
+djikstra(graph,src) =>
+{
+	dist = [0]*9;
+	sptSet = [false]*9;
+
+	i=0;
+	V=9;
+	@ i<V :
+	{
+		dist[i] = 2000000;
+		sptSet[i] = false;
+		i += 1;
+	}
+
+
+
+	dist[src] = 0;
+
+	count = 0;
+	@ count < V-1 :
+	{
+
+		u = minDistance(dist,sptSet);
+
+		sptSet[u] = true;
+
+		v=0;
+		@ v<V :
+		{
+			sptSet[v]==false and 
+			graph[u][v]!=0 and 
+			dist[u]!=2000000 and 
+			dist[u]+graph[u][v] < dist[v] :
+				dist[v] = dist[u] + graph[u][v];
+
+			v += 1;
+		}
+
+		count += 1;
+	}
+
+	printSolution(dist, V);
+}
+
+graph = [
+			[0, 4, 0, 0, 0, 0, 0, 8, 0],
+	        [4, 0, 8, 0, 0, 0, 0, 11, 0],
+			[0, 8, 0, 7, 0, 4, 0, 0, 2],
+			[0, 0, 7, 0, 9, 14, 0, 0, 0],
+			[0, 0, 0, 9, 0, 10, 0, 0, 0],
+			[0, 0, 4, 0, 10, 0, 2, 0, 0],
+			[0, 0, 0, 14, 0, 2, 0, 1, 6],
+			[8, 11, 0, 0, 0, 0, 1, 0, 7],
+			[0, 0, 2, 0, 0, 0, 6, 7, 0]
+		];
+
+djikstra(graph,0);
+
+

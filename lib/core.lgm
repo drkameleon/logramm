@@ -22,6 +22,12 @@ Core ::
 
 	// String ::
 
+	external contains(str,what) # [
+		.params		: "string,string",
+		.returns    : "boolean",
+		.help		: "Checks if string contains 'what'"
+	] => "string.contains";
+
 	external length(str) # [
 		.params		: "string",
 		.returns 	: "number",
@@ -61,6 +67,17 @@ Core ::
 	//================================================
 
 	// Array ::
+
+	contains(arr,item) # [
+		.params		: "array,any", 
+		.returns    : "boolean", 
+		.help		: "Checks if array contains 'item'"
+	] =>
+	{
+		@ i->arr : i==item :==> true;
+
+		==> false;
+	}
 
 	join(arr,delim) # [
 		.params		: "array,string",

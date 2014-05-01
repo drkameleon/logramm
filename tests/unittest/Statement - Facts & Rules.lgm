@@ -1,0 +1,52 @@
+// Includes
+
+import core.array;
+
+// Rules
+
+father(X,Y) 	=> parent(X,Y) and male(X);
+mother(X,Y) 	=> parent(X,Y) and female(Y);
+son(X,Y) 		=> parent(Y,X) and male(X);
+daughter(X,Y) 	=> parent(Y,X) and female(X);
+child(X,Y)		=> parent(Y,X);
+
+children(X)		=> parent(X,?);
+
+siblings(X,Y)	=> parent(?,X) && parent(?,Y) != [] and X != Y;
+
+isuncle(X,Y)	=> parent(?,Y).map("siblings($,?)").contains(X);
+
+grandparent(X,Y) 	=> parent(X,?) && parent(?,Y) != [];
+couple(X,Y)			=> count(parent(X,?) && parent(Y,?))>1 and X!=Y;
+
+// Facts
+
+male(.nick)!
+male(.john)!
+male(.stathis)!
+male(.yannis)!
+
+female(.eleftheria)!
+female(.angela)!
+female(.niovi)!
+
+parent(.yannis,.nick)!
+parent(.yannis,.stathis)!
+parent(.niovi,.nick)!
+parent(.niovi,.nick)!
+
+parent(.nick,.john)!
+parent(.nick,.angela)!
+parent(.eleftheria,.john)!
+parent(.eleftheria,.angela)!
+
+// Asking questions
+
+out "Is John, Nick's father? => " + father(.john, .nick);			// Is John, Nick's father? => false
+out "Is Nick, John's father? => " + father(.nick, .john);			// Is Nick, John's father? => true
+out "Who are John's parents? => " + parent(?, .john);				// Who are John's parents? => [nick,eleftheria]
+out "Who are Eleftheria's children? => " + children(.eleftheria);	// Who are Eleftheria's children? => [john,angela]
+out "Are John and Nick siblings? => " + siblings(.john, .nick);		// Are John and Nick siblings? => false
+out "Who are John's siblings? => " + siblings(.john, ?); 			// Who are John's siblings? => [angela]
+
+out "Who's uncle is Stathis? => " + isuncle(.stathis, ?);			// Who's uncle is Stathis? => [john,angela]

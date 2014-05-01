@@ -1,0 +1,68 @@
+
+func(x) =>
+{
+	out "func(x)--> about to return...";
+	==> x*2;
+	out "func(x)--> should have returned... :-(";
+}
+
+funcLoop(x) =>
+{
+	items = [1..10];
+
+	@ i -> items : {
+		i == 5 : { 
+			out "Found '5'. Returning! "; 
+			==> i;
+		}
+		out "Looping. I = " + i;
+	}
+
+	out "After loop.";
+	==> 100;
+}
+
+out "Let's see how Return works";
+out "I mean, other than pushing a return value to the stack...";
+out "Does it really return?";
+
+out "Calculation f(2) = 2*2 = " + func(2);
+out "======================";
+
+out "Let's see if that works with a loop...";
+out funcLoop(10);
+
+out "HERE";
+
+@ i -> [1..10] :
+{
+	out "i = {:i}";
+	i==5: { out "breaking..."; break; }
+	out "After i = {:i}";
+}
+
+out "OUT of break";
+
+funcRetLoopBreak() =>
+{
+	out "in funcRetLoopBreak";
+	@ i -> [1..10]:
+	{
+		out "i = " + i;
+		@ x -> [1..10]:
+		{
+			out "x = " + x;
+			i==3 and x == 6 : break;
+		}
+		out "out of loop";
+		i==3 and x == 6 : ==> "done";
+	}
+}
+
+out funcRetLoopBreak();
+
+@ k -> [1..10] : {}
+out "k = " + k;
+
+@ k -> [1..10] : k==3: break;
+out "k = " + k;

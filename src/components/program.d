@@ -20,6 +20,8 @@ import core.memory;
 import std.stdio;
 import std.conv;
 
+import globals;
+
 import components.statement;
 import components.statements;
 

@@ -1,0 +1,5 @@
+Before panic
+Runtime Error | File: tests/unittest/Statement - Panic.lgm
+              | Line: 2
+
+              | User exception: I'm panicking!

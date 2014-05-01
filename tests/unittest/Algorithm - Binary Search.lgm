@@ -1,0 +1,21 @@
+import core;
+
+binarySearch(array,value) =>
+{
+	@ item -> array : 
+	{
+		middle = array.count()/2;
+		mid = array[middle];
+
+		out "middle = " + middle;
+		out "mid = " + mid;
+
+		mid>value : array = array[..middle];
+		else : mid<value : array = array[middle+1..];
+		else : ==> true;
+	}
+	==> false;
+}
+
+bs = [1..30].binarySearch(20);
+out bs;

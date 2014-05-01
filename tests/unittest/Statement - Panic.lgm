@@ -1,0 +1,3 @@
+out "Before panic";
+panic "I'm panicking!";
+out "After panic";

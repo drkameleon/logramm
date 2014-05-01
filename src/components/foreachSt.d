@@ -82,8 +82,8 @@ class Foreach : Statement
 		if (Glob.localSymbols !is null) curSymbols = Glob.localSymbols;
 		else curSymbols = Glob.symbols;
 
-		ulong curI = 0;
-		ulong maxI;
+		long curI = 0;
+		long maxI;
 		Value v = expression.evaluate();
 		Value curValue;
 		Value valValue;
@@ -142,9 +142,15 @@ class Foreach : Statement
 			}
 			
 			//writeln("Exec : st : " ~ statement.type);
+			Glob.breakCounter = 0;
+			//writeln("NEW FOREACH : Glob.breakCounter = " ~ to!string(Glob.breakCounter));
 			ExecResult rez = statement.execute();
+			
 
 			if (rez!=ExecResult.Ok) return rez;
+			//writeln("___FOREACH : Glob.breakCounter WAS " ~ to!string(Glob.breakCounter));
+			Glob.breakCounter = -1;
+			//writeln("___FOREACH : Glob.breakCounter = " ~ to!string(Glob.breakCounter));
 
 			curI++;
 		}

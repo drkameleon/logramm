@@ -24,145 +24,145 @@ Number ::
 		.params		: "string,number",
 		.returns 	: "number",
 		.help 		: "Returns number, given its base-n representation in string"
-	] => "math.fromBase";
+	] => "number.fromBase";
 
 	external sin(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns sine of 'x'"
-	] =>  "math.sin";
+	] =>  "number.sin";
 
 	external cos(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns cosine of 'x'"
-	] =>  "math.cos";
+	] =>  "number.cos";
 
 	external tan(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns tangent of 'x'"
-	] =>  "math.tan";
+	] =>  "number.tan";
 
 	external sinh(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns hyperbolic sine of 'x'"
-	] =>  "math.sinh";
+	] =>  "number.sinh";
 
 	external cosh(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns hyperbolic cosine of 'x'"
-	] =>  "math.cosh";
+	] =>  "number.cosh";
 
 	external tanh(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns hyperbolic tangent of 'x'"
-	] =>  "math.tanh";
+	] =>  "number.tanh";
 
 	external arcsin(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns arc sine of 'x'"
-	] =>  "math.arcsin";
+	] =>  "number.arcsin";
 
 	external arccos(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns arc cosine of 'x'"
-	] =>  "math.arccos";
+	] =>  "number.arccos";
 
 	external arctan(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns arc tangent of 'x'"
-	] =>  "math.arctan";
+	] =>  "number.arctan";
 
 	external arcsinh(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns inverse hyperbolic sine of 'x'"
-	] =>  "math.arcsinh";
+	] =>  "number.arcsinh";
 
 	external arccosh(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns inverse hyperbolic cosine of 'x'"
-	] =>  "math.arccosh";
+	] =>  "number.arccosh";
 
 	external arctanh(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns inverse hyperbolic tangent of 'x'"
-	] =>  "math.arctanh";
+	] =>  "number.arctanh";
 
 	external floor(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns 'x', rounded downwards"
-	] =>  "math.floor";
+	] =>  "number.floor";
 
 	external ceil(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns 'x', rounded upwards"
-	] =>  "math.ceil";
+	] =>  "number.ceil";
 
 	external round(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns 'x', rounded to the nearest integer"
-	] =>  "math.round";
+	] =>  "number.round";
 
 	external ln(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns the natural logarithm of 'x'"
-	] =>  "math.ln";
+	] =>  "number.ln";
 
 	external log(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns the base-10 logarithm of 'x'"
-	] =>  "math.log";
+	] =>  "number.log";
 
 	external pow(x,y) # [
 		.params		: "number,number",
 		.returns 	: "number",
 		.help 		: "Returns 'x' raised to the power of 'y'"
-	] =>  "math.pow";
+	] =>  "number.pow";
 
 	external exp(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns exponential of 'x'"
-	] =>  "math.exp";
+	] =>  "number.exp";
 
 	external sqrt(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns square root of 'x'"
-	] =>  "math.sqrt";
+	] =>  "number.sqrt";
 
 	external trunc(x) # [
 		.params		: "number",
 		.returns 	: "number",
 		.help 		: "Returns integer portion of 'x'"
-	] =>  "math.trunc";
+	] =>  "number.trunc";
 
-	external E() # [
-		.params		: "no",
+	external e() # [
+		.params		: "",
 		.returns    : "number",
 		.help		: "Returns E constant"
-	] => "math.e";
+	] => "number.e";
 
-	external Pi() # [
-		.params		: "no",
+	external pi() # [
+		.params		: "",
 		.returns 	: "number",
 		.help 		: "Returns Pi constant"
-	] => "math.pi";
+	] => "number.pi";
 
 	//================================================
 	// Functions
@@ -186,15 +186,11 @@ Number ::
 		.help 		: "Returns number, given its octal representation in string"
 	] => fromBase(str,8);
 
-	fact(x) # [
-		.params		: "number",
-		.returns    : "number",
-		.help		: "Returns the factorial of 'x'"
-	] =>
-	{
-		x==1    :==> 1;
-		else    :==> x * fact(x-1);
-	}
+	number(str) # [
+		.params		: "string",
+		.returns 	: "number",
+		.help 		: "Returns number from string"
+	] => fromBase(str,10);
 
 	abs(x) # [
 		.params		: "number",

@@ -132,7 +132,7 @@ Array ::
 	] => 
 	{
 		newArr = [];
-
+		
 		i = count(arr)-1;
 		@ i>=0 : {
 			newArr += arr[i];
@@ -150,17 +150,6 @@ Array ::
 	{
 		count(arr)==0 :==> true;
 		else 		  :==> false;
-	}
-
-	contains(arr,item) # [
-		.params		: "array,any", 
-		.returns    : "boolean", 
-		.help		: "Checks if array contains 'item'"
-	] =>
-	{
-		@ i->arr : i==item :==> true;
-
-		==> false;
 	}
 
 	removeDuplicates(arr) # [

@@ -1,0 +1,11 @@
+false
+true
+false
+true
+/
+file.txt
+/usr/local/../bin
+.txt
+/usr/local/../bin/file
+/usr/bin/file.txt
+false

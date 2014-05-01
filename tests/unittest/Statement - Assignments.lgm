@@ -21,31 +21,5 @@ c = "zigzag"; out c; out a;
 ret = [];
 @ i->a : ret += i;
 
-// Inline Bubble-Sort
-
-import core.array;
-
-n = count(a);
-swapped = true;
-
-@ (swapped) :
-{
-	swapped = false;
-	@ i -> [1..n] :
-	{
-		ret[i-1] > ret[i] :
-		{
-			temp = ret[i-1]; 
-			ret[i-1] = ret[i];
-			ret[i] = temp;
-
-			swapped = true;
-		}
-	}
-}
-
-out ret; // [0,1,2,3,4,5,6,7,8,9]
-out a; // [9,3,6,1,7,0,2,5,4,8]
-
 kk = [1,2,3,4,5,6,7,8,["one","two","three"]]; out kk;
 kk[8][0] = "BEEP"; out kk;

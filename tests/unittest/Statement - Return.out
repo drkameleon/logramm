@@ -1,0 +1,11 @@
+Before
+BEFORE : i = 0
+AFTER : i = 0
+BEFORE : i = 1
+AFTER : i = 1
+BEFORE : i = 2
+AFTER : i = 2
+BEFORE : i = 3
+AFTER : i = 3
+BEFORE : i = 4
+10

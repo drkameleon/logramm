@@ -19,6 +19,7 @@ import std.algorithm;
 import std.array;
 import std.conv;
 import std.file;
+import std.path;
 import std.stdio;
 import std.string;
 
@@ -91,6 +92,65 @@ class LGM_Path
 		{
 			ret ~= new Value(name);
 		}
+
+		return new Value(ret);
+	}
+
+	static Value directorySeparator(Value[] v)
+	{
+		return new Value(dirSeparator);
+	}
+
+	static Value filename(Value[] v)
+	{
+		string filepath = v[0].content.s;
+
+		string ret = baseName(filepath);
+
+		return new Value(ret);
+	}
+
+	static Value directory(Value[] v)
+	{
+		string filepath = v[0].content.s;
+
+		string ret = dirName(filepath);
+
+		return new Value(ret);
+	}
+
+	static Value extension(Value[] v)
+	{
+		string filepath = v[0].content.s;
+
+		string ret = std.path.extension(filepath);
+
+		return new Value(ret);
+	}
+
+	static Value withoutExtension(Value[] v)
+	{
+		string filepath = v[0].content.s;
+
+		string ret = stripExtension(filepath);
+
+		return new Value(ret);
+	}
+
+	static Value normalized(Value[] v)
+	{
+		string filepath = v[0].content.s;
+
+		string ret = buildNormalizedPath(filepath);
+
+		return new Value(ret);
+	}
+
+	static Value expandTilde(Value[] v)
+	{
+		string filepath = v[0].content.s;
+
+		string ret = std.path.expandTilde(filepath);
 
 		return new Value(ret);
 	}

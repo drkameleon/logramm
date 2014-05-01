@@ -1,0 +1,38 @@
+import core;
+
+quickPerm(a) =>
+{
+	ret = [];
+
+	N = a.count();
+	p = [0] * N;
+
+	j = 0;
+	i = 1;
+	ret += [a];
+
+	@ i<N :
+	{
+		p[i]<i :
+		{
+			j = i%2*p[i];
+			tmp = a[j];
+			a[j] = a[i];
+			a[i] = tmp;
+			ret += [a];
+
+			p[i] += 1;
+			i=1;
+		}
+		else :
+		{
+			p[i] = 0;
+			i += 1;
+		}
+	}
+
+	==> ret;
+}
+
+qp = [0..6].quickPerm();
+out qp;

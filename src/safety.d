@@ -39,7 +39,9 @@ class Safety
 {
 	static bool numArgumentsMatch(Value[] v, string[] t)
 	{
-		if (v.length==t.length) { /*writeln("numArgumentsMatch : true");*/ }
+		if (v.length==t.length) { 
+			// writeln("numArgumentsMatch : true"); 
+		}
 		else {
 			// writefln("numArgumentsMatch : false, v.l = %s, t.l = %s",to!string(v.length),to!string(t.length) );
 		}

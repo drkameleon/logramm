@@ -1,0 +1,7 @@
+Is John, Nick's father? => false
+Is Nick, John's father? => true
+Who are John's parents? => [nick,eleftheria]
+Who are Eleftheria's children? => [john,angela]
+Are John and Nick siblings? => false
+Who are John's siblings? => [angela]
+Who's uncle is Stathis? => [john,angela]

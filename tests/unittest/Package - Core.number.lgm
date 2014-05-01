@@ -1,0 +1,34 @@
+import core.number;
+
+out sin(10);
+out cos(10);
+out tan(10);
+out sinh(10);
+out cosh(10);
+out tanh(10);
+out arcsin(1);
+out arccos(1);
+out arctan(10);
+out arcsinh(10);
+out arccosh(10);
+out arctanh(0.2);
+
+out floor(5/4);
+out ceil(5/4);
+out round(5/4);
+out ln(5/4);
+out log(5/4);
+out pow(5,4);
+out exp(5);
+out sqrt(5/4);
+out trunc(5/4);
+
+out "10101".fromBase(2);
+out "10101".fromBin();
+out "F0F0F".fromHex();
+out "70707".fromOct();
+out "23232".number() + 1;
+out abs(100);
+out abs(-100);
+out pi();
+out e();

@@ -156,7 +156,7 @@ class Argument
 		type = "hashitem";
 	}
 
-	ulong formatNumber(string s)
+	long formatNumber(string s)
 	{
 		if (std.algorithm.startsWith(s,"0x")==1) 		// hexadecimal
 		{
@@ -170,7 +170,7 @@ class Argument
 		}
 		else											// decimal
 		{
-			return to!ulong(s);
+			return to!long(s);
 		}
 	}
 
@@ -191,6 +191,7 @@ class Argument
 
 		f = replace(f, "\\t", "\t");
 		f = replace(f, "\\n", "\n");
+		f = replace(f, "\\x1B", "\x1B");
 
 		return f;
 	}
@@ -298,7 +299,7 @@ class Argument
 				Value newValue = new Value();
 				newValue.type = ValueType.arrayValue;
 
-				for (ulong i=vL.content.i; i<vR.content.i; i++)
+				for (long i=vL.content.i; i<vR.content.i; i++)
 				{
 					newValue.content.a ~= new Value(arr.content.a[i]);
 				}
@@ -308,7 +309,7 @@ class Argument
 			else if (arr.type==ValueType.stringValue)
 			{
 				string newValue = "";
-				for (ulong i=vL.content.i; i<vR.content.i; i++)
+				for (long i=vL.content.i; i<vR.content.i; i++)
 				{
 					newValue ~= arr.content.s[i];
 				}

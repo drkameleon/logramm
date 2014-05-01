@@ -6,10 +6,10 @@
  ** (c) 2009-2014, Dr.Kameleon
  **
  **********************************************************
- ** src/backend/math.d
+ ** src/backend/number.d
  **********************************************************/
 
-module backend.math;
+module backend.number;
 
 //================================================
 // Imports
@@ -27,14 +27,14 @@ import value;
 // Class
 //================================================
 
-class LGM_Math
+class LGM_Number
 {
 	static Value fromBase(Value[] v)
 	{
 		string num = v[0].content.s;
-		ulong base = v[1].content.i;
+		long base = v[1].content.i;
 
-		ulong ret = parse!ulong(num,to!int(base));
+		long ret = parse!long(num,to!int(base));
 
 		return new Value(ret);
 	}
