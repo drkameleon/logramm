@@ -33,7 +33,7 @@ import position;
 
 import errors;
 
-import signals;
+
 
 //================================================
 // C Interface for Bison

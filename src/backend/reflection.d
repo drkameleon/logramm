@@ -96,9 +96,16 @@ class LGM_Reflection
 	{
 		string symbol = v[0].content.s;
 
-		Value s = Glob.getSymbol(symbol);
+		try 
+		{
+			Value s = Glob.getSymbol(symbol);
+		}
+		catch (Exception e)
+		{
+			return new Value(false);
+		}
 
-		return new Value(s !is null);
+		return new Value(true);
 	}
 
 	static Value functionExists(Value[] v)

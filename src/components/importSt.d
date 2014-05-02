@@ -30,8 +30,6 @@ import components.program;
 
 import position;
 
-import signals;
-
 //================================================
 // Constants
 //================================================

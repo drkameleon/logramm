@@ -24,7 +24,7 @@ import components.expressions;
 
 import position;
 
-import signals;
+
 
 //================================================
 // C Interface for Bison

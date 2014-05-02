@@ -1,0 +1,14 @@
+#define SUM(X,Y) (X+Y)
+
+out "SUM 3,3 = " + SUM(3,3);
+
+#define ALREADY_WRITTEN
+#ifndef ALREADY_WRITTEN
+
+	out "SUM 3,3 = " + SUM(3,3);
+
+#endif
+
+#include "core.lgm"
+
+out [1..10].count();

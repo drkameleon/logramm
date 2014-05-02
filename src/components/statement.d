@@ -20,7 +20,6 @@ import std.conv;
 
 import position;
 
-import signals;
 
 enum ExecResult
 {

@@ -147,8 +147,8 @@ class Globals
 			if (vv !is null) return vv;
 			else 
 			{
-				writeln("I was looking for " ~ n);
-				localSymbols.print();
+				//writeln("I was looking for " ~ n);
+				//localSymbols.print();
 				throw new Exception("Ooops : '" ~ n ~ "' not found in local symbols");
 			}
 		}

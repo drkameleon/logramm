@@ -75,7 +75,12 @@
         </dict>
         <!-- /STRINGS -->
 
-
+        <dict>
+            <key>match</key>
+            <string>\#(include|define|ifdef|else|elif|endif|ifndef|if)\b</string>
+            <key>name</key>
+            <string>variable.parameter.preprocessor.c</string>
+        </dict>
 
         <!-- Func Decls -->
         <dict>

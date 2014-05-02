@@ -34,8 +34,6 @@ import safety;
 import panic;
 import position;
 
-import signals;
-
 import errors;
 
 //================================================

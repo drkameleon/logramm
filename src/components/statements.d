@@ -27,7 +27,6 @@ import components.statement;
 import position;
 
 import panic;
-import signals;
 
 //================================================
 // C Interface for Bison

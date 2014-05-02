@@ -1,0 +1,29 @@
+6
+pre y==>true
+pre x==>false
+someModule::preFunc y==>true
+someModule::preFunc x==>false
+someModule::postFunc y==>true
+someModule::postFunc x==>false
+someModule::postFunc methodExists('someFunc') ==> true
+someModule::postFunc methodExists('someModule','someFunc') ==> true
+post y==>true
+post x==>false
+post methodExists('someModule','someFunc') ==> true
+["params":["any"], "returns":"any", "help":"", "module":"someModule"]
+6 ==> number
+["__Args","y"]
+false
+false
+false
+false
+12
+someModule::inFunc y==>false
+someModule::inFunc x==>true
+true
+false
+12
+someModule::inFunc y==>false
+someModule::inFunc x==>true
+true
+false

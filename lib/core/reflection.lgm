@@ -10,6 +10,12 @@
  **********************************************************/
 
 //================================================
+// Imported modules
+//================================================
+
+import core;
+
+//================================================
 // Module definition
 //================================================
 
@@ -51,13 +57,13 @@ Reflection ::
 	] => "reflection.inspect";
 
 	external symbols() # [
-		.params		: "no",
+		.params		: "",
 		.returns 	: "array",
 		.help		: "Returns an array with defined symbols"
 	] => "reflection.symbols";
 
 	external methods() # [
-		.params		: "no",
+		.params		: "",
 		.returns 	: "array",
 		.help		: "Returns an array with defined methods"
 	] => "reflection.methods";
@@ -66,30 +72,56 @@ Reflection ::
 	// Functions
 	//================================================
 
-	safeCallMethod(func) # [
+	callMethod(func) # [
 		.params		: "string",
 		.returns 	: "boolean",
 		.help		: "Executes method by name 'func' and returns true if successful"
 	] =>
 	{
-		methodExists(func) == false :==> false;
-
-		exec "{:func}();";
-
-		==> true;
+		methodExists(func) :
+		methodInfo(func).params.count() == 0 : { exec "{:func}();"; ==> true; }
+		
+		==> false;
 	}
 
-	safeCallMethod(mod,func) # [
+	callMethod(mod,func) # [
 		.params		: "string,string",
 		.returns 	: "boolean",
 		.help		: "Executes method by name 'func', in module 'mod', and returns true if successful"
 	] =>
 	{
-		methodExists(mod,func) == false :==> false;
+		methodExists(mod,func) :
+		methodInfo(func).params.count() == 0 : { exec "{:mod}::{:func}();"; ==> true; }
+		
+		==> false;
+	}
 
-		exec "{:mod}::{:func}();";
+	callMethodWithArgs(func,args) # [
+		.params		: "string,array",
+		.returns 	: "boolean",
+		.help		: "Executes method by name 'func', using arguments, and returns true if successful"
+	] =>
+	{
+		argstr = args.join(",");
 
-		==> true;
+		methodExists(func) :
+		methodInfo(func).params.count() == args.count() : { exec "{:func}({:argstr});"; ==> true; }
+		
+		==> false;
+	}
+
+	callMethodWithArgs(mod,func,args) # [
+		.params		: "string,string,array",
+		.returns 	: "boolean",
+		.help		: "Executes method by name 'func', in module 'mod', using arguments, and returns true if successful"
+	] =>
+	{
+		argstr = args.join(",");
+
+		methodExists(mod,func) :
+		methodInfo(func).params.count() == args.count() : { exec "{:mod}::{:func}({:argstr});"; ==> true; }
+		
+		==> false;
 	}
 
 	importPackage(pkg) # [

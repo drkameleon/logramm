@@ -25,8 +25,6 @@ import globals;
 import components.statement;
 import components.statements;
 
-import signals;
-
 //================================================
 // C Interface for Bison
 //================================================

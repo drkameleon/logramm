@@ -1,0 +1,49 @@
+import core.reflection;
+
+y = 6;
+out 6;
+out "pre y==>" + symbolExists("y");
+out "pre x==>" + symbolExists("x");
+
+someModule :: 
+{
+	out "someModule::preFunc y==>" + symbolExists("y");
+	out "someModule::preFunc x==>" + symbolExists("x");
+
+	someFunc(x) =>
+	{
+		out x*2;
+		out "someModule::inFunc y==>" + symbolExists("y");
+		out "someModule::inFunc x==>" + symbolExists("x");
+
+	}
+
+	out "someModule::postFunc y==>" + symbolExists("y");
+	out "someModule::postFunc x==>" + symbolExists("x");
+
+	out "someModule::postFunc methodExists('someFunc') ==> " + methodExists("someFunc");
+	out "someModule::postFunc methodExists('someModule','someFunc') ==> " + methodExists("someModule","someFunc");
+}
+
+out "post y==>" + symbolExists("y");
+out "post x==>" + symbolExists("x");
+
+out "post methodExists('someModule','someFunc') ==> " + methodExists("someModule","someFunc");
+
+out methodInfo("someFunc");
+
+inspect(y);
+
+out symbols();
+
+out callMethod("someFunc");
+out callMethod("someDunc");
+
+out callMethod("someModule","someFunc");
+out callMethod("someModule","someDunc");
+
+out callMethodWithArgs("someFunc",[6]);
+out callMethodWithArgs("someDunc",[6]);
+
+out callMethodWithArgs("someModule","someFunc",[6]);
+out callMethodWithArgs("someModule","someDunc",[6]);
