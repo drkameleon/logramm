@@ -1,0 +1,33 @@
+import format.xml;
+
+xmlGood = "
+<root>
+	<authors>
+		<author>
+			<name>somename</name>
+			<surname>some surname</surname>
+		</author>
+		<author>
+			<name>somename</name>
+			<surname>some surname</surname>
+		</author>
+	</authors>
+</root>";
+
+out xmlGood.check();
+
+xmlBad = "
+<root>
+	<authors>
+		<author>
+			<name>somename</name>
+			<surname>some surname</surname>
+
+		<author>
+			<name>somename</name>
+			<surname>some surname</surname>
+		</author>
+	</authors>
+</root>";
+
+out xmlBad.check();

@@ -1,0 +1,18 @@
+import core.types;
+
+out type("done");
+out type(123);
+out type(true);
+out type([1..10]);
+out type([.user:"name",.pass:"pw"]);
+
+out isNumber(true);
+out isString("hello");
+out isBoolean(12);
+out isArray(["one","two","three"]);
+out isDictionary("done");
+
+out string(12);
+out string(false);
+out string([1..5]);
+out string([.user:"name",.pass:"pw"]);

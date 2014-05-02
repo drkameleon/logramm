@@ -1,0 +1,4 @@
+import core;
+import core.system;
+
+out execute("pwd").contains("Logramm");

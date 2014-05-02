@@ -1,0 +1,40 @@
+import io.database;
+import io.file;
+
+db = "unittest";
+dbfile = db+".db";
+
+// Creating the DB and some tables
+
+out db.open();
+
+keys = ["username","password"];
+types = ["TEXT","TEXT"];
+
+out db.create("users",keys,types);
+
+keytypes = ["post":"TEXT","title":"TEXT"];
+
+out db.create("posts",keytypes);
+
+// Inserting elements
+
+values = ["drkameleon","1234567"];
+
+out db.insert("users",keys,values);
+out db.insert("users",["username":"ozmax","password":"7654321"]);
+
+keyvalues = ["post":"somePost","title":"someTitle"];
+
+out db.insert("posts",keyvalues);
+
+out db.selectAll("users", ["username='drkameleon'"]);
+out db.selectAll("users", ["username='ozmax'"]);
+out db.selectAll("posts", ["post='somePost'"]);
+out db.selectAll("posts", ["post='anotherPost'"]);
+
+out db.delete("posts",["post='somePost'"]);
+out db.selectAll("users", []);
+out db.selectAll("posts", []);
+
+out dbfile.delete();

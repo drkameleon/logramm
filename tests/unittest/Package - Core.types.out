@@ -1,0 +1,14 @@
+string
+number
+boolean
+array
+dictionary
+false
+true
+false
+true
+false
+12
+false
+[1,2,3,4]
+["user":"name", "pass":"pw"]

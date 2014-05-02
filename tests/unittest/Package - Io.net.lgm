@@ -1,0 +1,18 @@
+import core;
+
+import io.file;
+import io.net;
+
+filename = "unittest.tmp";
+
+out filename.exists();
+
+url = "http://www.amazon.co.uk";
+
+out get(url).contains("amazon");
+
+url.download(filename);
+
+out filename.exists();
+
+filename.delete();

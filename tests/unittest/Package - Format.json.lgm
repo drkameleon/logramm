@@ -1,0 +1,13 @@
+import format.json;
+
+users =
+[
+	[.username:"drkameleon", .password:"1234567", .age:28],
+	[.username:"ozmax",		 .password:"7654321", .age:24]
+];
+
+json = generate(users);
+
+out json;
+out "==============";
+out parse(json);

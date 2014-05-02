@@ -1,0 +1,24 @@
+import core.string;
+
+out "hello".ucase();
+out "HELLO".lcase();
+out "    HELLO    ".trim();
+out "    HELLO    ".ltrim();
+out "    HELLO    ".rtrim();
+out "HELLO".find("LL");
+out "hello".chop();
+out "hello".isNumeric();
+out "12345".isNumeric();
+out "hello".soundex();
+out "hello".startsWith("he");
+out "hello".startsWith("llo");
+out "hello".endsWith("he");
+out "hello".endsWith("llo");
+out "hello\n".chomp();
+out "hello".justify(10);
+out "hello".justifyRight(10);
+out "hello".justifyCenter(10);
+out "hello".isEmpty();
+out "".isEmpty();
+out "hello".ucaseFirst();
+out "HELLO".lcaseFirst();

@@ -1,0 +1,13 @@
+import format.csv;
+
+users =
+[
+	[.username:"drkameleon", .password:"1234567", .age:28],
+	[.username:"ozmax",		 .password:"7654321", .age:24]
+];
+
+csv = generate(users);
+
+out csv;
+out "==============";
+out parse(csv);

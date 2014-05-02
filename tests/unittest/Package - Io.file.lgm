@@ -1,0 +1,31 @@
+import io.file;
+
+
+filename = "unittest.tmp";
+newfilen = "newunittest.tmp";
+
+out filename.exists();
+
+str = "Hello world!";
+
+filename.write(str);
+
+out filename.exists();
+
+out filename.read();
+
+filename.append("newLine");
+
+out filename.exists();
+
+out filename.read();
+
+filename.rename(newfilen);
+
+out filename.exists();
+out newfilen.exists();
+
+newfilen.delete();
+
+out filename.exists();
+out newfilen.exists();
