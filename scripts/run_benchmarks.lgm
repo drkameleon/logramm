@@ -1,0 +1,25 @@
+#!/usr/bin/env lgm -l
+
+import default;
+
+__Args.count() == 1 : param = __Args[0];
+               else : param = 12;
+
+testPath = "tests/benchmark";
+benchmarks = testPath.directoryContents();
+
+oldSection = "";
+
+@ benchmark -> benchmarks :
+{
+	benchmark.extension()==".lgm" :
+	{
+		outputIs = execute("sh scripts/run_benchmark.sh \"" + benchmark.filename().withoutExtension() + "\" {:param}");
+
+		outputIs == false : panic "Something went wrong...";
+
+		title = benchmark.filename().withoutExtension().replace("_"," ").ucaseFirst();
+		out "\n\x1B[1m" + title + "\x1B[0m\n";
+		out outputIs;
+	}
+}
