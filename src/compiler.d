@@ -102,6 +102,8 @@ void initEval(string input, string include, bool nopreload)
 
 void initCgi(Cgi cgi)
 {
+	cgi.outputHeaders();
+
 	Glob = new Globals();
 
 	Glob.paths ~= dirName(cgi.pathTranslated);
@@ -113,19 +115,24 @@ void initCgi(Cgi cgi)
 
 	loader.loadDefault();
 
-	compile(cgi.pathTranslated);
+	Program script = compile(cgi.pathTranslated, false); // Turn preprocessing OFF, for CGI. TOFIX.
+
+	script.execute();
 }
 
 // Main compilation startpoint
 
-Program compile(string filename)
+Program compile(string filename, bool preprocessorON=true)
 {	
 	string contents = to!string(std.file.read(filename));
 	
-	string preprocessed = preprocessor.preprocess(filename);
+	if (preprocessorON)
+	{
+		//string preprocessed = preprocessor.preprocess(filename);
 	
-	if (preprocessed !is null)
-		contents = preprocessed;
+		//if (preprocessed !is null)
+		//	contents = preprocessed;
+	}
 	
 	return compileFromString(contents,filename);
 }

@@ -153,8 +153,12 @@ class Argument
 		}
 
 		FunctionCall fnew = new FunctionCall(f.name, exs);
+		FunctionCall fnewWithMod;
 
-		func = fnew;
+		if (f.parentModule!="") fnewWithMod = new FunctionCall(f.parentModule, fnew);
+		else fnewWithMod = fnew;
+
+		func = fnewWithMod;
 	}
 
 	this(FunctionCall f, Expression e)
