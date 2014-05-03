@@ -22,7 +22,7 @@ import std.stdio;
 //================================================
 
 const string LGM_NAME 			= "Logramm";
-const string LGM_VERSION 		= "02";
+const string LGM_VERSION 		= "03";
 const string LGM_COPYRIGHT 		= "2009-2014";
 const string LGM_AUTHOR 		= "Dr.Kameleon";
 const string LGM_BUILD			= import("resources/build.txt");

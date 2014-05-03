@@ -108,7 +108,7 @@ BUILDNO_NEW	= ${SRC}/resources/build.new
 ## Rules
 ##================================================
 
-all: update-build ${BINARY} docs
+all: update-build ${BINARY}
 	${RM} -f ${GEN_SOURCES}
 
 ${BINARY}: ${CC_OBJECTS} ${D_OBJECTS}

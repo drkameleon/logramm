@@ -15,8 +15,11 @@ oldSection = "";
 	{
 		outPath = unitTest.withoutExtension() + ".out";
 
-		outputIs = execute("lgm -l \"" + unitTest + "\"").trim();
-		outputIs = outputIs.replace("\x1B[31m","").replace("\x1B[37m","").replace("\x1B[0m","");
+		outputIs = execute("lgm -l \"" + unitTest + "\"");
+
+		outputIs == false : panic "Something went wrong!";
+
+		outputIs = outputIs.trim().replace("\x1B[31m","").replace("\x1B[37m","").replace("\x1B[0m","");
 		shouldBe = outPath.read().trim();
 
 		outputIs == shouldBe : { success = "[    \x1B[32mOK\x1B[0m    ]"; successcount += 1; }
