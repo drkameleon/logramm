@@ -16,6 +16,7 @@
 
 #include <stdio.h>
 #include "logramm.tab.h"
+#include "parser.h"
 
 /****************************************
  Extern & Forward declarations
@@ -147,51 +148,6 @@ LETTER_OR_USCORE	[a-zA-Z_]
 
 int yycolumn = 0;
 
-char *str_replace(char *orig, char *rep, char *with) 
-{
-	char *result;
-	char *ins;
-	char *tmp;
-	int len_rep;
-	int len_with;
-	int len_front;
-	int count;
-
-	if (!orig)
-		return NULL;
-	if (!rep)
-		rep = "";
-	len_rep = strlen(rep);
-	if (!with)
-		with = "";
-	len_with = strlen(with);
-
-	ins = orig;
-	for (count = 0; (tmp = strstr(ins, rep)); ++count) {
-		ins = tmp + len_rep;
-	}
-
-	// first time through the loop, all the variable are set correctly
-	// from here on,
-	//    tmp points to the end of the result string
-	//    ins points to the next occurrence of rep in orig
-	//    orig points to the remainder of orig after "end of rep"
-	tmp = result = malloc(strlen(orig) + (len_with - len_rep) * count + 1);
-
-	if (!result)
-		return NULL;
-
-	while (count--) {
-		ins = strstr(orig, rep);
-		len_front = ins - orig;
-		tmp = strncpy(tmp, orig, len_front) + len_front;
-		tmp = strcpy(tmp, with) + len_with;
-		orig += len_front + len_rep; // move to next "end of rep"
-	}
-	strcpy(tmp, orig);
-	return result;
-}
-
 void comment(void)
 {
 	int c;
@@ -225,12 +181,9 @@ void count()
 
 void yyerror(const char *str)
 {
-	char *s = str_replace((char*)str,"unexpected","Unexpected");
-	s = str_replace(s,"syntax error, ","");
-	s = str_replace(s,"\"","");
-	s = str_replace(s,", expecting ","\n              | Expected ");
+	char *s = reformat_error_msg(str);
 
-	fprintf(stderr,"\x1B[32mLogramm/03\n\x1B[0m(c) 2009-2014 Dr.Kameleon\n\n");
-	fprintf(stderr,"\x1B[31mSyntax Error  \x1B[37m| \x1B[0mFile:\x1B[37m %s\n              | \x1B[0mLine:\x1B[37m %d\n\n              | %s\n\n",yyfilename,yylineno,s);
+	fprintf(stderr,LGM_LOGO);
+	fprintf(stderr,LGM_ERROR_TEMPLATE,yyfilename,yylineno,s);
 	exit(0);
 }
