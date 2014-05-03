@@ -74,6 +74,12 @@ Reflection ::
 		.help		: "Returns an array with defined methods"
 	] => "reflection.methods";
 
+	external value(symbol) # [
+		.params		: "string",
+		.returns 	: "any",
+		.help 		: "Returns value of symbol by given name, or false if not found"
+	] => "reflection.getValue";
+
 	//================================================
 	// Functions
 	//================================================

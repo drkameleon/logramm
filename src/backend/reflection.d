@@ -38,6 +38,24 @@ import value;
 
 class LGM_Reflection
 {
+	static Value getValue(Value[] v)
+	{
+		string symbol = v[0].content.s;
+
+		Value ret;
+
+		try 
+		{
+			ret = Glob.getSymbol(symbol);
+		}
+		catch (Exception e)
+		{
+			return new Value(false);
+		}
+
+		return ret;
+	}
+
 	static Value symbols(Value[] v)
 	{
 		Symbols curSymbols;
