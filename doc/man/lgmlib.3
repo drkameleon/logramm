@@ -1,0 +1,709 @@
+
+.TH LGMLIB 3
+.SH NAME
+lgmlib \- Logramm standard library
+.SH DESCRIPTION
+.B /usr/lib/lgm
+contains all default Logramm libraries, either automatically loadable (default), or on-demand.
+.SH Array
+.TP
+.BR allOf (\fBarr\fR:\fIarray\fR,  \fBvalue\fR:\fIany\fR) : boolean
+Checks if all of array's items are equal to 'value'
+
+.TP
+.BR appendItem (\fBarr\fR:\fIarray\fR,  \fBitem\fR:\fIany\fR) : array
+Returns resulting array after appending 'item'
+
+.TP
+.BR filter (\fBarr\fR:\fIarray\fR,  \fBpattern\fR:\fIstring\fR) : array
+Returns resulting array after items have been filtered using 'pattern'
+
+.TP
+.BR first (\fBarr\fR:\fIarray\fR) : any
+Returns first item in array
+
+.TP
+.BR insertItemAtIndex (\fBarr\fR:\fIarray\fR,  \fBindex\fR:\fInumber\fR,  \fBitem\fR:\fIany\fR) : array
+Returns resulting array after inserting 'item' at 'index'
+
+.TP
+.BR isEmpty (\fBarr\fR:\fIarray\fR) : boolean
+Checks if array is empty
+
+.TP
+.BR itemAtIndex (\fBarr\fR:\fIarray\fR,  \fBindex\fR:\fInumber\fR) : any
+Returns item of array at index
+
+.TP
+.BR last (\fBarr\fR:\fIarray\fR) : any
+Returns last item in array
+
+.TP
+.BR map (\fBarr\fR:\fIarray\fR,  \fBpattern\fR:\fIstring\fR) : array
+Returns resulting array after items have been mapped using 'pattern'
+
+.TP
+.BR max (\fBarr\fR:\fIarray\fR) : number
+Returns maximum element in array
+
+.TP
+.BR merge (\fBarr1\fR:\fIarray\fR,  \fBarr2\fR:\fIarray\fR) : array
+Returns resulting array after merging 'arr1' and 'arr2'
+
+.TP
+.BR min (\fBarr\fR:\fIarray\fR) : number
+Returns minimum element in array
+
+.TP
+.BR pop (\fBarr\fR:\fIarray\fR) : any
+Pops and returns last item from array
+
+.TP
+.BR prependItem (\fBarr\fR:\fIarray\fR,  \fBitem\fR:\fIany\fR) : array
+Returns resulting array after prepending 'item'
+
+.TP
+.BR push (\fBarr\fR:\fIarray\fR,  \fBitem\fR:\fIany\fR) : array
+Returns resulting array after pushing 'item'
+
+.TP
+.BR removeDuplicates (\fBarr\fR:\fIarray\fR) : array
+Returns resulting array after removing duplicate elements
+
+.TP
+.BR removeItem (\fBarr\fR:\fIarray\fR,  \fBitem\fR:\fIany\fR) : array
+Returns resulting array after removing 'item'
+
+.TP
+.BR removeItemAtIndex (\fBarr\fR:\fIarray\fR,  \fBindex\fR:\fInumber\fR) : array
+Returns resulting array after removing item at 'index'
+
+.TP
+.BR reverse (\fBarr\fR:\fIarray\fR) : array
+Returns resulting array after reversing its elements
+
+.TP
+.BR search (\fBarr\fR:\fIarray\fR,  \fBitem\fR:\fIany\fR) : number
+Searches for item in array and returns its index, or -1 if not found
+
+.TP
+.BR setItemAtIndex (\fBarr\fR:\fIarray\fR,  \fBindex\fR:\fInumber\fR,  \fBitem\fR:\fIany\fR) : array
+Returns resulting array after setting item at 'index' to 'item'
+
+.TP
+.BR slice (\fBarr\fR:\fIarray\fR,  \fBbegin\fR:\fInumber\fR,  \fBend\fR:\fInumber\fR) : array
+Returns a slice of the array from 'begin' up to 'end'
+
+.TP
+.BR sort (\fBarr\fR:\fIarray\fR) : array
+Returns array after sorting its elements
+
+.TP
+.BR sum (\fBarr\fR:\fIarray\fR) : number
+Returns sum of elements in array
+
+.SH Core
+.TP
+.BR contains (\fBstr\fR:\fIstring\fR,  \fBwhat\fR:\fIstring\fR) : boolean
+Checks if string contains 'what'
+.TP
+.BR contains (\fBarr\fR:\fIarray\fR,  \fBitem\fR:\fIany\fR) : boolean
+Checks if array contains 'item'
+
+.TP
+.BR contains (\fBstr\fR:\fIstring\fR,  \fBwhat\fR:\fIstring\fR) : boolean
+Checks if string contains 'what'
+.TP
+.BR contains (\fBarr\fR:\fIarray\fR,  \fBitem\fR:\fIany\fR) : boolean
+Checks if array contains 'item'
+
+.TP
+.BR count (\fBarr\fR:\fIarray\fR) : number
+Returns number of elements in array
+
+.TP
+.BR join (\fBarr\fR:\fIarray\fR,  \fBdelim\fR:\fIstring\fR) : string
+Returns string by joining string in 'arr' using 'delim'
+
+.TP
+.BR keys (\fBdict\fR:\fIdictionary\fR) : array
+Returns dictionary keys as an array
+
+.TP
+.BR length (\fBstr\fR:\fIstring\fR) : number
+Returns length of string
+
+.TP
+.BR replace (\fBstr\fR:\fIstring\fR,  \fBwhat\fR:\fIstring\fR,  \fBrepl\fR:\fIstring\fR) : string
+Replace all occurences of 'what' with 'repl' and returns string
+
+.TP
+.BR split (\fBstr\fR:\fIstring\fR,  \fBdelim\fR:\fIstring\fR) : array
+Split string by 'delim' and return array
+
+.TP
+.BR values (\fBdict\fR:\fIdictionary\fR) : array
+Returns an array containing dictionary's values
+
+.SH Csv
+.TP
+.BR generate (\fBobject\fR:\fIarray\fR) : string
+Processes input and returns corresponding Json as string
+
+.TP
+.BR parse (\fBcsv\fR:\fIstring\fR) : any
+Processes csv string and returns corresponding object
+
+.SH Database
+.TP
+.BR allRows (\fBdatabase\fR:\fIstring\fR) : array
+Returns an array of rows with result set
+
+.TP
+.BR close (\fBdatabase\fR:\fIstring\fR) : boolean
+Closes database by name returns 'true' if successful
+
+.TP
+.BR create (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeys\fR:\fIarray\fR,  \fBtypes\fR:\fIarray\fR) : no
+Create table using 'keys' with 'types'
+.TP
+.BR create (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeytypes\fR:\fIdictionary\fR) : no
+Create table using 'keys' with 'types', with dictionary
+
+.TP
+.BR create (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeys\fR:\fIarray\fR,  \fBtypes\fR:\fIarray\fR) : no
+Create table using 'keys' with 'types'
+.TP
+.BR create (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeytypes\fR:\fIdictionary\fR) : no
+Create table using 'keys' with 'types', with dictionary
+
+.TP
+.BR delete (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBwhere\fR:\fIarray\fR) : no
+Delete rows from table, based on conditions 'where'
+
+.TP
+.BR insert (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeys\fR:\fIarray\fR,  \fBvalues\fR:\fIarray\fR) : number
+Inserts key/value pairs in table and returns id
+.TP
+.BR insert (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeyvalues\fR:\fIdictionary\fR) : number
+Inserts key/value pairs in table and returns id
+
+.TP
+.BR insert (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeys\fR:\fIarray\fR,  \fBvalues\fR:\fIarray\fR) : number
+Inserts key/value pairs in table and returns id
+.TP
+.BR insert (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeyvalues\fR:\fIdictionary\fR) : number
+Inserts key/value pairs in table and returns id
+
+.TP
+.BR lastInsertId (\fBdatabase\fR:\fIstring\fR) : number
+Returns the id of the last inserted row
+
+.TP
+.BR nextRow (\fBdatabase\fR:\fIstring\fR) : any
+Returns dictionary of next row in result set, or 'false' if unsuccessful
+
+.TP
+.BR open (\fBdatabase\fR:\fIstring\fR) : boolean
+Opens/Creates database by name and returns 'true' if successful
+
+.TP
+.BR query (\fBdatabase\fR:\fIstring\fR,  \fBsql\fR:\fIstring\fR) : boolean
+Executes SQL query to database and returns 'true' if successful
+
+.TP
+.BR select (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBwhat\fR:\fIarray\fR,  \fBwhere\fR:\fIarray\fR) : array
+Selects rows from table, based on conditions 'where', and returns result
+
+.TP
+.BR selectAll (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBwhere\fR:\fIarray\fR) : array
+Selects all rows from table, based on conditions 'where', and returns result
+
+.TP
+.BR update (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeys\fR:\fIarray\fR,  \fBvalues\fR:\fIarray\fR,  \fBwhere\fR:\fIstring\fR) : no
+Updates rows in table, based on conditions 'where'
+.TP
+.BR update (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeyvalues\fR:\fIdictionary\fR,  \fBwhere\fR:\fIstring\fR) : no
+Updates rows in table, based on conditions 'where'
+
+.TP
+.BR update (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeys\fR:\fIarray\fR,  \fBvalues\fR:\fIarray\fR,  \fBwhere\fR:\fIstring\fR) : no
+Updates rows in table, based on conditions 'where'
+.TP
+.BR update (\fBdatabase\fR:\fIstring\fR,  \fBtable\fR:\fIstring\fR,  \fBkeyvalues\fR:\fIdictionary\fR,  \fBwhere\fR:\fIstring\fR) : no
+Updates rows in table, based on conditions 'where'
+
+.SH Dictionary
+.TP
+.BR deleteItemWithKey (\fBdict\fR:\fIdictionary\fR,  \fBkey\fR:\fIany\fR) : dictionary
+Returns resulting dictionary after removing item with key 'key'
+
+.TP
+.BR isEmpty (\fBdict\fR:\fIdictionary\fR) : boolean
+Checks if dictionary is empty
+
+.TP
+.BR itemWithKey (\fBdict\fR:\fIdictionary\fR,  \fBkey\fR:\fIany\fR) : any
+Returns item for key 'key'
+
+.TP
+.BR keyExists (\fBdict\fR:\fIdictionary\fR,  \fBkey\fR:\fIstring\fR) : boolean
+Checks if key exists in dictionary
+
+.TP
+.BR setItemWithKey (\fBdict\fR:\fIdictionary\fR,  \fBkey\fR:\fIany\fR,  \fBitem\fR:\fIany\fR) : dictionary
+Returns resulting array after setting item at 'index' to 'item'
+
+.TP
+.BR size (\fBdict\fR:\fIdictionary\fR) : number
+Returns number of items in dictionary
+
+.SH File
+.TP
+.BR append (\fBfilename\fR:\fIstring\fR,  \fBdata\fR:\fIstring\fR) : no
+Appends data to file 'filename'
+
+.TP
+.BR delete (\fBfilename\fR:\fIstring\fR) : no
+Deletes file 'filename'
+
+.TP
+.BR exists (\fBfilename\fR:\fIstring\fR) : boolean
+Check if file 'filename' exists
+
+.TP
+.BR read (\fBfilename\fR:\fIstring\fR) : string
+Returns contents of file as a string
+
+.TP
+.BR rename (\fBfileFrom\fR:\fIstring\fR,  \fBfileTo\fR:\fIstring\fR) : no
+Renames file to 'fileTo'
+
+.TP
+.BR write (\fBfilename\fR:\fIstring\fR,  \fBdata\fR:\fIstring\fR) : no
+Writes data to file 'filename'
+
+.SH Html
+.TP
+.BR parse (\fBmarkup\fR:\fIstring\fR) : string
+Converts HTML/LGMX template to HTML and returns result
+
+.SH Json
+.TP
+.BR generate (\fBobject\fR:\fIany\fR) : string
+Processes input and returns corresponding Json as string
+
+.TP
+.BR parse (\fBjson\fR:\fIstring\fR) : any
+Processes json string and returns corresponding object
+
+.SH Net
+.TP
+.BR download (\fBurl\fR:\fIstring\fR,  \fBfilepath\fR:\fIstring\fR) : no
+Downloads file at 'url' to local 'filepath'
+
+.TP
+.BR get (\fBurl\fR:\fIstring\fR) : string
+Returns string contents of page at 'url'
+
+.TP
+.BR post (\fBurl\fR:\fIstring\fR,  \fBdata\fR:\fIstring\fR) : string
+Returns string contents of page at 'url', after an HTTP Post request with 'data'
+
+.SH Number
+.TP
+.BR abs (\fBx\fR:\fInumber\fR) : number
+Returns the absolute value of 'n'
+
+.TP
+.BR arccos (\fBx\fR:\fInumber\fR) : number
+Returns arc cosine of 'x'
+
+.TP
+.BR arccosh (\fBx\fR:\fInumber\fR) : number
+Returns inverse hyperbolic cosine of 'x'
+
+.TP
+.BR arcsin (\fBx\fR:\fInumber\fR) : number
+Returns arc sine of 'x'
+
+.TP
+.BR arcsinh (\fBx\fR:\fInumber\fR) : number
+Returns inverse hyperbolic sine of 'x'
+
+.TP
+.BR arctan (\fBx\fR:\fInumber\fR) : number
+Returns arc tangent of 'x'
+
+.TP
+.BR arctanh (\fBx\fR:\fInumber\fR) : number
+Returns inverse hyperbolic tangent of 'x'
+
+.TP
+.BR ceil (\fBx\fR:\fInumber\fR) : number
+Returns 'x', rounded upwards
+
+.TP
+.BR cos (\fBx\fR:\fInumber\fR) : number
+Returns cosine of 'x'
+
+.TP
+.BR cosh (\fBx\fR:\fInumber\fR) : number
+Returns hyperbolic cosine of 'x'
+
+.TP
+.BR e () : number
+Returns E constant
+
+.TP
+.BR exp (\fBx\fR:\fInumber\fR) : number
+Returns exponential of 'x'
+
+.TP
+.BR floor (\fBx\fR:\fInumber\fR) : number
+Returns 'x', rounded downwards
+
+.TP
+.BR fromBase (\fBstr\fR:\fIstring\fR,  \fBn\fR:\fInumber\fR) : number
+Returns number, given its base-n representation in string
+
+.TP
+.BR fromBin (\fBstr\fR:\fIstring\fR) : number
+Returns number, given its binary representation in string
+
+.TP
+.BR fromHex (\fBstr\fR:\fIstring\fR) : number
+Returns number, given its hexadecimal representation in string
+
+.TP
+.BR fromOct (\fBstr\fR:\fIstring\fR) : number
+Returns number, given its octal representation in string
+
+.TP
+.BR ln (\fBx\fR:\fInumber\fR) : number
+Returns the natural logarithm of 'x'
+
+.TP
+.BR log (\fBx\fR:\fInumber\fR) : number
+Returns the base-10 logarithm of 'x'
+
+.TP
+.BR number (\fBstr\fR:\fIstring\fR) : number
+Returns number from string
+
+.TP
+.BR pi () : number
+Returns Pi constant
+
+.TP
+.BR pow (\fBx\fR:\fInumber\fR,  \fBy\fR:\fInumber\fR) : number
+Returns 'x' raised to the power of 'y'
+
+.TP
+.BR round (\fBx\fR:\fInumber\fR) : number
+Returns 'x', rounded to the nearest integer
+
+.TP
+.BR sin (\fBx\fR:\fInumber\fR) : number
+Returns sine of 'x'
+
+.TP
+.BR sinh (\fBx\fR:\fInumber\fR) : number
+Returns hyperbolic sine of 'x'
+
+.TP
+.BR sqrt (\fBx\fR:\fInumber\fR) : number
+Returns square root of 'x'
+
+.TP
+.BR tan (\fBx\fR:\fInumber\fR) : number
+Returns tangent of 'x'
+
+.TP
+.BR tanh (\fBx\fR:\fInumber\fR) : number
+Returns hyperbolic tangent of 'x'
+
+.TP
+.BR trunc (\fBx\fR:\fInumber\fR) : number
+Returns integer portion of 'x'
+
+.SH Path
+.TP
+.BR createDirectory (\fBpath\fR:\fIstring\fR) : no
+Creates directory at 'path'
+
+.TP
+.BR currentDirectory () : string
+Returns current working directory
+
+.TP
+.BR directory (\fBpath\fR:\fIstring\fR) : string
+Returns the directory part of given path
+
+.TP
+.BR directoryContents (\fBdir\fR:\fIstring\fR) : array
+Returns array with contents of given directory
+
+.TP
+.BR directorySeparator () : string
+Returns symbol used to separate directory names in a path
+
+.TP
+.BR expandTilde (\fBpath\fR:\fIstring\fR) : string
+Returns path, after expanding tilde
+
+.TP
+.BR extension (\fBpath\fR:\fIstring\fR) : string
+Returns extension part of given path, including the dot
+
+.TP
+.BR filename (\fBpath\fR:\fIstring\fR) : string
+Returns name of file, in file path, without leading directories
+
+.TP
+.BR isDirectory (\fBpath\fR:\fIstring\fR) : boolean
+Checks if file at 'path' is a directory
+
+.TP
+.BR isFile (\fBpath\fR:\fIstring\fR) : boolean
+Checks if file at 'path' is a file
+
+.TP
+.BR isSymlink (\fBpath\fR:\fIstring\fR) : boolean
+Checks if file at 'path' is a symlink
+
+.TP
+.BR normalized (\fBpath\fR:\fIstring\fR) : string
+Returns path, after resolving current/parent directory symbols
+
+.TP
+.BR withoutExtension (\fBpath\fR:\fIstring\fR) : string
+Returns filepath by removing extension
+
+.SH Reflection
+.TP
+.BR callMethod (\fBfunc\fR:\fIstring\fR) : boolean
+Executes method by name 'func' and returns true if successful
+.TP
+.BR callMethod (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR) : boolean
+Executes method by name 'func', in module 'mod', and returns true if successful
+
+.TP
+.BR callMethod (\fBfunc\fR:\fIstring\fR) : boolean
+Executes method by name 'func' and returns true if successful
+.TP
+.BR callMethod (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR) : boolean
+Executes method by name 'func', in module 'mod', and returns true if successful
+
+.TP
+.BR callMethodWithArgs (\fBfunc\fR:\fIstring\fR,  \fBargs\fR:\fIarray\fR) : boolean
+Executes method by name 'func', using arguments, and returns true if successful
+.TP
+.BR callMethodWithArgs (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR,  \fBargs\fR:\fIarray\fR) : boolean
+Executes method by name 'func', in module 'mod', using arguments, and returns true if successful
+
+.TP
+.BR callMethodWithArgs (\fBfunc\fR:\fIstring\fR,  \fBargs\fR:\fIarray\fR) : boolean
+Executes method by name 'func', using arguments, and returns true if successful
+.TP
+.BR callMethodWithArgs (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR,  \fBargs\fR:\fIarray\fR) : boolean
+Executes method by name 'func', in module 'mod', using arguments, and returns true if successful
+
+.TP
+.BR importPackage (\fBpkg\fR:\fIstring\fR) : no
+Programmatically import package by string name 'pkg'
+
+.TP
+.BR inspect (\fBsymbol\fR:\fIany\fR) : no
+Prints debugging information related to given symbol
+
+.TP
+.BR methodExists (\fBfunc\fR:\fIstring\fR) : boolean
+Checks if the given method is defined
+.TP
+.BR methodExists (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR) : boolean
+Checks if the given method, in module 'mod', is defined
+
+.TP
+.BR methodExists (\fBfunc\fR:\fIstring\fR) : boolean
+Checks if the given method is defined
+.TP
+.BR methodExists (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR) : boolean
+Checks if the given method, in module 'mod', is defined
+
+.TP
+.BR methodInfo (\fBfunc\fR:\fIstring\fR) : array
+Returns array of info for each corresponding method
+.TP
+.BR methodInfo (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR) : array
+Returns array of info for each corresponding method
+
+.TP
+.BR methodInfo (\fBfunc\fR:\fIstring\fR) : array
+Returns array of info for each corresponding method
+.TP
+.BR methodInfo (\fBmod\fR:\fIstring\fR,  \fBfunc\fR:\fIstring\fR) : array
+Returns array of info for each corresponding method
+
+.TP
+.BR methods () : array
+Returns an array with defined methods
+
+.TP
+.BR symbolExists (\fBsymbol\fR:\fIstring\fR) : boolean
+Checks if the given symbol/variable is defined
+
+.TP
+.BR symbols () : array
+Returns an array with defined symbols
+
+.SH Regex
+.TP
+.BR getMatches (\fBstr\fR:\fIstring\fR,  \fBpattern\fR:\fIstring\fR) : array
+Returns matches of regex 'pattern' in string
+
+.TP
+.BR matches (\fBstr\fR:\fIstring\fR,  \fBpattern\fR:\fIstring\fR) : boolean
+Checks if string matches regex 'pattern'
+
+.TP
+.BR postMatch (\fBstr\fR:\fIstring\fR,  \fBpattern\fR:\fIstring\fR) : string
+Matches regex 'pattern' and returns the slice after the match
+
+.TP
+.BR preMatch (\fBstr\fR:\fIstring\fR,  \fBpattern\fR:\fIstring\fR) : string
+Matches regex 'pattern' and returns the slice of input prior to the match
+
+.TP
+.BR replaceFirst (\fBstr\fR:\fIstring\fR,  \fBpattern\fR:\fIstring\fR,  \fBrepl\fR:\fIstring\fR) : string
+Replaces first match of regex 'pattern' with 'repl' and returns string
+
+.TP
+.BR xreplace (\fBstr\fR:\fIstring\fR,  \fBpattern\fR:\fIstring\fR,  \fBrepl\fR:\fIstring\fR) : string
+Replaces all matches of regex 'pattern' with 'repl' and returns string
+
+.TP
+.BR xsplit (\fBstr\fR:\fIstring\fR,  \fBpattern\fR:\fIstring\fR) : array
+Split string by regex 'pattern' and return array
+
+.SH String
+.TP
+.BR chomp (\fBstr\fR:\fIstring\fR) : string
+Returns string after removing trailing newline characters
+
+.TP
+.BR chop (\fBstr\fR:\fIstring\fR) : string
+Returns a string, having removed the last character
+
+.TP
+.BR endsWith (\fBstr\fR:\fIstring\fR,  \fBwhat\fR:\fIstring\fR) : boolean
+Checks if string ends with 'what'
+
+.TP
+.BR find (\fBstr\fR:\fIstring\fR,  \fBwhat\fR:\fIstring\fR) : number
+Returns index of first occurence of 'what' in string
+
+.TP
+.BR isEmpty (\fBstr\fR:\fIstring\fR) : boolean
+Checks if string is empty
+
+.TP
+.BR isNumeric (\fBstr\fR:\fIstring\fR) : boolean
+Checks if string can be be formatted a number
+
+.TP
+.BR justify (\fBstr\fR:\fIstring\fR,  \fBpadding\fR:\fInumber\fR) : string
+Returns string after left justifying using padding
+
+.TP
+.BR justifyCenter (\fBstr\fR:\fIstring\fR,  \fBpadding\fR:\fInumber\fR) : string
+Returns string after center justifying using padding
+
+.TP
+.BR justifyRight (\fBstr\fR:\fIstring\fR,  \fBpadding\fR:\fInumber\fR) : string
+Returns string after right justifying using padding
+
+.TP
+.BR lcase (\fBstr\fR:\fIstring\fR) : string
+Returns a string with all of its characters converted to lowercase
+
+.TP
+.BR lcaseFirst (\fBstr\fR:\fIstring\fR) : string
+Returns string with its first character in lowercase
+
+.TP
+.BR ltrim (\fBstr\fR:\fIstring\fR) : string
+Returns a string, having stripped leading whitespace
+
+.TP
+.BR rtrim (\fBstr\fR:\fIstring\fR) : string
+Returns a string, having stripped trailing whitespace
+
+.TP
+.BR soundex (\fBstr\fR:\fIstring\fR) : string
+Converts a word into 4 characters based on how the word sounds phonetically, using the Soundex algorithm
+
+.TP
+.BR startsWith (\fBstr\fR:\fIstring\fR,  \fBwhat\fR:\fIstring\fR) : boolean
+Checks if string begins with 'what'
+
+.TP
+.BR trim (\fBstr\fR:\fIstring\fR) : string
+Returns a string, having stripped both leading and trailing whitespace
+
+.TP
+.BR ucase (\fBstr\fR:\fIstring\fR) : string
+Returns a string with all of its characters converted to uppercase
+
+.TP
+.BR ucaseFirst (\fBstr\fR:\fIstring\fR) : string
+Returns string with its first character in uppercase
+
+.SH System
+.TP
+.BR execute (\fBcommand\fR:\fIstring\fR) : any
+Execute system command and returns output, or false if failed
+
+.SH Types
+.TP
+.BR isArray (\fBarg\fR:\fIany\fR) : boolean
+Checks if argument is an array
+
+.TP
+.BR isBoolean (\fBarg\fR:\fIany\fR) : boolean
+Checks if argument is a boolean
+
+.TP
+.BR isDictionary (\fBarg\fR:\fIany\fR) : boolean
+Checks if argument is a dictionary
+
+.TP
+.BR isNumber (\fBarg\fR:\fIany\fR) : boolean
+Checks if argument is a number
+
+.TP
+.BR isString (\fBarg\fR:\fIany\fR) : boolean
+Checks if argument is a string
+
+.TP
+.BR string (\fBarg\fR:\fIany\fR) : string
+Converts argument to string
+
+.TP
+.BR type (\fBarg\fR:\fIany\fR) : string
+Returns type of argument (number,string,boolean,array,dictionary)
+
+.SH Xml
+.TP
+.BR check (\fBxml\fR:\fIstring\fR) : boolean
+Checks an XML document, as string, for well-formedness and returns true if successful
+
+.SH Yaml
+.TP
+.BR generate (\fBobject\fR:\fIany\fR) : string
+Processes input and returns corresponding YAML as string
+
+.TP
+.BR parse (\fByaml\fR:\fIstring\fR) : any
+Processes YAML string and returns corresponding object
+

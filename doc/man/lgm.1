@@ -1,0 +1,40 @@
+
+.TH LGM 1
+.SH NAME
+lgm \- Logramm compiler
+.SH SYNOPSIS
+.B lgm 
+<file|action> [options]*
+.SH DESCRIPTION
+.B lgm
+Compiles source code written in Logramm
+.SH OPTIONS
+.TP
+.BR  	\fB-i\fR [ --include ] paths		
+Additional import paths
+.TP
+.BR  	\fB-l\fR [ --no-preload ]		
+Don't pre-load system libraries
+
+.SH ACTIONS
+.TP
+.BR  	\fB-e\fR [ --eval ] str		
+Evaluate Logramm string on-the-fly
+.TP
+.BR  	\fB-r\fR [ --interactive ]		
+Interactive console mode
+.TP
+.BR  	\fB--package-info\fR pkg 		
+Package Manager - get info
+.TP
+.BR  	\fB--package-install\fR pkg 		
+Package Manager - install package
+.TP
+.BR  	\fB--package-uninstall\fR pkg		
+Package manager - uninstall package
+.TP
+.BR  	\fB-h\fR [ --help ]         		
+Show help
+.TP
+.BR  	\fB-v\fR [ --version ]		
+Show version

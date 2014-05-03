@@ -1,0 +1,66 @@
+import default;
+
+__Args.count() == 0 : panic "Not enough arguments!";
+
+dest 		= __Args[0];
+destFile 	= "{:dest}/lgmlib.3";
+
+ret = "";
+
+methods = methods();
+currentModule = "";
+
+ret += "
+.TH LGMLIB 3
+.SH NAME
+lgmlib \- Logramm standard library
+.SH DESCRIPTION
+.B /usr/lib/lgm
+contains all default Logramm libraries, either automatically loadable (default), or on-demand.
+";
+
+
+@ method -> methods :
+{
+	module 		= method.split("::")[0];
+	function 	= method.split("::")[1];
+
+	module != currentModule : 
+	{
+		// Initiate new section
+		currentModule = module;
+
+		ret += ".SH {:currentModule}\n";
+	}
+
+	infos	 	= module.methodInfo(function);
+
+	j = 0;
+	@ j < infos.count() :
+	{
+		info = infos[j];
+		
+		ret += ".TP\n";
+		ret += ".BR " + function + " (";
+
+		i=0;
+		@ i<info.args.count() :
+		{
+			ret += "\fB" + info.args[i] + "\fR:\fI" + info.params[i] + "\fR";
+
+			i < info.args.count()-1 : ret += ",  ";
+
+			i += 1;
+		}
+
+		ret += ") : " + info.returns + "\n";
+		ret += info.help + "\n";
+
+		j == infos.count()-1 : ret += "\n";
+
+		j += 1;
+	}
+
+}
+
+destFile.write(ret);
