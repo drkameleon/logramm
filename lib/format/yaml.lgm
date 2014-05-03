@@ -1,0 +1,36 @@
+/**********************************************************
+ **
+ ** LOGRAMM
+ ** Interpreter
+ ** 
+ ** (c) 2009-2014, Dr.Kameleon
+ **
+ **********************************************************
+ ** lib/format/yaml.lgm
+ **********************************************************/
+
+//================================================
+// Module definition
+//================================================
+
+Yaml :: 
+{
+
+	//================================================
+	// External D-bindings
+	//================================================
+
+	external parse(yaml) # [
+		.params		: "string", 
+		.returns    : "any", 
+		.help		: "Processes YAML string and returns corresponding object"
+	] => "yaml.parse";
+
+	external generate(object) # [
+		.params		: "any",
+		.returns	: "string",
+		.help		: "Processes input and returns corresponding YAML as string"
+	] => "yaml.generate";
+
+}
+
