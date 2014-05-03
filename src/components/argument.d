@@ -47,9 +47,13 @@ extern (C)
 	void* Argument_newFromArray(ArrayAr a) { return cast(void*)(new Argument(a)); }
 	void* Argument_newFromDictionary(Dictionary d) { return cast(void*)(new Argument(d)); }
 	void* Argument_newFromHashItem(Argument a, Expression e) { return cast(void*)(new Argument(a,e)); }
+	void* Argument_newFromHashItemExpr(Expression e, Expression ex) { return cast(void*)(new Argument(e,ex)); }
 	void* Argument_newFromSlice(Slice s, Argument a) { return cast(void*)(new Argument(s,a)); }
+	void* Argument_newFromSliceExpr(Slice s, Expression e) { return cast(void*)(new Argument(s,e)); }
 	void* Argument_newFromDotItem(Argument a, char* i) { return cast(void*)(new Argument(a,to!string(i))); }
+	void* Argument_newFromDotItemExpr(Expression e, char* i) { return cast(void*)(new Argument(e,to!string(i))); }
 	void* Argument_newFromFunctionWithParent(FunctionCall f, Argument a) { return cast(void*)(new Argument(f,a)); }
+	void* Argument_newFromFunctionWithParentExpr(FunctionCall f, Expression e) { return cast(void*)(new Argument(f,e)); }
 }
 
 //================================================
@@ -65,15 +69,18 @@ class Argument
 	HashItem hash;
 	Slice slice;
 	Argument sliceArgument;
+	Expression sliceExpression;
 	ArrayAr arra;
 	Dictionary dict;
 
 	Position pos;
 
 	Argument dotItem;
+	Expression dotItemExpression;
 	string dotItemIndex;
 
 	Argument hashItem;
+	Expression hashItemExpression;
 	Expression hashItemIndex;
 
 	this(string t, string v)
@@ -104,10 +111,26 @@ class Argument
 		dotItemIndex = i;
 	}
 
+	this(Expression e, string i)
+	{
+		type = "dotItem";
+		dotItem = null;
+		dotItemExpression = e;
+		dotItemIndex = i;
+	}
+
 	this (Slice s, Argument a)
 	{
 		slice = s;
 		sliceArgument = a;
+		type = "slice";
+	}
+
+	this (Slice s, Expression e)
+	{
+		slice = s;
+		sliceExpression = e;
+		sliceArgument = null;
 		type = "slice";
 	}
 
@@ -134,6 +157,23 @@ class Argument
 		func = fnew;
 	}
 
+	this(FunctionCall f, Expression e)
+	{
+		type = "function";
+
+		Expressions exs = new Expressions();
+		exs.add(e);
+
+		foreach (Expression ex; f.parameters.list)
+		{
+			exs.add(ex);
+		}
+
+		FunctionCall fnew = new FunctionCall(f.name, exs);
+
+		func = fnew;
+	}
+
 	this(ArrayAr a)
 	{
 		type = "array";
@@ -152,6 +192,15 @@ class Argument
 	{
 		hashItem = a;
 		hashItemIndex = e;
+
+		type = "hashitem";
+	}
+
+	this (Expression e, Expression ex)
+	{
+		hashItem = null;
+		hashItemExpression = e;
+		hashItemIndex = ex;
 
 		type = "hashitem";
 	}
@@ -242,7 +291,10 @@ class Argument
 		}
 		else if (type=="dotItem")
 		{
-			Value aV = dotItem.getValue();
+			Value aV;
+
+			if (dotItem !is null) aV = dotItem.getValue();
+			else aV = dotItemExpression.evaluate();
 
 			if (aV.type==ValueType.dictionaryValue)
 			{
@@ -258,7 +310,12 @@ class Argument
 		else if (type=="hashitem")
 		{
 			Value hIIv = hashItemIndex.evaluate();
-			Value hIv = hashItem.getValue();
+
+
+			Value hIv;
+
+			if (hashItem !is null) hIv = hashItem.getValue();
+			else hIv = hashItemExpression.evaluate();
 
 			if (hIv.type==ValueType.arrayValue)
 			{
@@ -283,7 +340,10 @@ class Argument
 		}
 		else if (type=="slice")
 		{
-			Value arr = sliceArgument.getValue();
+			Value arr;
+
+			if (sliceArgument !is null) arr = sliceArgument.getValue();
+			else arr = sliceExpression.evaluate();
 
 			Value vL; if (slice.left !is null) vL = slice.left.evaluate(); else vL = new Value(0);
 			Value vR; if (slice.right !is null) vR = slice.right.evaluate(); else 

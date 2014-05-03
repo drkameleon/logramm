@@ -330,6 +330,26 @@ argument				:	ID
 							{ 
 								$$ = Argument_newFromHashItem($previous, $expression); 
 							}
+
+						|	'(' expression ')' '[' slice ']'
+							{
+								$$ = Argument_newFromSliceExpr($slice, $expression);
+							}
+
+						|	'(' expression ')' '.' function_call
+							{
+								$$ = Argument_newFromFunctionWithParentExpr($function_call, $expression);
+							}
+
+						|	'(' expression ')' '.' ID
+							{
+								$$ = Argument_newFromDotItemExpr($expression, $ID);
+							}
+						
+						|	'(' expression[previous] ')' '[' expression[main] ']'
+							{
+								$$ = Argument_newFromHashItemExpr($previous, $main);
+							}
 						;
 
 // 2 rr : ID.ID, ID[ID] --> is an argument or an lvalue?

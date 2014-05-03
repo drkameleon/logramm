@@ -76,9 +76,13 @@ extern void* Argument_newFromFunction(void* f);
 extern void* Argument_newFromDictionary(void* d);
 extern void* Argument_newFromArray(void* a);
 extern void* Argument_newFromHashItem(void* a, void* e);
+extern void* Argument_newFromHashItemExpr(void* e, void* ex);
 extern void* Argument_newFromSlice(void* s, void* a);
+extern void* Argument_newFromSliceExpr(void* s, void* e);
 extern void* Argument_newFromDotItem(void* a, char* i);
+extern void* Argument_newFromDotItemExpr(void* e, char* i);
 extern void* Argument_newFromFunctionWithParent(void* f, void* a);
+extern void* Argument_newFromFunctionWithParentExpr(void* f, void* e);
 
 extern void* HashItem_new(char* n, void* e);
 extern void* HashItem_newFromArgument(char* a, void* e);
