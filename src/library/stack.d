@@ -9,7 +9,7 @@
  ** src/helpers/stack.d
  **********************************************************/
 
-module helpers.stack;
+module library.stack;
 
 //================================================
 // Imports
