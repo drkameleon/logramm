@@ -120,13 +120,13 @@ var c_cppHighlightRules = function() {
     );
 
     var storageModifiers = (
-        "const|extern|register|restrict|static|volatile|inline|private:|" +
-        "protected:|public:|friend|explicit|virtual|export|mutable|typename"
+        //"const|extern|register|restrict|static|volatile|inline|private:|" +
+        //"protected:|public:|friend|explicit|virtual|export|mutable|typename"
     );
 
     var keywordOperators = (
-        "and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|typeid|xor|xor_eq" +
-        "const_cast|dynamic_cast|reinterpret_cast|static_cast|sizeof|namespace"
+        //"and|and_eq|bitand|bitor|compl|not|not_eq|or|or_eq|typeid|xor|xor_eq" +
+        //"const_cast|dynamic_cast|reinterpret_cast|static_cast|sizeof|namespace"
     );
 
     var builtinConstants = (
@@ -288,10 +288,12 @@ var DocCommentHighlightRules = function() {
         "start" : [ {
             token : "comment.doc.tag",
             regex : "@[\\w\\d_]+" // TODO: fix email addresses
-        }, {
-            token : "comment.doc.tag",
-            regex : "\\bTODO\\b"
-        }, {
+        }, 
+        //{
+        //    token : "comment.doc.tag",
+        //    regex : "\\bTODO\\b"
+        //}, 
+        {
             defaultToken : "comment.doc"
         }]
     };

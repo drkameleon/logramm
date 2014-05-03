@@ -16,7 +16,7 @@
 import core.memory;
 import std.stdio;
 
-import helpers.cgi;
+import library.cgi;
 import cmdline;
 
 import compiler;

@@ -145,7 +145,9 @@ CmdResult parse(string[] args)
 	}
 
 	if (interactiveOpt==true) 
+	{
 		setIfNoAction(result.action, CmdAction.interactiveAction);
+	}
 
 	if (pkgInstallOpt!="") 
 	{
@@ -166,10 +168,14 @@ CmdResult parse(string[] args)
 	}
 
 	if (helpOpt==true) 
+	{
 		setIfNoAction(result.action, CmdAction.helpAction);
+	}
 
 	if (versionOpt==true) 
+	{
 		setIfNoAction(result.action, CmdAction.versionAction);
+	}
 
 	if (args.length>0)
 	{

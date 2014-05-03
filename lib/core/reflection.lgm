@@ -34,9 +34,15 @@ Reflection ::
 
 	external methodInfo(func) # [
 		.params		: "string",
-		.returns	: "dictionary",
-		.help		: "Returns info for the given method or false if not found"
+		.returns	: "array",
+		.help		: "Returns array of info for each corresponding method"
 	] => "reflection.functionInfo";
+
+	external methodInfo(mod,func) # [
+		.params		: "string,string",
+		.returns 	: "array",
+		.help 		: "Returns array of info for each corresponding method"
+	] => "reflection.functionModInfo";
 
 	external methodExists(func) # [
 		.params		: "string",

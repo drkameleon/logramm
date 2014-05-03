@@ -29,6 +29,7 @@ import format.csv;
 import format.html;
 import format.json;
 import format.xml;
+import format.yaml;
 
 // IO
 

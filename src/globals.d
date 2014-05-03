@@ -20,7 +20,7 @@ import std.file;
 import std.algorithm;
 import etc.c.sqlite3;
 
-import helpers.stack;
+import library.stack;
 
 import databases;
 import symbols;

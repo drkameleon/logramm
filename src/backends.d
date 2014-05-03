@@ -37,6 +37,7 @@ import backend.string;
 import backend.system;
 import backend.types;
 import backend.xml;
+import backend.yaml;
 
 //================================================
 // Constants
@@ -47,7 +48,7 @@ alias classNames = TypeTuple!(
 						"file","json","net",
 						"number","path","reflection",
 						"sqlitedb","string","system",
-						"types","xml");
+						"types","xml", "yaml");
 
 //================================================
 // Functions

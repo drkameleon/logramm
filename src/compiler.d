@@ -22,8 +22,8 @@ import std.stdio;
 import std.string;
 
 import components.program;
-import helpers.cgi;
-import helpers.file;
+import library.cgi;
+import library.file;
 
 import preprocessor;
 import globals;
@@ -157,6 +157,6 @@ Program compileFromString(string input, string filename="<STDIN>")
 	// Let's return our Program object
 	return cast(Program)(_program);	
 
-	return compile(helpers.file.tempWithContents(input));
+	return compile(library.file.tempWithContents(input));
 }
 

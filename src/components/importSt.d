@@ -20,7 +20,7 @@ import std.conv;
 import std.string;
 import std.array;
 
-import helpers.file;
+import library.file;
 
 import globals;
 import panic;

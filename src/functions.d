@@ -62,6 +62,25 @@ class Functions
 		return list[n];
 	}
 */
+	FunctionDecl[] getForReflection(string n, string mod=null)
+	{
+		FunctionDecl[] ret;
+
+		for (int k=0; k<list.length; k++)
+		{
+			if (mod is null)
+			{
+				if (list[k].name==n) ret ~= list[k];
+			}
+			else
+			{
+				if ((list[k].name==n) && (list[k].parentModule==mod)) ret ~= list[k];
+			}
+		}
+
+		return ret;
+	}
+
 	FunctionDecl get(string name, string mod, Expressions params, bool checkArgs = false, bool stillCountArgs = false)
 	{
 		Value[] passedValues;

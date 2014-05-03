@@ -62,7 +62,9 @@ class LGM_Reflection
 
 		Value[] ret;
 
-		foreach (FunctionDecl vv; curFunctions.list)
+		FunctionDecl[] funcs = curFunctions.sortByName();
+
+		foreach (FunctionDecl vv; funcs)
 		{
 			ret ~= new Value(vv.parentModule ~ "::" ~ vv.name);
 		}
@@ -74,23 +76,63 @@ class LGM_Reflection
 	{
 		string fname = v[0].content.s;
 
-		FunctionDecl f = Glob.functions.get(fname,"",new Expressions(),false);
+		FunctionDecl[] fs = Glob.functions.getForReflection(fname);
 
-		if (f is null) return new Value(false);
+		Value[] ret;
 
-		Value[Value] ret;
+		foreach (FunctionDecl f; fs)
+		{
+			Value[Value] info;
 
-		Value[] params;
+			Value[] args;
+			foreach (string p; f.parameters.list) args ~= new Value(p);
+			info[new Value("args")] = new Value(args);
 
-		foreach (string p; f.params) params ~= new Value(p);
-		ret[new Value("params")] = new Value(params);
+			Value[] params;
+			foreach (string p; f.params) params ~= new Value(p);
+			info[new Value("params")] = new Value(params);
 
-		ret[new Value("returns")] = new Value(f.returns);
-		ret[new Value("help")] = new Value(f.help);
-		ret[new Value("module")] = new Value(f.parentModule);
+			info[new Value("returns")] = new Value(f.returns);
+			info[new Value("help")] = new Value(f.help);
+			info[new Value("module")] = new Value(f.parentModule);
+
+			ret ~= new Value(info);
+		}
 
 		return new Value(ret);
 	}
+
+	static Value functionModInfo(Value[] v)
+	{
+		string mod = v[0].content.s;
+		string fname = v[1].content.s;
+
+		FunctionDecl[] fs = Glob.functions.getForReflection(fname, mod);
+
+		Value[] ret;
+
+		foreach (FunctionDecl f; fs)
+		{
+			Value[Value] info;
+
+			Value[] args;
+			foreach (string p; f.parameters.list) args ~= new Value(p);
+			info[new Value("args")] = new Value(args);
+
+			Value[] params;
+			foreach (string p; f.params) params ~= new Value(p);
+			info[new Value("params")] = new Value(params);
+
+			info[new Value("returns")] = new Value(f.returns);
+			info[new Value("help")] = new Value(f.help);
+			info[new Value("module")] = new Value(f.parentModule);
+
+			ret ~= new Value(info);
+		}
+
+		return new Value(ret);
+	}
+
 
 	static Value symbolExists(Value[] v)
 	{
