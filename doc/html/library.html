@@ -1,730 +1,950 @@
-<html><head><title>Logramm - Library Documentation</title></head><body><h1>Logramm - Library Documentation</h1><hr/><h2>Array</h2><hr/>
-<h4>allOf (arr:<span style='color:#999;'>array</span>
-, value:<span style='color:#999;'>any</span>
-) --> boolean</h4>
-<p>Checks if all of array's items are equal to 'value'</p>
-<br>
-<h4>appendItem (arr:<span style='color:#999;'>array</span>
-, item:<span style='color:#999;'>any</span>
-) --> array</h4>
-<p>Returns resulting array after appending 'item'</p>
-<br>
-<h4>filter (arr:<span style='color:#999;'>array</span>
-, pattern:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Returns resulting array after items have been filtered using 'pattern'</p>
-<br>
-<h4>first (arr:<span style='color:#999;'>array</span>
-) --> any</h4>
-<p>Returns first item in array</p>
-<br>
-<h4>insertItemAtIndex (arr:<span style='color:#999;'>array</span>
-, index:<span style='color:#999;'>number</span>
-, item:<span style='color:#999;'>any</span>
-) --> array</h4>
-<p>Returns resulting array after inserting 'item' at 'index'</p>
-<br>
-<h4>isEmpty (arr:<span style='color:#999;'>array</span>
-) --> boolean</h4>
-<p>Checks if array is empty</p>
-<br>
-<h4>itemAtIndex (arr:<span style='color:#999;'>array</span>
-, index:<span style='color:#999;'>number</span>
-) --> any</h4>
-<p>Returns item of array at index</p>
-<br>
-<h4>last (arr:<span style='color:#999;'>array</span>
-) --> any</h4>
-<p>Returns last item in array</p>
-<br>
-<h4>map (arr:<span style='color:#999;'>array</span>
-, pattern:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Returns resulting array after items have been mapped using 'pattern'</p>
-<br>
-<h4>max (arr:<span style='color:#999;'>array</span>
-) --> number</h4>
-<p>Returns maximum element in array</p>
-<br>
-<h4>merge (arr1:<span style='color:#999;'>array</span>
-, arr2:<span style='color:#999;'>array</span>
-) --> array</h4>
-<p>Returns resulting array after merging 'arr1' and 'arr2'</p>
-<br>
-<h4>min (arr:<span style='color:#999;'>array</span>
-) --> number</h4>
-<p>Returns minimum element in array</p>
-<br>
-<h4>pop (arr:<span style='color:#999;'>array</span>
-) --> any</h4>
-<p>Pops and returns last item from array</p>
-<br>
-<h4>prependItem (arr:<span style='color:#999;'>array</span>
-, item:<span style='color:#999;'>any</span>
-) --> array</h4>
-<p>Returns resulting array after prepending 'item'</p>
-<br>
-<h4>push (arr:<span style='color:#999;'>array</span>
-, item:<span style='color:#999;'>any</span>
-) --> array</h4>
-<p>Returns resulting array after pushing 'item'</p>
-<br>
-<h4>removeDuplicates (arr:<span style='color:#999;'>array</span>
-) --> array</h4>
-<p>Returns resulting array after removing duplicate elements</p>
-<br>
-<h4>removeItem (arr:<span style='color:#999;'>array</span>
-, item:<span style='color:#999;'>any</span>
-) --> array</h4>
-<p>Returns resulting array after removing 'item'</p>
-<br>
-<h4>removeItemAtIndex (arr:<span style='color:#999;'>array</span>
-, index:<span style='color:#999;'>number</span>
-) --> array</h4>
-<p>Returns resulting array after removing item at 'index'</p>
-<br>
-<h4>reverse (arr:<span style='color:#999;'>array</span>
-) --> array</h4>
-<p>Returns resulting array after reversing its elements</p>
-<br>
-<h4>search (arr:<span style='color:#999;'>array</span>
-, item:<span style='color:#999;'>any</span>
-) --> number</h4>
-<p>Searches for item in array and returns its index, or -1 if not found</p>
-<br>
-<h4>setItemAtIndex (arr:<span style='color:#999;'>array</span>
-, index:<span style='color:#999;'>number</span>
-, item:<span style='color:#999;'>any</span>
-) --> array</h4>
-<p>Returns resulting array after setting item at 'index' to 'item'</p>
-<br>
-<h4>slice (arr:<span style='color:#999;'>array</span>
-, begin:<span style='color:#999;'>number</span>
-, end:<span style='color:#999;'>number</span>
-) --> array</h4>
-<p>Returns a slice of the array from 'begin' up to 'end'</p>
-<br>
-<h4>sort (arr:<span style='color:#999;'>array</span>
-) --> array</h4>
-<p>Returns array after sorting its elements</p>
-<br>
-<h4>sum (arr:<span style='color:#999;'>array</span>
-) --> number</h4>
-<p>Returns sum of elements in array</p>
-<br>
-<hr/><h2>Core</h2><hr/>
-<h4>contains (str:<span style='color:#999;'>string</span>
-, what:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if string contains 'what'</p>
-<br>
-<h4>contains (arr:<span style='color:#999;'>array</span>
-, item:<span style='color:#999;'>any</span>
-) --> boolean</h4>
-<p>Checks if array contains 'item'</p>
-<br>
-<h4>count (arr:<span style='color:#999;'>array</span>
-) --> number</h4>
-<p>Returns number of elements in array</p>
-<br>
-<h4>join (arr:<span style='color:#999;'>array</span>
-, delim:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns string by joining string in 'arr' using 'delim'</p>
-<br>
-<h4>keys (dict:<span style='color:#999;'>dictionary</span>
-) --> array</h4>
-<p>Returns dictionary keys as an array</p>
-<br>
-<h4>length (str:<span style='color:#999;'>string</span>
-) --> number</h4>
-<p>Returns length of string</p>
-<br>
-<h4>replace (str:<span style='color:#999;'>string</span>
-, what:<span style='color:#999;'>string</span>
-, repl:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Replace all occurences of 'what' with 'repl' and returns string</p>
-<br>
-<h4>split (str:<span style='color:#999;'>string</span>
-, delim:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Split string by 'delim' and return array</p>
-<br>
-<h4>values (dict:<span style='color:#999;'>dictionary</span>
-) --> array</h4>
-<p>Returns an array containing dictionary's values</p>
-<br>
-<hr/><h2>Csv</h2><hr/>
-<h4>generate (object:<span style='color:#999;'>array</span>
-) --> string</h4>
-<p>Processes input and returns corresponding Json as string</p>
-<br>
-<h4>parse (csv:<span style='color:#999;'>string</span>
-) --> any</h4>
-<p>Processes csv string and returns corresponding object</p>
-<br>
-<hr/><h2>Database</h2><hr/>
-<h4>allRows (database:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Returns an array of rows with result set</p>
-<br>
-<h4>close (database:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Closes database by name returns 'true' if successful</p>
-<br>
-<h4>create (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, keys:<span style='color:#999;'>array</span>
-, types:<span style='color:#999;'>array</span>
-) --> no</h4>
-<p>Create table using 'keys' with 'types'</p>
-<br>
-<h4>create (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, keytypes:<span style='color:#999;'>dictionary</span>
-) --> no</h4>
-<p>Create table using 'keys' with 'types', with dictionary</p>
-<br>
-<h4>delete (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, where:<span style='color:#999;'>array</span>
-) --> no</h4>
-<p>Delete rows from table, based on conditions 'where'</p>
-<br>
-<h4>insert (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, keys:<span style='color:#999;'>array</span>
-, values:<span style='color:#999;'>array</span>
-) --> number</h4>
-<p>Inserts key/value pairs in table and returns id</p>
-<br>
-<h4>insert (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, keyvalues:<span style='color:#999;'>dictionary</span>
-) --> number</h4>
-<p>Inserts key/value pairs in table and returns id</p>
-<br>
-<h4>lastInsertId (database:<span style='color:#999;'>string</span>
-) --> number</h4>
-<p>Returns the id of the last inserted row</p>
-<br>
-<h4>nextRow (database:<span style='color:#999;'>string</span>
-) --> any</h4>
-<p>Returns dictionary of next row in result set, or 'false' if unsuccessful</p>
-<br>
-<h4>open (database:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Opens/Creates database by name and returns 'true' if successful</p>
-<br>
-<h4>query (database:<span style='color:#999;'>string</span>
-, sql:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Executes SQL query to database and returns 'true' if successful</p>
-<br>
-<h4>select (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, what:<span style='color:#999;'>array</span>
-, where:<span style='color:#999;'>array</span>
-) --> array</h4>
-<p>Selects rows from table, based on conditions 'where', and returns result</p>
-<br>
-<h4>selectAll (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, where:<span style='color:#999;'>array</span>
-) --> array</h4>
-<p>Selects all rows from table, based on conditions 'where', and returns result</p>
-<br>
-<h4>update (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, keys:<span style='color:#999;'>array</span>
-, values:<span style='color:#999;'>array</span>
-, where:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Updates rows in table, based on conditions 'where'</p>
-<br>
-<h4>update (database:<span style='color:#999;'>string</span>
-, table:<span style='color:#999;'>string</span>
-, keyvalues:<span style='color:#999;'>dictionary</span>
-, where:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Updates rows in table, based on conditions 'where'</p>
-<br>
-<hr/><h2>Dictionary</h2><hr/>
-<h4>deleteItemWithKey (dict:<span style='color:#999;'>dictionary</span>
-, key:<span style='color:#999;'>any</span>
-) --> dictionary</h4>
-<p>Returns resulting dictionary after removing item with key 'key'</p>
-<br>
-<h4>isEmpty (dict:<span style='color:#999;'>dictionary</span>
-) --> boolean</h4>
-<p>Checks if dictionary is empty</p>
-<br>
-<h4>itemWithKey (dict:<span style='color:#999;'>dictionary</span>
-, key:<span style='color:#999;'>any</span>
-) --> any</h4>
-<p>Returns item for key 'key'</p>
-<br>
-<h4>keyExists (dict:<span style='color:#999;'>dictionary</span>
-, key:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if key exists in dictionary</p>
-<br>
-<h4>setItemWithKey (dict:<span style='color:#999;'>dictionary</span>
-, key:<span style='color:#999;'>any</span>
-, item:<span style='color:#999;'>any</span>
-) --> dictionary</h4>
-<p>Returns resulting array after setting item at 'index' to 'item'</p>
-<br>
-<h4>size (dict:<span style='color:#999;'>dictionary</span>
-) --> number</h4>
-<p>Returns number of items in dictionary</p>
-<br>
-<hr/><h2>File</h2><hr/>
-<h4>append (filename:<span style='color:#999;'>string</span>
-, data:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Appends data to file 'filename'</p>
-<br>
-<h4>delete (filename:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Deletes file 'filename'</p>
-<br>
-<h4>exists (filename:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Check if file 'filename' exists</p>
-<br>
-<h4>read (filename:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns contents of file as a string</p>
-<br>
-<h4>rename (fileFrom:<span style='color:#999;'>string</span>
-, fileTo:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Renames file to 'fileTo'</p>
-<br>
-<h4>write (filename:<span style='color:#999;'>string</span>
-, data:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Writes data to file 'filename'</p>
-<br>
-<hr/><h2>Html</h2><hr/>
-<h4>parse (markup:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Converts HTML/LGMX template to HTML and returns result</p>
-<br>
-<hr/><h2>Json</h2><hr/>
-<h4>generate (object:<span style='color:#999;'>any</span>
-) --> string</h4>
-<p>Processes input and returns corresponding Json as string</p>
-<br>
-<h4>parse (json:<span style='color:#999;'>string</span>
-) --> any</h4>
-<p>Processes json string and returns corresponding object</p>
-<br>
-<hr/><h2>Net</h2><hr/>
-<h4>download (url:<span style='color:#999;'>string</span>
-, filepath:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Downloads file at 'url' to local 'filepath'</p>
-<br>
-<h4>get (url:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns string contents of page at 'url'</p>
-<br>
-<h4>post (url:<span style='color:#999;'>string</span>
-, data:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns string contents of page at 'url', after an HTTP Post request with 'data'</p>
-<br>
-<hr/><h2>Number</h2><hr/>
-<h4>abs (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns the absolute value of 'n'</p>
-<br>
-<h4>arccos (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns arc cosine of 'x'</p>
-<br>
-<h4>arccosh (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns inverse hyperbolic cosine of 'x'</p>
-<br>
-<h4>arcsin (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns arc sine of 'x'</p>
-<br>
-<h4>arcsinh (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns inverse hyperbolic sine of 'x'</p>
-<br>
-<h4>arctan (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns arc tangent of 'x'</p>
-<br>
-<h4>arctanh (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns inverse hyperbolic tangent of 'x'</p>
-<br>
-<h4>ceil (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns 'x', rounded upwards</p>
-<br>
-<h4>cos (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns cosine of 'x'</p>
-<br>
-<h4>cosh (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns hyperbolic cosine of 'x'</p>
-<br>
-<h4>e () --> number</h4>
-<p>Returns E constant</p>
-<br>
-<h4>exp (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns exponential of 'x'</p>
-<br>
-<h4>floor (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns 'x', rounded downwards</p>
-<br>
-<h4>fromBase (str:<span style='color:#999;'>string</span>
-, n:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns number, given its base-n representation in string</p>
-<br>
-<h4>fromBin (str:<span style='color:#999;'>string</span>
-) --> number</h4>
-<p>Returns number, given its binary representation in string</p>
-<br>
-<h4>fromHex (str:<span style='color:#999;'>string</span>
-) --> number</h4>
-<p>Returns number, given its hexadecimal representation in string</p>
-<br>
-<h4>fromOct (str:<span style='color:#999;'>string</span>
-) --> number</h4>
-<p>Returns number, given its octal representation in string</p>
-<br>
-<h4>ln (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns the natural logarithm of 'x'</p>
-<br>
-<h4>log (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns the base-10 logarithm of 'x'</p>
-<br>
-<h4>number (str:<span style='color:#999;'>string</span>
-) --> number</h4>
-<p>Returns number from string</p>
-<br>
-<h4>pi () --> number</h4>
-<p>Returns Pi constant</p>
-<br>
-<h4>pow (x:<span style='color:#999;'>number</span>
-, y:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns 'x' raised to the power of 'y'</p>
-<br>
-<h4>round (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns 'x', rounded to the nearest integer</p>
-<br>
-<h4>sin (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns sine of 'x'</p>
-<br>
-<h4>sinh (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns hyperbolic sine of 'x'</p>
-<br>
-<h4>sqrt (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns square root of 'x'</p>
-<br>
-<h4>tan (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns tangent of 'x'</p>
-<br>
-<h4>tanh (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns hyperbolic tangent of 'x'</p>
-<br>
-<h4>trunc (x:<span style='color:#999;'>number</span>
-) --> number</h4>
-<p>Returns integer portion of 'x'</p>
-<br>
-<hr/><h2>Path</h2><hr/>
-<h4>createDirectory (path:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Creates directory at 'path'</p>
-<br>
-<h4>currentDirectory () --> string</h4>
-<p>Returns current working directory</p>
-<br>
-<h4>directory (path:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns the directory part of given path</p>
-<br>
-<h4>directoryContents (dir:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Returns array with contents of given directory</p>
-<br>
-<h4>directorySeparator () --> string</h4>
-<p>Returns symbol used to separate directory names in a path</p>
-<br>
-<h4>expandTilde (path:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns path, after expanding tilde</p>
-<br>
-<h4>extension (path:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns extension part of given path, including the dot</p>
-<br>
-<h4>filename (path:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns name of file, in file path, without leading directories</p>
-<br>
-<h4>isDirectory (path:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if file at 'path' is a directory</p>
-<br>
-<h4>isFile (path:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if file at 'path' is a file</p>
-<br>
-<h4>isSymlink (path:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if file at 'path' is a symlink</p>
-<br>
-<h4>normalized (path:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns path, after resolving current/parent directory symbols</p>
-<br>
-<h4>withoutExtension (path:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns filepath by removing extension</p>
-<br>
-<hr/><h2>Reflection</h2><hr/>
-<h4>callMethod (func:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Executes method by name 'func' and returns true if successful</p>
-<br>
-<h4>callMethod (mod:<span style='color:#999;'>string</span>
-, func:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Executes method by name 'func', in module 'mod', and returns true if successful</p>
-<br>
-<h4>callMethodWithArgs (func:<span style='color:#999;'>string</span>
-, args:<span style='color:#999;'>array</span>
-) --> boolean</h4>
-<p>Executes method by name 'func', using arguments, and returns true if successful</p>
-<br>
-<h4>callMethodWithArgs (mod:<span style='color:#999;'>string</span>
-, func:<span style='color:#999;'>string</span>
-, args:<span style='color:#999;'>array</span>
-) --> boolean</h4>
-<p>Executes method by name 'func', in module 'mod', using arguments, and returns true if successful</p>
-<br>
-<h4>importPackage (pkg:<span style='color:#999;'>string</span>
-) --> no</h4>
-<p>Programmatically import package by string name 'pkg'</p>
-<br>
-<h4>inspect (symbol:<span style='color:#999;'>any</span>
-) --> no</h4>
-<p>Prints debugging information related to given symbol</p>
-<br>
-<h4>methodExists (func:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if the given method is defined</p>
-<br>
-<h4>methodExists (mod:<span style='color:#999;'>string</span>
-, func:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if the given method, in module 'mod', is defined</p>
-<br>
-<h4>methodInfo (func:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Returns array of info for each corresponding method</p>
-<br>
-<h4>methodInfo (mod:<span style='color:#999;'>string</span>
-, func:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Returns array of info for each corresponding method</p>
-<br>
-<h4>methods () --> array</h4>
-<p>Returns an array with defined methods</p>
-<br>
-<h4>symbolExists (symbol:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if the given symbol/variable is defined</p>
-<br>
-<h4>symbols () --> array</h4>
-<p>Returns an array with defined symbols</p>
-<br>
-<hr/><h2>Regex</h2><hr/>
-<h4>getMatches (str:<span style='color:#999;'>string</span>
-, pattern:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Returns matches of regex 'pattern' in string</p>
-<br>
-<h4>matches (str:<span style='color:#999;'>string</span>
-, pattern:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if string matches regex 'pattern'</p>
-<br>
-<h4>postMatch (str:<span style='color:#999;'>string</span>
-, pattern:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Matches regex 'pattern' and returns the slice after the match</p>
-<br>
-<h4>preMatch (str:<span style='color:#999;'>string</span>
-, pattern:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Matches regex 'pattern' and returns the slice of input prior to the match</p>
-<br>
-<h4>replaceFirst (str:<span style='color:#999;'>string</span>
-, pattern:<span style='color:#999;'>string</span>
-, repl:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Replaces first match of regex 'pattern' with 'repl' and returns string</p>
-<br>
-<h4>xreplace (str:<span style='color:#999;'>string</span>
-, pattern:<span style='color:#999;'>string</span>
-, repl:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Replaces all matches of regex 'pattern' with 'repl' and returns string</p>
-<br>
-<h4>xsplit (str:<span style='color:#999;'>string</span>
-, pattern:<span style='color:#999;'>string</span>
-) --> array</h4>
-<p>Split string by regex 'pattern' and return array</p>
-<br>
-<hr/><h2>String</h2><hr/>
-<h4>chomp (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns string after removing trailing newline characters</p>
-<br>
-<h4>chop (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns a string, having removed the last character</p>
-<br>
-<h4>endsWith (str:<span style='color:#999;'>string</span>
-, what:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if string ends with 'what'</p>
-<br>
-<h4>find (str:<span style='color:#999;'>string</span>
-, what:<span style='color:#999;'>string</span>
-) --> number</h4>
-<p>Returns index of first occurence of 'what' in string</p>
-<br>
-<h4>isEmpty (str:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if string is empty</p>
-<br>
-<h4>isNumeric (str:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if string can be be formatted a number</p>
-<br>
-<h4>justify (str:<span style='color:#999;'>string</span>
-, padding:<span style='color:#999;'>number</span>
-) --> string</h4>
-<p>Returns string after left justifying using padding</p>
-<br>
-<h4>justifyCenter (str:<span style='color:#999;'>string</span>
-, padding:<span style='color:#999;'>number</span>
-) --> string</h4>
-<p>Returns string after center justifying using padding</p>
-<br>
-<h4>justifyRight (str:<span style='color:#999;'>string</span>
-, padding:<span style='color:#999;'>number</span>
-) --> string</h4>
-<p>Returns string after right justifying using padding</p>
-<br>
-<h4>lcase (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns a string with all of its characters converted to lowercase</p>
-<br>
-<h4>lcaseFirst (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns string with its first character in lowercase</p>
-<br>
-<h4>ltrim (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns a string, having stripped leading whitespace</p>
-<br>
-<h4>rtrim (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns a string, having stripped trailing whitespace</p>
-<br>
-<h4>soundex (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Converts a word into 4 characters based on how the word sounds phonetically, using the Soundex algorithm</p>
-<br>
-<h4>startsWith (str:<span style='color:#999;'>string</span>
-, what:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks if string begins with 'what'</p>
-<br>
-<h4>trim (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns a string, having stripped both leading and trailing whitespace</p>
-<br>
-<h4>ucase (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns a string with all of its characters converted to uppercase</p>
-<br>
-<h4>ucaseFirst (str:<span style='color:#999;'>string</span>
-) --> string</h4>
-<p>Returns string with its first character in uppercase</p>
-<br>
-<hr/><h2>System</h2><hr/>
-<h4>execute (command:<span style='color:#999;'>string</span>
-) --> any</h4>
-<p>Execute system command and returns output, or false if failed</p>
-<br>
-<hr/><h2>Types</h2><hr/>
-<h4>isArray (arg:<span style='color:#999;'>any</span>
-) --> boolean</h4>
-<p>Checks if argument is an array</p>
-<br>
-<h4>isBoolean (arg:<span style='color:#999;'>any</span>
-) --> boolean</h4>
-<p>Checks if argument is a boolean</p>
-<br>
-<h4>isDictionary (arg:<span style='color:#999;'>any</span>
-) --> boolean</h4>
-<p>Checks if argument is a dictionary</p>
-<br>
-<h4>isNumber (arg:<span style='color:#999;'>any</span>
-) --> boolean</h4>
-<p>Checks if argument is a number</p>
-<br>
-<h4>isString (arg:<span style='color:#999;'>any</span>
-) --> boolean</h4>
-<p>Checks if argument is a string</p>
-<br>
-<h4>string (arg:<span style='color:#999;'>any</span>
-) --> string</h4>
-<p>Converts argument to string</p>
-<br>
-<h4>type (arg:<span style='color:#999;'>any</span>
-) --> string</h4>
-<p>Returns type of argument (number,string,boolean,array,dictionary)</p>
-<br>
-<hr/><h2>Xml</h2><hr/>
-<h4>check (xml:<span style='color:#999;'>string</span>
-) --> boolean</h4>
-<p>Checks an XML document, as string, for well-formedness and returns true if successful</p>
-<br>
-<hr/><h2>Yaml</h2><hr/>
-<h4>generate (object:<span style='color:#999;'>any</span>
-) --> string</h4>
-<p>Processes input and returns corresponding YAML as string</p>
-<br>
-<h4>parse (yaml:<span style='color:#999;'>string</span>
-) --> any</h4>
-<p>Processes YAML string and returns corresponding object</p>
-<br>
-</body></html>
+<html>
+	<head>
+		<title>Logramm - Library Documentation</title>
+	</head>
+	<body>
+		<h1>Logramm - Library Documentation</h1>
+		<div class="section">
+			<hr/><h2>Array</h2><hr/>
+			<h4>allOf (
+				arr:<span style='color:#999;'>array</span>, 
+				value:<span style='color:#999;'>any</span>
+			) --&gt; boolean</h4>
+			<p>Checks if all of array's items are equal to 'value'</p>
+			<br>
+			<h4>appendItem (
+				arr:<span style='color:#999;'>array</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after appending 'item'</p>
+			<br>
+			<h4>filter (
+				arr:<span style='color:#999;'>array</span>, 
+				pattern:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after items have been filtered using 'pattern'</p>
+			<br>
+			<h4>first (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; any</h4>
+			<p>Returns first item in array</p>
+			<br>
+			<h4>insertItemAtIndex (
+				arr:<span style='color:#999;'>array</span>, 
+				index:<span style='color:#999;'>number</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after inserting 'item' at 'index'</p>
+			<br>
+			<h4>isEmpty (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; boolean</h4>
+			<p>Checks if array is empty</p>
+			<br>
+			<h4>itemAtIndex (
+				arr:<span style='color:#999;'>array</span>, 
+				index:<span style='color:#999;'>number</span>
+			) --&gt; any</h4>
+			<p>Returns item of array at index</p>
+			<br>
+			<h4>last (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; any</h4>
+			<p>Returns last item in array</p>
+			<br>
+			<h4>map (
+				arr:<span style='color:#999;'>array</span>, 
+				pattern:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after items have been mapped using 'pattern'</p>
+			<br>
+			<h4>max (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; number</h4>
+			<p>Returns maximum element in array</p>
+			<br>
+			<h4>merge (
+				arr1:<span style='color:#999;'>array</span>, 
+				arr2:<span style='color:#999;'>array</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after merging 'arr1' and 'arr2'</p>
+			<br>
+			<h4>min (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; number</h4>
+			<p>Returns minimum element in array</p>
+			<br>
+			<h4>pop (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; any</h4>
+			<p>Pops and returns last item from array</p>
+			<br>
+			<h4>prependItem (
+				arr:<span style='color:#999;'>array</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after prepending 'item'</p>
+			<br>
+			<h4>push (
+				arr:<span style='color:#999;'>array</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after pushing 'item'</p>
+			<br>
+			<h4>removeDuplicates (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after removing duplicate elements</p>
+			<br>
+			<h4>removeItem (
+				arr:<span style='color:#999;'>array</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after removing 'item'</p>
+			<br>
+			<h4>removeItemAtIndex (
+				arr:<span style='color:#999;'>array</span>, 
+				index:<span style='color:#999;'>number</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after removing item at 'index'</p>
+			<br>
+			<h4>reverse (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after reversing its elements</p>
+			<br>
+			<h4>search (
+				arr:<span style='color:#999;'>array</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; number</h4>
+			<p>Searches for item in array and returns its index, or -1 if not found</p>
+			<br>
+			<h4>setItemAtIndex (
+				arr:<span style='color:#999;'>array</span>, 
+				index:<span style='color:#999;'>number</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; array</h4>
+			<p>Returns resulting array after setting item at 'index' to 'item'</p>
+			<br>
+			<h4>slice (
+				arr:<span style='color:#999;'>array</span>, 
+				begin:<span style='color:#999;'>number</span>, 
+				end:<span style='color:#999;'>number</span>
+			) --&gt; array</h4>
+			<p>Returns a slice of the array from 'begin' up to 'end'</p>
+			<br>
+			<h4>sort (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; array</h4>
+			<p>Returns array after sorting its elements</p>
+			<br>
+			<h4>sum (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; number</h4>
+			<p>Returns sum of elements in array</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Core</h2><hr/>
+			<h4>contains (
+				str:<span style='color:#999;'>string</span>, 
+				what:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if string contains 'what'</p>
+			<br>
+			<h4>contains (
+				arr:<span style='color:#999;'>array</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; boolean</h4>
+			<p>Checks if array contains 'item'</p>
+			<br>
+			<h4>count (
+				arr:<span style='color:#999;'>array</span>
+			) --&gt; number</h4>
+			<p>Returns number of elements in array</p>
+			<br>
+			<h4>join (
+				arr:<span style='color:#999;'>array</span>, 
+				delim:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns string by joining string in 'arr' using 'delim'</p>
+			<br>
+			<h4>keys (
+				dict:<span style='color:#999;'>dictionary</span>
+			) --&gt; array</h4>
+			<p>Returns dictionary keys as an array</p>
+			<br>
+			<h4>length (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; number</h4>
+			<p>Returns length of string</p>
+			<br>
+			<h4>replace (
+				str:<span style='color:#999;'>string</span>, 
+				what:<span style='color:#999;'>string</span>, 
+				repl:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Replace all occurences of 'what' with 'repl' and returns string</p>
+			<br>
+			<h4>split (
+				str:<span style='color:#999;'>string</span>, 
+				delim:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Split string by 'delim' and return array</p>
+			<br>
+			<h4>values (
+				dict:<span style='color:#999;'>dictionary</span>
+			) --&gt; array</h4>
+			<p>Returns an array containing dictionary's values</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Csv</h2><hr/>
+			<h4>generate (
+				object:<span style='color:#999;'>array</span>
+			) --&gt; string</h4>
+			<p>Processes input and returns corresponding Json as string</p>
+			<br>
+			<h4>parse (
+				csv:<span style='color:#999;'>string</span>
+			) --&gt; any</h4>
+			<p>Processes csv string and returns corresponding object</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Database</h2><hr/>
+			<h4>allRows (
+				database:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Returns an array of rows with result set</p>
+			<br>
+			<h4>close (
+				database:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Closes database by name returns 'true' if successful</p>
+			<br>
+			<h4>create (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				keys:<span style='color:#999;'>array</span>, 
+				types:<span style='color:#999;'>array</span>
+			) --&gt; no</h4>
+			<p>Create table using 'keys' with 'types'</p>
+			<br>
+			<h4>create (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				keytypes:<span style='color:#999;'>dictionary</span>
+			) --&gt; no</h4>
+			<p>Create table using 'keys' with 'types', with dictionary</p>
+			<br>
+			<h4>delete (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				where:<span style='color:#999;'>array</span>
+			) --&gt; no</h4>
+			<p>Delete rows from table, based on conditions 'where'</p>
+			<br>
+			<h4>insert (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				keys:<span style='color:#999;'>array</span>, 
+				values:<span style='color:#999;'>array</span>
+			) --&gt; number</h4>
+			<p>Inserts key/value pairs in table and returns id</p>
+			<br>
+			<h4>insert (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				keyvalues:<span style='color:#999;'>dictionary</span>
+			) --&gt; number</h4>
+			<p>Inserts key/value pairs in table and returns id</p>
+			<br>
+			<h4>lastInsertId (
+				database:<span style='color:#999;'>string</span>
+			) --&gt; number</h4>
+			<p>Returns the id of the last inserted row</p>
+			<br>
+			<h4>nextRow (
+				database:<span style='color:#999;'>string</span>
+			) --&gt; any</h4>
+			<p>Returns dictionary of next row in result set, or 'false' if unsuccessful</p>
+			<br>
+			<h4>open (
+				database:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Opens/Creates database by name and returns 'true' if successful</p>
+			<br>
+			<h4>query (
+				database:<span style='color:#999;'>string</span>, 
+				sql:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Executes SQL query to database and returns 'true' if successful</p>
+			<br>
+			<h4>select (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				what:<span style='color:#999;'>array</span>, 
+				where:<span style='color:#999;'>array</span>
+			) --&gt; array</h4>
+			<p>Selects rows from table, based on conditions 'where', and returns result</p>
+			<br>
+			<h4>selectAll (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				where:<span style='color:#999;'>array</span>
+			) --&gt; array</h4>
+			<p>Selects all rows from table, based on conditions 'where', and returns result</p>
+			<br>
+			<h4>update (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				keys:<span style='color:#999;'>array</span>, 
+				values:<span style='color:#999;'>array</span>, 
+				where:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Updates rows in table, based on conditions 'where'</p>
+			<br>
+			<h4>update (
+				database:<span style='color:#999;'>string</span>, 
+				table:<span style='color:#999;'>string</span>, 
+				keyvalues:<span style='color:#999;'>dictionary</span>, 
+				where:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Updates rows in table, based on conditions 'where'</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Dictionary</h2><hr/>
+			<h4>deleteItemWithKey (
+				dict:<span style='color:#999;'>dictionary</span>, 
+				key:<span style='color:#999;'>any</span>
+			) --&gt; dictionary</h4>
+			<p>Returns resulting dictionary after removing item with key 'key'</p>
+			<br>
+			<h4>isEmpty (
+				dict:<span style='color:#999;'>dictionary</span>
+			) --&gt; boolean</h4>
+			<p>Checks if dictionary is empty</p>
+			<br>
+			<h4>itemWithKey (
+				dict:<span style='color:#999;'>dictionary</span>, 
+				key:<span style='color:#999;'>any</span>
+			) --&gt; any</h4>
+			<p>Returns item for key 'key'</p>
+			<br>
+			<h4>keyExists (
+				dict:<span style='color:#999;'>dictionary</span>, 
+				key:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if key exists in dictionary</p>
+			<br>
+			<h4>setItemWithKey (
+				dict:<span style='color:#999;'>dictionary</span>, 
+				key:<span style='color:#999;'>any</span>, 
+				item:<span style='color:#999;'>any</span>
+			) --&gt; dictionary</h4>
+			<p>Returns resulting array after setting item at 'index' to 'item'</p>
+			<br>
+			<h4>size (
+				dict:<span style='color:#999;'>dictionary</span>
+			) --&gt; number</h4>
+			<p>Returns number of items in dictionary</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>File</h2><hr/>
+			<h4>append (
+				filename:<span style='color:#999;'>string</span>, 
+				data:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Appends data to file 'filename'</p>
+			<br>
+			<h4>delete (
+				filename:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Deletes file 'filename'</p>
+			<br>
+			<h4>exists (
+				filename:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Check if file 'filename' exists</p>
+			<br>
+			<h4>read (
+				filename:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns contents of file as a string</p>
+			<br>
+			<h4>rename (
+				fileFrom:<span style='color:#999;'>string</span>, 
+				fileTo:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Renames file to 'fileTo'</p>
+			<br>
+			<h4>write (
+				filename:<span style='color:#999;'>string</span>, 
+				data:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Writes data to file 'filename'</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Html</h2><hr/>
+			<h4>parse (
+				markup:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Converts HTML/LGMX template to HTML and returns result</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Json</h2><hr/>
+			<h4>generate (
+				object:<span style='color:#999;'>any</span>
+			) --&gt; string</h4>
+			<p>Processes input and returns corresponding Json as string</p>
+			<br>
+			<h4>parse (
+				json:<span style='color:#999;'>string</span>
+			) --&gt; any</h4>
+			<p>Processes json string and returns corresponding object</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Net</h2><hr/>
+			<h4>download (
+				url:<span style='color:#999;'>string</span>, 
+				filepath:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Downloads file at 'url' to local 'filepath'</p>
+			<br>
+			<h4>get (
+				url:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns string contents of page at 'url'</p>
+			<br>
+			<h4>post (
+				url:<span style='color:#999;'>string</span>, 
+				data:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns string contents of page at 'url', after an HTTP Post request with 'data'</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Number</h2><hr/>
+			<h4>abs (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns the absolute value of 'n'</p>
+			<br>
+			<h4>arccos (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns arc cosine of 'x'</p>
+			<br>
+			<h4>arccosh (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns inverse hyperbolic cosine of 'x'</p>
+			<br>
+			<h4>arcsin (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns arc sine of 'x'</p>
+			<br>
+			<h4>arcsinh (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns inverse hyperbolic sine of 'x'</p>
+			<br>
+			<h4>arctan (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns arc tangent of 'x'</p>
+			<br>
+			<h4>arctanh (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns inverse hyperbolic tangent of 'x'</p>
+			<br>
+			<h4>ceil (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns 'x', rounded upwards</p>
+			<br>
+			<h4>cos (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns cosine of 'x'</p>
+			<br>
+			<h4>cosh (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns hyperbolic cosine of 'x'</p>
+			<br>
+			<h4>e (
+			) --&gt; number</h4>
+			<p>Returns E constant</p>
+			<br>
+			<h4>exp (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns exponential of 'x'</p>
+			<br>
+			<h4>floor (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns 'x', rounded downwards</p>
+			<br>
+			<h4>fromBase (
+				str:<span style='color:#999;'>string</span>, 
+				n:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns number, given its base-n representation in string</p>
+			<br>
+			<h4>fromBin (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; number</h4>
+			<p>Returns number, given its binary representation in string</p>
+			<br>
+			<h4>fromHex (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; number</h4>
+			<p>Returns number, given its hexadecimal representation in string</p>
+			<br>
+			<h4>fromOct (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; number</h4>
+			<p>Returns number, given its octal representation in string</p>
+			<br>
+			<h4>ln (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns the natural logarithm of 'x'</p>
+			<br>
+			<h4>log (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns the base-10 logarithm of 'x'</p>
+			<br>
+			<h4>number (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; number</h4>
+			<p>Returns number from string</p>
+			<br>
+			<h4>pi (
+			) --&gt; number</h4>
+			<p>Returns Pi constant</p>
+			<br>
+			<h4>pow (
+				x:<span style='color:#999;'>number</span>, 
+				y:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns 'x' raised to the power of 'y'</p>
+			<br>
+			<h4>round (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns 'x', rounded to the nearest integer</p>
+			<br>
+			<h4>sin (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns sine of 'x'</p>
+			<br>
+			<h4>sinh (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns hyperbolic sine of 'x'</p>
+			<br>
+			<h4>sqrt (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns square root of 'x'</p>
+			<br>
+			<h4>tan (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns tangent of 'x'</p>
+			<br>
+			<h4>tanh (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns hyperbolic tangent of 'x'</p>
+			<br>
+			<h4>trunc (
+				x:<span style='color:#999;'>number</span>
+			) --&gt; number</h4>
+			<p>Returns integer portion of 'x'</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Path</h2><hr/>
+			<h4>createDirectory (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Creates directory at 'path'</p>
+			<br>
+			<h4>currentDirectory (
+			) --&gt; string</h4>
+			<p>Returns current working directory</p>
+			<br>
+			<h4>directory (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns the directory part of given path</p>
+			<br>
+			<h4>directoryContents (
+				dir:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Returns array with contents of given directory</p>
+			<br>
+			<h4>directorySeparator (
+			) --&gt; string</h4>
+			<p>Returns symbol used to separate directory names in a path</p>
+			<br>
+			<h4>expandTilde (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns path, after expanding tilde</p>
+			<br>
+			<h4>extension (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns extension part of given path, including the dot</p>
+			<br>
+			<h4>filename (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns name of file, in file path, without leading directories</p>
+			<br>
+			<h4>isDirectory (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if file at 'path' is a directory</p>
+			<br>
+			<h4>isFile (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if file at 'path' is a file</p>
+			<br>
+			<h4>isSymlink (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if file at 'path' is a symlink</p>
+			<br>
+			<h4>normalized (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns path, after resolving current/parent directory symbols</p>
+			<br>
+			<h4>withoutExtension (
+				path:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns filepath by removing extension</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Reflection</h2><hr/>
+			<h4>callMethod (
+				func:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Executes method by name 'func' and returns true if successful</p>
+			<br>
+			<h4>callMethod (
+				mod:<span style='color:#999;'>string</span>, 
+				func:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Executes method by name 'func', in module 'mod', and returns true if successful</p>
+			<br>
+			<h4>callMethodWithArgs (
+				func:<span style='color:#999;'>string</span>, 
+				args:<span style='color:#999;'>array</span>
+			) --&gt; boolean</h4>
+			<p>Executes method by name 'func', using arguments, and returns true if successful</p>
+			<br>
+			<h4>callMethodWithArgs (
+				mod:<span style='color:#999;'>string</span>, 
+				func:<span style='color:#999;'>string</span>, 
+				args:<span style='color:#999;'>array</span>
+			) --&gt; boolean</h4>
+			<p>Executes method by name 'func', in module 'mod', using arguments, and returns true if successful</p>
+			<br>
+			<h4>importPackage (
+				pkg:<span style='color:#999;'>string</span>
+			) --&gt; no</h4>
+			<p>Programmatically import package by string name 'pkg'</p>
+			<br>
+			<h4>inspect (
+				symbol:<span style='color:#999;'>any</span>
+			) --&gt; no</h4>
+			<p>Prints debugging information related to given symbol</p>
+			<br>
+			<h4>methodExists (
+				func:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if the given method is defined</p>
+			<br>
+			<h4>methodExists (
+				mod:<span style='color:#999;'>string</span>, 
+				func:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if the given method, in module 'mod', is defined</p>
+			<br>
+			<h4>methodInfo (
+				func:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Returns array of info for each corresponding method</p>
+			<br>
+			<h4>methodInfo (
+				mod:<span style='color:#999;'>string</span>, 
+				func:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Returns array of info for each corresponding method</p>
+			<br>
+			<h4>methods (
+			) --&gt; array</h4>
+			<p>Returns an array with defined methods</p>
+			<br>
+			<h4>symbolExists (
+				symbol:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if the given symbol/variable is defined</p>
+			<br>
+			<h4>symbols (
+			) --&gt; array</h4>
+			<p>Returns an array with defined symbols</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Regex</h2><hr/>
+			<h4>getMatches (
+				str:<span style='color:#999;'>string</span>, 
+				pattern:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Returns matches of regex 'pattern' in string</p>
+			<br>
+			<h4>matches (
+				str:<span style='color:#999;'>string</span>, 
+				pattern:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if string matches regex 'pattern'</p>
+			<br>
+			<h4>postMatch (
+				str:<span style='color:#999;'>string</span>, 
+				pattern:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Matches regex 'pattern' and returns the slice after the match</p>
+			<br>
+			<h4>preMatch (
+				str:<span style='color:#999;'>string</span>, 
+				pattern:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Matches regex 'pattern' and returns the slice of input prior to the match</p>
+			<br>
+			<h4>replaceFirst (
+				str:<span style='color:#999;'>string</span>, 
+				pattern:<span style='color:#999;'>string</span>, 
+				repl:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Replaces first match of regex 'pattern' with 'repl' and returns string</p>
+			<br>
+			<h4>xreplace (
+				str:<span style='color:#999;'>string</span>, 
+				pattern:<span style='color:#999;'>string</span>, 
+				repl:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Replaces all matches of regex 'pattern' with 'repl' and returns string</p>
+			<br>
+			<h4>xsplit (
+				str:<span style='color:#999;'>string</span>, 
+				pattern:<span style='color:#999;'>string</span>
+			) --&gt; array</h4>
+			<p>Split string by regex 'pattern' and return array</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>String</h2><hr/>
+			<h4>chomp (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns string after removing trailing newline characters</p>
+			<br>
+			<h4>chop (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns a string, having removed the last character</p>
+			<br>
+			<h4>endsWith (
+				str:<span style='color:#999;'>string</span>, 
+				what:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if string ends with 'what'</p>
+			<br>
+			<h4>find (
+				str:<span style='color:#999;'>string</span>, 
+				what:<span style='color:#999;'>string</span>
+			) --&gt; number</h4>
+			<p>Returns index of first occurence of 'what' in string</p>
+			<br>
+			<h4>isEmpty (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if string is empty</p>
+			<br>
+			<h4>isNumeric (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if string can be be formatted a number</p>
+			<br>
+			<h4>justify (
+				str:<span style='color:#999;'>string</span>, 
+				padding:<span style='color:#999;'>number</span>
+			) --&gt; string</h4>
+			<p>Returns string after left justifying using padding</p>
+			<br>
+			<h4>justifyCenter (
+				str:<span style='color:#999;'>string</span>, 
+				padding:<span style='color:#999;'>number</span>
+			) --&gt; string</h4>
+			<p>Returns string after center justifying using padding</p>
+			<br>
+			<h4>justifyRight (
+				str:<span style='color:#999;'>string</span>, 
+				padding:<span style='color:#999;'>number</span>
+			) --&gt; string</h4>
+			<p>Returns string after right justifying using padding</p>
+			<br>
+			<h4>lcase (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns a string with all of its characters converted to lowercase</p>
+			<br>
+			<h4>lcaseFirst (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns string with its first character in lowercase</p>
+			<br>
+			<h4>ltrim (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns a string, having stripped leading whitespace</p>
+			<br>
+			<h4>rtrim (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns a string, having stripped trailing whitespace</p>
+			<br>
+			<h4>soundex (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Converts a word into 4 characters based on how the word sounds phonetically, using the Soundex algorithm</p>
+			<br>
+			<h4>startsWith (
+				str:<span style='color:#999;'>string</span>, 
+				what:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks if string begins with 'what'</p>
+			<br>
+			<h4>trim (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns a string, having stripped both leading and trailing whitespace</p>
+			<br>
+			<h4>ucase (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns a string with all of its characters converted to uppercase</p>
+			<br>
+			<h4>ucaseFirst (
+				str:<span style='color:#999;'>string</span>
+			) --&gt; string</h4>
+			<p>Returns string with its first character in uppercase</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>System</h2><hr/>
+			<h4>execute (
+				command:<span style='color:#999;'>string</span>
+			) --&gt; any</h4>
+			<p>Execute system command and returns output, or false if failed</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Types</h2><hr/>
+			<h4>isArray (
+				arg:<span style='color:#999;'>any</span>
+			) --&gt; boolean</h4>
+			<p>Checks if argument is an array</p>
+			<br>
+			<h4>isBoolean (
+				arg:<span style='color:#999;'>any</span>
+			) --&gt; boolean</h4>
+			<p>Checks if argument is a boolean</p>
+			<br>
+			<h4>isDictionary (
+				arg:<span style='color:#999;'>any</span>
+			) --&gt; boolean</h4>
+			<p>Checks if argument is a dictionary</p>
+			<br>
+			<h4>isNumber (
+				arg:<span style='color:#999;'>any</span>
+			) --&gt; boolean</h4>
+			<p>Checks if argument is a number</p>
+			<br>
+			<h4>isString (
+				arg:<span style='color:#999;'>any</span>
+			) --&gt; boolean</h4>
+			<p>Checks if argument is a string</p>
+			<br>
+			<h4>string (
+				arg:<span style='color:#999;'>any</span>
+			) --&gt; string</h4>
+			<p>Converts argument to string</p>
+			<br>
+			<h4>type (
+				arg:<span style='color:#999;'>any</span>
+			) --&gt; string</h4>
+			<p>Returns type of argument (number,string,boolean,array,dictionary)</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Xml</h2><hr/>
+			<h4>check (
+				xml:<span style='color:#999;'>string</span>
+			) --&gt; boolean</h4>
+			<p>Checks an XML document, as string, for well-formedness and returns true if successful</p>
+			<br>
+
+		</div>
+		<div class="section">
+			<hr/><h2>Yaml</h2><hr/>
+			<h4>generate (
+				object:<span style='color:#999;'>any</span>
+			) --&gt; string</h4>
+			<p>Processes input and returns corresponding YAML as string</p>
+			<br>
+			<h4>parse (
+				yaml:<span style='color:#999;'>string</span>
+			) --&gt; any</h4>
+			<p>Processes YAML string and returns corresponding object</p>
+			<br>
+
+		</div>
+	</body>
+</html>

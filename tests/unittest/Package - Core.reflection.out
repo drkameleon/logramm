@@ -10,7 +10,7 @@ someModule::postFunc methodExists('someModule','someFunc') ==> true
 post y==>true
 post x==>false
 post methodExists('someModule','someFunc') ==> true
-["params":["any"], "returns":"any", "help":"", "module":"someModule"]
+[["args":["x"], "params":["any"], "returns":"any", "help":"", "module":"someModule"]]
 6 ==> number
 ["__Args","y"]
 false

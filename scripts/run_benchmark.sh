@@ -30,7 +30,7 @@ php) lang="PHP\t\t"
 ;;
 esac
 output=$( { time $filepath $param; } 2>&1)
-echo -e $lang ${output}s
+echo $lang ${output}s
 #lang=eval $extension
 #echo $lang = $output s
 )

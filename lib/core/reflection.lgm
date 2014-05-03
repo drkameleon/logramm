@@ -85,7 +85,8 @@ Reflection ::
 	] =>
 	{
 		methodExists(func) :
-		methodInfo(func).params.count() == 0 : { exec "{:func}();"; ==> true; }
+		methodInfo(func).count() > 0 :
+		methodInfo(func)[0].params.count() == 0 : { exec "{:func}();"; ==> true; }
 		
 		==> false;
 	}
@@ -97,7 +98,8 @@ Reflection ::
 	] =>
 	{
 		methodExists(mod,func) :
-		methodInfo(func).params.count() == 0 : { exec "{:mod}::{:func}();"; ==> true; }
+		methodInfo(func).count() > 0 :
+		methodInfo(func)[0].params.count() == 0 : { exec "{:mod}::{:func}();"; ==> true; }
 		
 		==> false;
 	}
@@ -111,7 +113,8 @@ Reflection ::
 		argstr = args.join(",");
 
 		methodExists(func) :
-		methodInfo(func).params.count() == args.count() : { exec "{:func}({:argstr});"; ==> true; }
+		methodInfo(func).count() > 0 :
+		methodInfo(func)[0].params.count() == args.count() : { exec "{:func}({:argstr});"; ==> true; }
 		
 		==> false;
 	}
@@ -125,7 +128,8 @@ Reflection ::
 		argstr = args.join(",");
 
 		methodExists(mod,func) :
-		methodInfo(func).params.count() == args.count() : { exec "{:mod}::{:func}({:argstr});"; ==> true; }
+		methodInfo(func).count() > 0 :
+		methodInfo(func)[0].params.count() == args.count() : { exec "{:mod}::{:func}({:argstr});"; ==> true; }
 		
 		==> false;
 	}
