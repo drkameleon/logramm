@@ -27,6 +27,7 @@ void comment(void);
 void count();
 
 extern char* yyfilename;
+extern int yycgiMode;
 
 %}
 
@@ -182,8 +183,14 @@ void count()
 void yyerror(const char *str)
 {
 	char *s = reformat_error_msg(str);
-
-	fprintf(stderr,LGM_LOGO);
-	fprintf(stderr,LGM_ERROR_TEMPLATE,yyfilename,yylineno,s);
+	if (!yycgiMode)
+	{
+		fprintf(stderr,LGM_LOGO);
+		fprintf(stderr,LGM_ERROR_TEMPLATE,yyfilename,yylineno,s);
+	}
+	else
+	{
+		fprintf(stdout,LGM_ERROR_TEMPLATE_HTML,yyfilename,yylineno,s);
+	}
 	exit(0);
 }

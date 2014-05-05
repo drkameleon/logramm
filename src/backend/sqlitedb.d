@@ -80,7 +80,7 @@ class LGM_Sqlitedb
 		string name = v[0].content.s;
 
 		sqlite3* db;
-		int result = sqlite3_open(toStringz(name~DB_FILE_EXTENSION), &db);
+		int result = sqlite3_open_v2(toStringz(name~DB_FILE_EXTENSION), &db, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE, null);
 
 		if (result==SQLITE_OK) 
 		{

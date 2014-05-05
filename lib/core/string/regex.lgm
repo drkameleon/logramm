@@ -44,7 +44,7 @@ Regex ::
 		.help		: "Matches regex 'pattern' and returns the slice after the match"
 	] => "string.postMatch";
 
-	external replaceFirst(str,pattern,repl) # [
+	external xreplaceFirst(str,pattern,repl) # [
 		.params		: "string,string,string",
 		.returns    : "string",
 		.help		: "Replaces first match of regex 'pattern' with 'repl' and returns string"

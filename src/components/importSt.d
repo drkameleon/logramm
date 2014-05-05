@@ -15,10 +15,12 @@ module components.importSt;
 // Imports
 //================================================
 
-import std.stdio;
-import std.conv;
-import std.string;
 import std.array;
+import std.conv;
+import std.file;
+import std.path;
+import std.stdio;
+import std.string;
 
 import library.file;
 
@@ -43,6 +45,7 @@ const string LIBRARY_NOT_FOUND_MSG = "Library '%s' not found\n\n              | 
 extern (C) 
 {
 	void* ImportSt_new(char* n) { return cast(void*)(new ImportSt(to!string(n))); }
+	void* ImportSt_newMultiple(char* n) { return cast(void*)(new ImportSt(to!string(n),true)); }
 
 }
 
@@ -56,36 +59,70 @@ class ImportSt : Statement
 
 	Position pos;
 
-	this(string n)
+	bool multiple;
+
+	this(string n, bool mult=false)
 	{
 		super("import");
 
-		name = replace(n,"|","/") ~ ".lgm";
+		name = replace(n,"|","/");
+		multiple = mult;
 	}
 
 	override ExecResult execute()
 	{
 		//writeln("IMPORTING");
-		string filepath = searchFileInPaths(name, Glob.paths);
-		if (filepath==name) Panic.runtimeError(format(LIBRARY_NOT_FOUND_MSG, name, join(Glob.fullPaths(),"\n              | ")));
+		if (!multiple)
+		{
+			name ~= ".lgm";
 
-		//writeln(Glob.alreadyImported);
+			string filepath = searchFileInPaths(name, Glob.paths);
+			if (filepath==name) Panic.runtimeError(format(LIBRARY_NOT_FOUND_MSG, name, join(Glob.fullPaths(),"\n              | ")));
 
-		bool alreadyImported = false;
-		foreach (string p; Glob.alreadyImported)
-			if (p==filepath) alreadyImported = true;
+			//writeln(Glob.alreadyImported);
 
-		if (!alreadyImported) 
-		{ 
-			Glob.alreadyImported ~= filepath;
+			bool alreadyImported = false;
+			foreach (string p; Glob.alreadyImported)
+				if (p==filepath) alreadyImported = true;
 
-			Program subprogram = compiler.compile(filepath);
+			if (!alreadyImported) 
+			{ 
+				Glob.alreadyImported ~= filepath;
 
-			if (subprogram.statements is null) writeln("WHOA! Statements is null?!");
+				Program subprogram = compiler.compile(filepath);
 
-			subprogram.execute();
+				if (subprogram.statements is null) writeln("WHOA! Statements is null?!");
+
+				subprogram.execute();
+			}
 		}
-		//writeln("END IMPORT");
+		else
+		{
+			string filepath = searchFileInPaths(name, Glob.paths);
+			if (filepath==name) Panic.runtimeError(format(LIBRARY_NOT_FOUND_MSG, name, join(Glob.fullPaths(),"\n              | ")));
+
+			foreach (string n; dirEntries(filepath, SpanMode.depth))
+			{
+				if ((isFile(n)) && (extension(n)==".lgm"))
+				{
+					bool alreadyImported = false;
+
+					foreach (string p; Glob.alreadyImported)
+						if (p==filepath) alreadyImported = true;
+
+					if (!alreadyImported) 
+					{ 
+						Glob.alreadyImported ~= n;
+
+						Program subprogram = compiler.compile(n);
+
+						if (subprogram.statements is null) writeln("WHOA! Statements is null?!");
+
+						subprogram.execute();
+					}
+				}
+			}
+		}
 
 		return ExecResult.Ok;
 	}

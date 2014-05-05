@@ -27,6 +27,7 @@ extern int yylex();
 extern int yylineno;
 
 char* yyfilename;
+int yycgiMode;
 
 /****************************************
  Functions
@@ -724,6 +725,11 @@ in_st					:	IN ID ';'
 import_st				:	IMPORT identifier ';'											
 							{ 
 								$$ = ImportSt_new($identifier); 
+							}
+
+						|	IMPORT identifier '.' MULT_SG ';'
+							{
+								$$ = ImportSt_newMultiple($identifier);
 							}
 						;
 

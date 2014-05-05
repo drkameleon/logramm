@@ -19,6 +19,34 @@
 #define LGM_LOGO 			"\x1B[32mLogramm/03\n\x1B[0m(c) 2009-2014 Dr.Kameleon\n\n"
 #define LGM_ERROR_TEMPLATE 	"\x1B[31mSyntax Error  \x1B[37m| \x1B[0mFile:\x1B[37m %s\n              | \x1B[0mLine:\x1B[37m %d\n\n              | %s\n\n"
 
+#define LGM_ERROR_TEMPLATE_HTML "\
+ <div style=' border:2px solid #888; border-radius:10px; margin:10px; padding:20px; padding-top:10px; padding-bottom:10px;'>\
+ 	<div style='background:#700; color: #FFF; height:30px; text-align:center; margin-bottom:10px; padding-top:5px; font-size:22px;'>\
+ 		Logramm\
+ 	</div>\
+ 	<div>\
+ 		<table border='0'>\
+ 			<tr>\
+ 				<td><b>File&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>\
+ 				<td><b>:</b></td>\
+ 				<td>%s</td>\
+ 			</tr>\
+ 			<tr>\
+ 				<td><b>Line</b></td>\
+ 				<td><b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></td>\
+ 				<td>%d<td>\
+ 			</tr>\
+ 			<tr>\
+ 				<td><b>Error</b></td>\
+ 				<td><b>:</b></td>\
+ 				<td>%s</td>\
+ 			</tr>\
+ 		</table>\
+ 	</div>\
+ </div>\
+ "
+
+
 //================================================
 // Macros
 //================================================ 
@@ -133,6 +161,7 @@ extern void* InSt_new(char* n);
 extern void* IfSt_new(void* b, void* s, void* e);
 
 extern void* ImportSt_new(char* n);
+extern void* ImportSt_newMultiple(char* n);
 
 extern void* ExecSt_new(void* e);
 

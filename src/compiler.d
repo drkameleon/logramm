@@ -40,6 +40,7 @@ extern (C) yy_buffer_state* yy_scan_string(const char*);
 extern (C) yy_buffer_state* yy_scan_buffer(char *, size_t);
 extern (C) extern __gshared FILE* yyin;
 extern (C) extern __gshared const(char)* yyfilename;
+extern (C) extern __gshared int yycgiMode;
 
 extern (C) extern __gshared int yylineno;
 
@@ -113,6 +114,8 @@ void initCgi(Cgi cgi)
 	Glob.registerVariable("__QueryString", cgi.queryString);
 	Glob.registerVariable("__AbsolutePath", cgi.pathTranslated);
 
+	Glob.cgiMode = true;
+
 	loader.loadDefault();
 
 	Program script = compile(cgi.pathTranslated, false); // Turn preprocessing OFF, for CGI. TOFIX.
@@ -149,6 +152,7 @@ Program compileFromString(string input, string filename="<STDIN>")
 		// to the Flex/Bison
 		_program = cast(void*)(new Program());
 		yyfilename = toStringz(filename);
+		yycgiMode = cast(int)Glob.cgiMode;
 
 		yy_scan_buffer(cast(char*)(toStringz(input~'\0')),input.length+2);
 

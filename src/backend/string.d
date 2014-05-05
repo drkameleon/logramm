@@ -81,6 +81,15 @@ class LGM_String
 		return new Value(str.replace(what,repl));
 	}
 
+	static Value replaceFirst(Value[] v)
+	{
+		string str = v[0].content.s;
+		string what = v[1].content.s;
+		string repl = v[2].content.s;
+
+		return new Value(str.replaceFirst(what,repl));
+	}
+
 	static Value find(Value[] v)
 	{
 		string str = v[0].content.s;
@@ -261,7 +270,7 @@ class LGM_String
 		return new Value(ret);
 	}
 
-	static Value replaceFirst(Value[] v)
+	static Value xreplaceFirst(Value[] v)
 	{
 		string str = v[0].content.s;
 		string pattern = v[1].content.s;

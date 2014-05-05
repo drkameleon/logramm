@@ -37,13 +37,19 @@ Core ::
 	external replace(str,what,repl) # [
 		.params		: "string,string,string",
 		.returns    : "string",
-		.help		: "Replace all occurences of 'what' with 'repl' and returns string"
+		.help		: "Replaces all occurences of 'what' with 'repl' and returns string"
 	] => "string.replace";
+
+	external replaceFirst(str,what,repl) # [
+		.params		: "string,string,string",
+		.returns    : "string",
+		.help		: "Replaces first occurence of 'what' with 'repl' and returns string"
+	] => "string.replaceFirst";
 
 	external split(str,delim) # [
 		.params		: "string,string",
 		.returns    : "array",
-		.help		: "Split string by 'delim' and return array"
+		.help		: "Splits string by 'delim' and return array"
 	] => "string.split";
 
 	// Array ::

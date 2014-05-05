@@ -191,8 +191,12 @@ class LGM_Reflection
 	{
 		Value symbol = v[0];
 
+		if (Glob.cgiMode) writeln("<pre><code>");
+		
 		write(strip(symbol.inspect(0)));
 		writeln(" ==> " ~ replace(to!string(symbol.type),"Value",""));
+
+		if (Glob.cgiMode) writeln("</code></pre>");
 
 		return new Value(0);
 	}

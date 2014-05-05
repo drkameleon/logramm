@@ -246,6 +246,10 @@ class Argument
 		f = replace(f, "\\n", "\n");
 		f = replace(f, "\\x1B", "\x1B");
 
+		f = replace(f, "\\1", "\1");
+		f = replace(f, "\\2", "\2");
+		f = replace(f, "\\3", "\3");
+
 		return f;
 	}
 
