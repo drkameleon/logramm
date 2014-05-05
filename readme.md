@@ -19,7 +19,7 @@ Documentation
 
 Documentation for Logramm is online, updated daily:
 
-    http://83.212.101.132//
+    http://83.212.101.132/
 
 You may access its unix version by:
 
