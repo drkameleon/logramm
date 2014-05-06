@@ -1,0 +1,75 @@
+import default;
+
+__Args.count() == 0 : panic "Not enough arguments!";
+
+dest 		= __Args[0];
+destFile 	= "{:dest}/logramm.completions.json";
+
+ret = "";
+
+ret += "
+{
+	\"scope\": \"source.logramm\",
+
+	\"completions\":
+	[
+		\"logramm\",
+
+";
+
+methods = methods();
+currentModule = "";
+
+skipNext = false;
+
+cntX = methods.count();
+cntI = 0;
+didRet = false;
+
+@ method -> methods :
+{
+	cntI += 1;
+	skipNext == true : skipNext=false;
+	else :
+	{
+		module 		= method.split("::")[0];
+		function 	= method.split("::")[1];
+
+		infos	 	= module.methodInfo(function);
+		infos.count() > 1 : skipNext = true ;
+
+		j = 0;
+		
+		@ j < infos.count() :
+		{
+			info = infos[j];
+
+			ret += "{ \"trigger\": \"{:function}\", \"contents\": \"{:function}(";
+
+			i=0;
+			@ i<info.args.count() :
+			{
+				ret += "${" + (i+1) +":" + info.args[i] + "}";
+				i < info.args.count()-1 : ret += ", ";
+
+				i += 1;
+			}
+
+			ret += ")\" }";
+			j<infos.count()-1 : { ret+= ",\n"; didRet = true; }
+			else:				ret+= "";
+			j += 1;
+		}
+	}
+
+	cntI<cntX : {
+		didRet==false:ret+= ",\n";
+		else: { ret+= "\n";}
+	}
+	else        : { didRet==false:ret+= "\n"; }
+	didRet = false;
+}
+
+ret += "]}";
+
+destFile.write(ret);
