@@ -45,18 +45,19 @@ TESTS 	= tests
 
 CC_CFLAGS	= -c -I${SRC}/parser
 
-D_CFLAGS	= -c -op -I${SRC} -J${SRC} -inline -O -release
+D_CFLAGS	= -c -op -I${SRC} -J${SRC} -inline -O -release -noboundscheck
 D_LFLAGS	= -m64 -L-lcurl -L-lsqlite3
 
 ifeq (${TARGET}, debug)
 D_CFLAGS 	:= $(subst -O -release,,${D_CFLAGS})
-D_CFLAGS 	+= -debug -unittest -profile -g -gs -gx
+D_CFLAGS	:= $(subst -O -noboundscheck,,${D_CFLAGS})
+D_CFLAGS 	+= -debug -profile -g -gs -gx # -unittest
 endif
 ifeq (${TARGET}, profile)
 D_CFLAGS 	+= -profile
 endif
 
-CLOC_FLAGS 	= --exclude-dir=${BIN},${SRC}/library/yaml
+CLOC_FLAGS 	= --exclude-dir=${BIN},${SRC}/library/yaml,${SRC}/library/warp
 
 # Installation paths
 
@@ -89,6 +90,7 @@ D_FILES 	= $(basename $(wildcard ${SRC}/*.d) \
 						 $(wildcard ${SRC}/components/*.d) \
 						 $(wildcard ${SRC}/library/*.d) \
 						 $(wildcard ${SRC}/library/yaml/*.d) \
+						 $(wildcard ${SRC}/library/warp/*.d) \
 						 $(wildcard ${SRC}/system/*.d) \
 			   )
 
@@ -153,6 +155,7 @@ update-build:
 docs:
 	${APP} ${SCRIPTS}/create_doc_html.lgm ${DOC}/html
 	${APP} ${SCRIPTS}/create_doc_man.lgm ${DOC}/man
+	${APP} ${SCRIPTS}/create_sublime_completions.lgm ${EXTRAS}/highlighting/sublime
 
 test:
 	${APP} ${SCRIPTS}/run_unittests.lgm

@@ -23,7 +23,12 @@ import std.stdio;
 import std.string;
 
 import globals;
-import panic;
+import panic; 
+import library.warp.file;
+import library.warp.textbuf;
+import library.warp.context;
+import library.warp.cmdline;
+import library.warp.sources;
 
 //================================================
 // Functions
@@ -31,23 +36,5 @@ import panic;
 
 string preprocess(string filename)
 {
-	string included = "";
-	foreach (string p; Glob.paths)
-	{
-		included ~= " -I" ~ p ~ " ";
-	}
-
-	string cmdStr = format("gcc -xc -w -E -P %s \"%s\"",included,filename);
-	//writeln("PREP : |" ~ cmdStr ~ "|");
-
-	auto cmd = executeShell(cmdStr);
-
-	if (cmd.status != 0)
-	{
-		return null;
-		//Panic.error("Preprocessor error.");
-	}
-	
-	//writeln(cmd.output);
-	return to!string(cmd.output);
+	return library.warp.omain.start(["",filename]);
 }

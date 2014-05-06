@@ -86,6 +86,8 @@ void init(string input, string[] argv, string include, bool nopreload)
 	}
 
 	script.execute();
+
+	//writeln(Glob.calls);
 }
 
 void initEval(string input, string include, bool nopreload)
@@ -118,7 +120,7 @@ void initCgi(Cgi cgi)
 
 	loader.loadDefault();
 
-	Program script = compile(cgi.pathTranslated, false); // Turn preprocessing OFF, for CGI. TOFIX.
+	Program script = compile(cgi.pathTranslated); // Turn preprocessing OFF, for CGI. TOFIX.
 
 	script.execute();
 }
@@ -131,10 +133,10 @@ Program compile(string filename, bool preprocessorON=true)
 	
 	if (preprocessorON)
 	{
-		//string preprocessed = preprocessor.preprocess(filename);
+		string preprocessed = preprocessor.preprocess(filename);
 	
-		//if (preprocessed !is null)
-		//	contents = preprocessed;
+		if (preprocessed !is null)
+			contents = preprocessed;
 	}
 	
 	return compileFromString(contents,filename);
