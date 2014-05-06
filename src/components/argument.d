@@ -376,12 +376,14 @@ class Argument
 			}
 			else if (arr.type==ValueType.stringValue)
 			{
+				return new Value(arr.content.s[vL.content.i .. vR.content.i]);
+				/*
 				string newValue = "";
 				for (long i=vL.content.i; i<vR.content.i; i++)
 				{
 					newValue ~= arr.content.s[i];
 				}
-				return new Value(newValue);
+				return new Value(newValue);*/
 			}
 			return new Value(0);
 		}
