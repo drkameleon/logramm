@@ -45,7 +45,7 @@ import backend.yaml;
 
 alias classNames = TypeTuple!(
 						"array","dictionary",
-						"file","json","net",
+						"file","html","json","net",
 						"number","path","reflection",
 						"sqlitedb","string","system",
 						"types","xml", "yaml");

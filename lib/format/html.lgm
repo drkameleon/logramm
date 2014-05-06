@@ -28,11 +28,12 @@ Html ::
 	// Functions
 	//================================================
 
-	parse(markup) # [
+	external parse(markup) # [
 		.params		: "string",
 		.returns    : "string",
 		.help		: "Converts HTML/LGMX template to HTML and returns result"
-	] =>
+	] => "html.parse";
+	/*
 	{
 		i = 0;
 		len = length(markup);
@@ -76,6 +77,6 @@ Html ::
 		}
 
 		==> ret;
-	}
+	}*/
 	
 }
