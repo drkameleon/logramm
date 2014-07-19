@@ -1,29 +1,29 @@
 import format.html;
 
-html ="<html>
+html = "<html>
 	<head>
-		<title><!--: out(\"PAGE TITLE\"); --></title>
+		<title><% out('PAGE TITLE'); %></title>
 	</head>
 	<body>
-		<h1><!--: out(\"HEADER\"); --></h1>
+		<h1><% out('HEADER'); %></h1>
 		<div id=\"articles\">
-			<!--: 
+			<% 
 				articles = [ 
-					[.title:\"one\",.content:\"one-content\"],
-					[.title:\"two\",.content:\"two-content\"]
+					[.title:'one',.content:'one-content'],
+					[.title:'two',.content:'two-content']
 				];
-			-->
-			<!--: @ article -> articles : { -->
+			%>
+			<% @ article -> articles : { %>
 				<div class=\"article\">
-					<h2><!--: out article.title; --></h2>
+					<h2><% out article.title; %></h2>
 					<p class=\"content\">
-						<!--: out article.content; -->
+						<% out article.content; %>
 					</p>
 				</div>
-			<!--: } -->
+			<% } %>
 		</div>
 	</body>
-</html> ";
+</html>";
 
 out "Parsed ::";
 out "=================";

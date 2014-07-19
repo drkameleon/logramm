@@ -1,5 +1,3 @@
-#!/usr/bin/env lgm -l
-
 import default;
 
 testPath = "tests/unittest";
@@ -21,6 +19,8 @@ oldSection = "";
 
 		outputIs = outputIs.trim().replace("\x1B[31m","").replace("\x1B[37m","").replace("\x1B[0m","");
 		shouldBe = outPath.read().trim();
+
+		// outputIs != shouldBe : { out "OUTPUTIS\n" + outputIs + "\nshouldbe\n"+shouldBe + "\n"; }
 
 		outputIs == shouldBe : { success = "[    \x1B[32mOK\x1B[0m    ]"; successcount += 1; }
 						else : { success = "[  \x1B[31mFAILED\x1B[0m  ]"; }

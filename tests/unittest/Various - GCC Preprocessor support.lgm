@@ -9,6 +9,6 @@ out "SUM 3,3 = " + SUM(3,3);
 
 #endif
 
-#include "core.lgm"
+#include "lib/core.lgm"
 
 out [1..10].count();

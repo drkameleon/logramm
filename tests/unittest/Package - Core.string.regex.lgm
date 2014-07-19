@@ -8,6 +8,6 @@ out "hello".getMatches("([a-z])");
 out "123hello456".preMatch("([a-z]+)");
 out "123hello456".postMatch("([a-z]+)");
 
-out "hello".replaceFirst("[l]","X");
+out "hello".xreplaceFirst("[l]","X");
 out "hello".xreplace("[l]","X");
 out "hello".xsplit("[l]");
