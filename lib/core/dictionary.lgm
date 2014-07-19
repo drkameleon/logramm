@@ -32,18 +32,6 @@ Dictionary ::
 		.help		: "Returns item for key 'key'"
 	] => dict[key];
 
-	isEmpty(dict) # [
-		.params		: "dictionary", 
-		.returns    : "boolean", 
-		.help		: "Checks if dictionary is empty"
-	] =>
-	{
-		c = count(keys(dict));
-
-		c==0 :==> true;
-		c!=0 :==> false;
-	}
-
 	setItemWithKey(dict,key,item) # [
 		.params		: "dictionary,any,any",
 		.returns    : "dictionary",

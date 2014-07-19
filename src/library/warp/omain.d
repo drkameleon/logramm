@@ -72,9 +72,11 @@ string start(string[] args)
             context.preprocess();
             context.localFinish();
 
-            /* The one source file we don't need to cache the contents
+            /* 
+             * The one source file we don't need to cache the contents
              * of is the .c file.
-             */
+             **/
+
             sf.freeContents();
 
             return to!string(outbuf[]);
@@ -82,9 +84,9 @@ string start(string[] args)
     }
     catch (Exception e)
     {
-        context.loc().write(&stderr);
-        stderr.writeln(e.msg);
-        exit(EXIT_FAILURE);
+        //context.loc().write(&stderr);
+        //stderr.writeln(e.msg);
+        //exit(EXIT_FAILURE);
     }
 
     //context.globalFinish();

@@ -109,6 +109,18 @@ Core ::
 
 	// Dictionary ::
 
+	isEmpty(dict) # [
+		.params		: "dictionary", 
+		.returns    : "boolean", 
+		.help		: "Checks if dictionary is empty"
+	] =>
+	{
+		c = count(keys(dict));
+
+		c==0 :==> true;
+		c!=0 :==> false;
+	}
+
 	values(dict) # [
 		.params		: "dictionary",
 		.returns    : "array",

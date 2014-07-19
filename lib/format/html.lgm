@@ -33,50 +33,5 @@ Html ::
 		.returns    : "string",
 		.help		: "Converts HTML/LGMX template to HTML and returns result"
 	] => "html.parse";
-	/*
-	{
-		i = 0;
-		len = length(markup);
-		buffer = "";
-
-		ret = "";
-		codeMode = false;
-
-		@ i<len :
-		{
-			buffer += markup[i];
-			slice = markup[i..];
-
-			(startsWith(slice,"<!--:") and codeMode==false) : 
-			{
-				lines = split( buffer[..length(buffer)-1], "\n" );
-				@ line -> lines : 
-					line!="": ret += "out '" + line + "';\n";
-
-				buffer = "";
-				codeMode = true;
-				i+=4;
-			}
-			(startsWith(slice,"-->") and codeMode==true) :
-			{
-				lines = split( buffer[..length(buffer)-1], "\n" );
-				@ line -> lines : ret += trim(line) + "\n";
-
-				buffer = "";
-				codeMode = false;
-				i+=2;
-			}
-
-			i += 1;
-		}
-
-		lines = split( buffer[..length(buffer)-1], "\n" );
-		@ line -> lines : 
-		{
-			line.trim().length()>0 : ret+= "out '" + trim(line) + "';\n";
-		}
-
-		==> ret;
-	}*/
 	
 }

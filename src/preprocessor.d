@@ -36,5 +36,9 @@ import library.warp.sources;
 
 string preprocess(string filename)
 {
-	return library.warp.omain.start(["",filename]);
+	string ret = library.warp.omain.start(["",filename]);
+
+	//writeln(ret);
+
+	return ret;
 }

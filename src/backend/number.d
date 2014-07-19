@@ -18,6 +18,7 @@ module backend.number;
 import std.array;
 import std.conv;
 import std.math;
+import std.random;
 import std.stdio;
 import std.string;
 
@@ -35,6 +36,16 @@ class LGM_Number
 		long base = v[1].content.i;
 
 		long ret = parse!long(num,to!int(base));
+
+		return new Value(ret);
+	}
+
+	static Value randomFromTo(Value[] v)
+	{
+		long numFrom = v[0].content.i;
+		long numTo = v[1].content.i;
+
+		long ret = uniform(numFrom,numTo);
 
 		return new Value(ret);
 	}

@@ -26,6 +26,12 @@ Number ::
 		.help 		: "Returns number, given its base-n representation in string"
 	] => "number.fromBase";
 
+	external random(from,to) # [
+		.params		: "number,number",
+		.returns 	: "number",
+		.help 		: "Returns random number in the range [from..to]"
+	] => "number.randomFromTo";
+
 	external sin(x) # [
 		.params		: "number",
 		.returns 	: "number",
