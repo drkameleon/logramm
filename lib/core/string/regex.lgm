@@ -48,7 +48,7 @@ Regex ::
 		.params		: "string,string,string",
 		.returns    : "string",
 		.help		: "Replaces first match of regex 'pattern' with 'repl' and returns string"
-	] => "string.replaceFirst";
+	] => "string.xreplaceFirst";
 
 	external xreplace(str,pattern,repl) # [
 		.params		: "string,string,string",
