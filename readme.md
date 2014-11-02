@@ -17,9 +17,7 @@ This will install Logramm as lgm.
 Documentation
 -------------
 
-Documentation for Logramm is online, updated daily:
-
-[Logramm Interactive](http://logramm.com/ "Try logramm online!") 
+Documentation for Logramm is online, updated daily: [Logramm Interactive](http://logramm.com/ "Try logramm online!") 
 
 You may access its unix version by:
 
