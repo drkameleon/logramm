@@ -19,7 +19,7 @@ Documentation
 
 Documentation for Logramm is online, updated daily:
 
-    http://logramm.com
+[Logramm Interactive](http://logramm.com/ "Try logramm online!") 
 
 You may access its unix version by:
 
